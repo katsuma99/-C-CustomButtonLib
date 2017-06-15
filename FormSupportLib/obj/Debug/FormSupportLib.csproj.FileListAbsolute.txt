@@ -73,3 +73,11 @@ C:\Users\katsuma\Desktop\2.製作中のコードローカルに保存　（完�
 C:\Users\katsuma\Desktop\2.製作中のコードローカルに保存　（完成時1.更新）\20170306_HapticLibrary\CustomButtonLibver016\FormSupportLib\obj\Debug\FormSupportLib.dll
 C:\Users\katsuma\Desktop\2.製作中のコードローカルに保存　（完成時1.更新）\20170306_HapticLibrary\CustomButtonLibver016\FormSupportLib\obj\Debug\FormSupportLib.pdb
 C:\Users\katsuma\Desktop\2.製作中のコードローカルに保存　（完成時1.更新）\20170306_HapticLibrary\CustomButtonLibver016\FormSupportLib\obj\Debug\FormSupportLib.csprojResolveAssemblyReference.cache
+C:\Users\katsumaPC\Desktop\SourceTree\NET Framework\CustomButtonLib\FormSupportLib\bin\Debug\FormSupportLib.dll
+C:\Users\katsumaPC\Desktop\SourceTree\NET Framework\CustomButtonLib\FormSupportLib\bin\Debug\FormSupportLib.pdb
+C:\Users\katsumaPC\Desktop\SourceTree\NET Framework\CustomButtonLib\FormSupportLib\obj\Debug\FormSupportLib.csprojResolveAssemblyReference.cache
+C:\Users\katsumaPC\Desktop\SourceTree\NET Framework\CustomButtonLib\FormSupportLib\obj\Debug\FormSupportLib.FormSupportUtils.resources
+C:\Users\katsumaPC\Desktop\SourceTree\NET Framework\CustomButtonLib\FormSupportLib\obj\Debug\FormSupportLib.Properties.Resources.resources
+C:\Users\katsumaPC\Desktop\SourceTree\NET Framework\CustomButtonLib\FormSupportLib\obj\Debug\FormSupportLib.csproj.GenerateResource.Cache
+C:\Users\katsumaPC\Desktop\SourceTree\NET Framework\CustomButtonLib\FormSupportLib\obj\Debug\FormSupportLib.dll
+C:\Users\katsumaPC\Desktop\SourceTree\NET Framework\CustomButtonLib\FormSupportLib\obj\Debug\FormSupportLib.pdb
