@@ -1,6 +1,6 @@
-﻿namespace ImageButtonLib
+﻿namespace SimpleButtonLib
 {
-    partial class ImageButton
+    partial class SimpleButton
     {
         /// <summary> 
         /// 必要なデザイナー変数です。

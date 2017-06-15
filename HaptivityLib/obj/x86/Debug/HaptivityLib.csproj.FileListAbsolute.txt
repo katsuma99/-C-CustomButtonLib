@@ -114,3 +114,4 @@ C:\Users\katsumaPC\Desktop\SourceTree\NET Framework\CustomButtonLib\HaptivityLib
 C:\Users\katsumaPC\Desktop\SourceTree\NET Framework\CustomButtonLib\HaptivityLib\obj\x86\Debug\HAPTIVITYLib.csproj.GenerateResource.Cache
 C:\Users\katsumaPC\Desktop\SourceTree\NET Framework\CustomButtonLib\HaptivityLib\obj\x86\Debug\HAPTIVITYLib.dll
 C:\Users\katsumaPC\Desktop\SourceTree\NET Framework\CustomButtonLib\HaptivityLib\obj\x86\Debug\HAPTIVITYLib.pdb
+C:\Users\katsumaPC\Desktop\SourceTree\NET Framework\CustomButtonLib\HaptivityLib\obj\x86\Debug\ImageButtonLib.BaseButton.resources

@@ -80,10 +80,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ClassLibrary1\ClassLibrary1.csproj">
-      <Project>{41243A51-9F5B-4432-8A54-3C1A0B344189}</Project>
-      <Name>ClassLibrary1</Name>
-    </ProjectReference>
     <ProjectReference Include="..\FormSupportLib\FormSupportLib.csproj">
       <Project>{F9412781-0384-47A6-B507-3E6A086219F0}</Project>
       <Name>FormSupportLib</Name>

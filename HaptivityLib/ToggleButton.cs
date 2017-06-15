@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace ToggleButton
 {
-    public partial class ToggleButton : ImageButtonLib.ImageButton
+    public partial class ToggleButton : SimpleButtonLib.SimpleButton
     {
         public bool isToggleState = false;
 
@@ -76,6 +76,26 @@ namespace ToggleButton
                 mConfigOffNo = mConfigNo;
             }
         }
+
+        [Category("カスタムボタンイベント")]
+        public event EventHandler OnPushOnButton = (sender, e) =>
+        {
+        };
+
+        [Category("カスタムボタンイベント")]
+        public event EventHandler OnReleaseOnButton = (sender, e) =>
+        {
+        };
+
+        [Category("カスタムボタンイベント")]
+        public event EventHandler OnPushOffButton = (sender, e) =>
+        {
+        };
+
+        [Category("カスタムボタンイベント")]
+        public event EventHandler OnReleaseOffButton = (sender, e) =>
+        {
+        };
 
         public ToggleButton()
         {

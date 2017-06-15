@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.imageButton1 = new ImageButtonLib.ImageButton();
+            this.imageButton1 = new SimpleButtonLib.BaseButton();
             this.interface1 = new HAPTIVITYLib.Interface();
             this.toggleButton2 = new ToggleButton.ToggleButton();
             this.formSupportUtils1 = new FormSupportLib.FormSupportUtils();
-            this.imageButton2 = new ImageButtonLib.ImageButton();
+            this.imageButton2 = new SimpleButtonLib.BaseButton();
             this.toggleButton1 = new ToggleButton.ToggleButton();
             this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.imageButton1)).BeginInit();
@@ -45,10 +45,6 @@
             // imageButton1
             // 
             this.imageButton1.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.imageButton1.ConfigNo = 0;
-            this.imageButton1.EnterConfigNo = 0;
-            this.imageButton1.EnterVibrationTime = 15;
-            this.imageButton1.Haptivity = this.interface1;
             this.imageButton1.Image = global::WindowsFormsApplication1.Properties.Resources.Home_0;
             this.imageButton1.Location = new System.Drawing.Point(12, 12);
             this.imageButton1.Name = "imageButton1";
@@ -105,10 +101,6 @@
             // imageButton2
             // 
             this.imageButton2.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.imageButton2.ConfigNo = 0;
-            this.imageButton2.EnterConfigNo = 0;
-            this.imageButton2.EnterVibrationTime = 5000;
-            this.imageButton2.Haptivity = this.interface1;
             this.imageButton2.Image = ((System.Drawing.Image)(resources.GetObject("imageButton2.Image")));
             this.imageButton2.Location = new System.Drawing.Point(32, 113);
             this.imageButton2.Name = "imageButton2";
@@ -142,6 +134,7 @@
             this.toggleButton1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.toggleButton1.TabIndex = 8;
             this.toggleButton1.TabStop = false;
+            this.toggleButton1.OnPushButton += new System.EventHandler(this.toggleButton1_OnPushButton);
             // 
             // label1
             // 
@@ -182,10 +175,10 @@
         #endregion
 
         private ToggleButton.ToggleButton toggleButton2;
-        private ImageButtonLib.ImageButton imageButton1;
+        private SimpleButtonLib.BaseButton imageButton1;
         private HAPTIVITYLib.Interface interface1;
         private FormSupportLib.FormSupportUtils formSupportUtils1;
-        private ImageButtonLib.ImageButton imageButton2;
+        private SimpleButtonLib.BaseButton imageButton2;
         private ToggleButton.ToggleButton toggleButton1;
         private System.Windows.Forms.Label label1;
     }

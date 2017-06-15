@@ -43,5 +43,11 @@ namespace WindowsFormsApplication1
         {
             label1.Text = (++count).ToString();
         }
+
+        private void toggleButton1_OnPushButton(object sender, EventArgs e)
+        {
+            count = 0;
+            label1.Text = count.ToString();
+        }
     }
 }

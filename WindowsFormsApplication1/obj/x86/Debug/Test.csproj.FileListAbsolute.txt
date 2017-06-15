@@ -230,10 +230,8 @@ C:\Users\katsumaPC\Desktop\SourceTree\NET Framework\CustomButtonLib\WindowsForms
 C:\Users\katsumaPC\Desktop\SourceTree\NET Framework\CustomButtonLib\WindowsFormsApplication1\obj\x86\Debug\WindowsFormsApplication1.pdb
 C:\Users\katsumaPC\Desktop\SourceTree\NET Framework\CustomButtonLib\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe
 C:\Users\katsumaPC\Desktop\SourceTree\NET Framework\CustomButtonLib\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.pdb
-C:\Users\katsumaPC\Desktop\SourceTree\NET Framework\CustomButtonLib\WindowsFormsApplication1\bin\Debug\ClassLibrary1.dll
 C:\Users\katsumaPC\Desktop\SourceTree\NET Framework\CustomButtonLib\WindowsFormsApplication1\bin\Debug\FormSupportLib.dll
 C:\Users\katsumaPC\Desktop\SourceTree\NET Framework\CustomButtonLib\WindowsFormsApplication1\bin\Debug\HAPTIVITYLib.dll
-C:\Users\katsumaPC\Desktop\SourceTree\NET Framework\CustomButtonLib\WindowsFormsApplication1\bin\Debug\ClassLibrary1.pdb
 C:\Users\katsumaPC\Desktop\SourceTree\NET Framework\CustomButtonLib\WindowsFormsApplication1\bin\Debug\FormSupportLib.pdb
 C:\Users\katsumaPC\Desktop\SourceTree\NET Framework\CustomButtonLib\WindowsFormsApplication1\bin\Debug\HAPTIVITYLib.pdb
 C:\Users\katsumaPC\Desktop\SourceTree\NET Framework\CustomButtonLib\WindowsFormsApplication1\obj\x86\Debug\Test.csprojResolveAssemblyReference.cache

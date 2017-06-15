@@ -66,11 +66,17 @@
     <Compile Include="FileLoader.Designer.cs">
       <DependentUpon>FileLoader.cs</DependentUpon>
     </Compile>
-    <Compile Include="ImageButton.cs">
+    <Compile Include="SimpleButton.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="ImageButton.Designer.cs">
-      <DependentUpon>ImageButton.cs</DependentUpon>
+    <Compile Include="SimpleButton.Designer.cs">
+      <DependentUpon>SimpleButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="BaseButton.Designer.cs">
+      <DependentUpon>BaseButton.cs</DependentUpon>
     </Compile>
     <Compile Include="Interface.cs">
       <SubType>UserControl</SubType>
@@ -93,8 +99,11 @@
     <EmbeddedResource Include="FileLoader.resx">
       <DependentUpon>FileLoader.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ImageButton.resx">
-      <DependentUpon>ImageButton.cs</DependentUpon>
+    <EmbeddedResource Include="SimpleButton.resx">
+      <DependentUpon>SimpleButton.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BaseButton.resx">
+      <DependentUpon>BaseButton.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Interface.resx">
       <DependentUpon>Interface.cs</DependentUpon>

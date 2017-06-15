@@ -1,13 +1,13 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual C# Express 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "WindowsFormsApplication1\Test.csproj", "{695B1D0E-5B38-400B-BD78-4E6141C12D84}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HAPTIVITYLib", "HaptivityLib\HAPTIVITYLib.csproj", "{DCD7ED9C-5471-4DEF-8F23-B7B6CA5A7631}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormSupportLib", "FormSupportLib\FormSupportLib.csproj", "{F9412781-0384-47A6-B507-3E6A086219F0}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassLibrary1", "ClassLibrary1\ClassLibrary1.csproj", "{41243A51-9F5B-4432-8A54-3C1A0B344189}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -49,16 +49,6 @@ Global
 		{F9412781-0384-47A6-B507-3E6A086219F0}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{F9412781-0384-47A6-B507-3E6A086219F0}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{F9412781-0384-47A6-B507-3E6A086219F0}.Release|x86.ActiveCfg = Release|Any CPU
-		{41243A51-9F5B-4432-8A54-3C1A0B344189}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{41243A51-9F5B-4432-8A54-3C1A0B344189}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{41243A51-9F5B-4432-8A54-3C1A0B344189}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{41243A51-9F5B-4432-8A54-3C1A0B344189}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{41243A51-9F5B-4432-8A54-3C1A0B344189}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{41243A51-9F5B-4432-8A54-3C1A0B344189}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{41243A51-9F5B-4432-8A54-3C1A0B344189}.Release|Any CPU.Build.0 = Release|Any CPU
-		{41243A51-9F5B-4432-8A54-3C1A0B344189}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{41243A51-9F5B-4432-8A54-3C1A0B344189}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{41243A51-9F5B-4432-8A54-3C1A0B344189}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
