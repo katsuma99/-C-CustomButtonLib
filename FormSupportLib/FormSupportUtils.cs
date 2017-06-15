@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Drawing;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;//ちらつき防止
-using System.Diagnostics;
 
 namespace FormSupportLib
 {
@@ -16,6 +13,7 @@ namespace FormSupportLib
         Point mousePoint;       //フォーム動かす用のマウス座標
         int displayType = 0;
         Form focusForm = null;
+        FormWindowState preWindowState = FormWindowState.Normal;
 
         #region 初期設定
         public FormSupportUtils()
@@ -38,12 +36,14 @@ namespace FormSupportLib
             {
                 preWindow = focusForm.Bounds;
                 initWindow = focusForm.Bounds;
+                focusForm.MinimumSize = initWindow.Size;
             }
         }
 
         private void AddEventHandler()
         {
             focusForm.ResizeEnd += new System.EventHandler(this.F1_Resized);
+            focusForm.SizeChanged += new System.EventHandler(this.F1_SizeChanged);
             focusForm.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MouseDown);
             focusForm.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MouseMove);
             focusForm.KeyUp += new System.Windows.Forms.KeyEventHandler(this.ChangeWindowSize);
@@ -54,6 +54,7 @@ namespace FormSupportLib
             if (focusForm == null) return;
 
             focusForm.ResizeEnd -= new System.EventHandler(this.F1_Resized);
+            focusForm.SizeChanged -= new System.EventHandler(this.F1_SizeChanged);
             focusForm.MouseDown -= new System.Windows.Forms.MouseEventHandler(this.MouseDown);
             focusForm.MouseMove -= new System.Windows.Forms.MouseEventHandler(this.MouseMove);
             focusForm.KeyUp -= new System.Windows.Forms.KeyEventHandler(this.ChangeWindowSize);
@@ -80,7 +81,15 @@ namespace FormSupportLib
         private void F1_Resized(object sender, EventArgs e)
         {
             ResizeButton();
-            focusForm.MinimumSize = initWindow.Size;
+        }
+
+        void F1_SizeChanged(object sender, EventArgs e)
+        {
+            if (focusForm.WindowState == preWindowState)
+                return;
+
+            ResizeButton();
+            preWindowState = focusForm.WindowState;
         }
 
         /// <summary> ボタンサイズをFormサイズに合わせてリサイズ </summary>
@@ -139,7 +148,6 @@ namespace FormSupportLib
                     w = (int)(h / (float)focusForm.Height * focusForm.Width);
             }
             ResizeWindow(w, h);
-            ResizeButton();
             focusForm.Location = new Point(0, 0);
         }
 
@@ -215,6 +223,7 @@ namespace FormSupportLib
                 initWindow = focusForm.Bounds;
             }
             focusForm.Size = new Size(w, h);
+            ResizeButton();
         }
         public void ResizeWindow(Size s)
         {

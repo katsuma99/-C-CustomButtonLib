@@ -2,3 +2,8 @@ C:\Users\katsuma\Desktop\2.製作中のコードローカルに保存　（完�
 C:\Users\katsuma\Desktop\2.製作中のコードローカルに保存　（完成時1.更新）\20170306_HapticLibrary\CustomButtonLibver016\ClassLibrary1\bin\Debug\ClassLibrary1.pdb
 C:\Users\katsuma\Desktop\2.製作中のコードローカルに保存　（完成時1.更新）\20170306_HapticLibrary\CustomButtonLibver016\ClassLibrary1\obj\Debug\ClassLibrary1.dll
 C:\Users\katsuma\Desktop\2.製作中のコードローカルに保存　（完成時1.更新）\20170306_HapticLibrary\CustomButtonLibver016\ClassLibrary1\obj\Debug\ClassLibrary1.pdb
+C:\Users\katsumaPC\Desktop\SourceTree\NET Framework\CustomButtonLib\ClassLibrary1\bin\Debug\ClassLibrary1.dll
+C:\Users\katsumaPC\Desktop\SourceTree\NET Framework\CustomButtonLib\ClassLibrary1\bin\Debug\ClassLibrary1.pdb
+C:\Users\katsumaPC\Desktop\SourceTree\NET Framework\CustomButtonLib\ClassLibrary1\obj\Debug\ClassLibrary1.csprojResolveAssemblyReference.cache
+C:\Users\katsumaPC\Desktop\SourceTree\NET Framework\CustomButtonLib\ClassLibrary1\obj\Debug\ClassLibrary1.dll
+C:\Users\katsumaPC\Desktop\SourceTree\NET Framework\CustomButtonLib\ClassLibrary1\obj\Debug\ClassLibrary1.pdb

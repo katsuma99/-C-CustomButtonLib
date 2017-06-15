@@ -103,3 +103,14 @@ C:\Users\katsuma\Desktop\2.製作中のコードローカルに保存　（完�
 C:\Users\katsuma\Desktop\2.製作中のコードローカルに保存　（完成時1.更新）\20170306_HapticLibrary\CustomButtonLibver016\HaptivityLib\obj\x86\Debug\HAPTIVITYLib.csproj.GenerateResource.Cache
 C:\Users\katsuma\Desktop\2.製作中のコードローカルに保存　（完成時1.更新）\20170306_HapticLibrary\CustomButtonLibver016\HaptivityLib\obj\x86\Debug\HAPTIVITYLib.dll
 C:\Users\katsuma\Desktop\2.製作中のコードローカルに保存　（完成時1.更新）\20170306_HapticLibrary\CustomButtonLibver016\HaptivityLib\obj\x86\Debug\HAPTIVITYLib.pdb
+C:\Users\katsumaPC\Desktop\SourceTree\NET Framework\CustomButtonLib\HaptivityLib\bin\Debug\HAPTIVITYLib.dll
+C:\Users\katsumaPC\Desktop\SourceTree\NET Framework\CustomButtonLib\HaptivityLib\bin\Debug\HAPTIVITYLib.pdb
+C:\Users\katsumaPC\Desktop\SourceTree\NET Framework\CustomButtonLib\HaptivityLib\obj\x86\Debug\HAPTIVITYLib.csprojResolveAssemblyReference.cache
+C:\Users\katsumaPC\Desktop\SourceTree\NET Framework\CustomButtonLib\HaptivityLib\obj\x86\Debug\HAPTIVITYLib.ComPortEntry.resources
+C:\Users\katsumaPC\Desktop\SourceTree\NET Framework\CustomButtonLib\HaptivityLib\obj\x86\Debug\HAPTIVITYLib.FileLoader.resources
+C:\Users\katsumaPC\Desktop\SourceTree\NET Framework\CustomButtonLib\HaptivityLib\obj\x86\Debug\ImageButtonLib.ImageButton.resources
+C:\Users\katsumaPC\Desktop\SourceTree\NET Framework\CustomButtonLib\HaptivityLib\obj\x86\Debug\HAPTIVITYLib.Interface.resources
+C:\Users\katsumaPC\Desktop\SourceTree\NET Framework\CustomButtonLib\HaptivityLib\obj\x86\Debug\HAPTIVITYLib.Properties.Resources.resources
+C:\Users\katsumaPC\Desktop\SourceTree\NET Framework\CustomButtonLib\HaptivityLib\obj\x86\Debug\HAPTIVITYLib.csproj.GenerateResource.Cache
+C:\Users\katsumaPC\Desktop\SourceTree\NET Framework\CustomButtonLib\HaptivityLib\obj\x86\Debug\HAPTIVITYLib.dll
+C:\Users\katsumaPC\Desktop\SourceTree\NET Framework\CustomButtonLib\HaptivityLib\obj\x86\Debug\HAPTIVITYLib.pdb

@@ -226,3 +226,17 @@ C:\Users\katsuma\Desktop\2.製作中のコードローカルに保存　（完�
 C:\Users\katsuma\Desktop\2.製作中のコードローカルに保存　（完成時1.更新）\20170306_HapticLibrary\CustomButtonLibver016\WindowsFormsApplication1\obj\x86\Debug\Test.csproj.GenerateResource.Cache
 C:\Users\katsuma\Desktop\2.製作中のコードローカルに保存　（完成時1.更新）\20170306_HapticLibrary\CustomButtonLibver016\WindowsFormsApplication1\bin\Debug\ClassLibrary1.dll
 C:\Users\katsuma\Desktop\2.製作中のコードローカルに保存　（完成時1.更新）\20170306_HapticLibrary\CustomButtonLibver016\WindowsFormsApplication1\bin\Debug\ClassLibrary1.pdb
+C:\Users\katsumaPC\Desktop\SourceTree\NET Framework\CustomButtonLib\WindowsFormsApplication1\obj\x86\Debug\WindowsFormsApplication1.exe
+C:\Users\katsumaPC\Desktop\SourceTree\NET Framework\CustomButtonLib\WindowsFormsApplication1\obj\x86\Debug\WindowsFormsApplication1.pdb
+C:\Users\katsumaPC\Desktop\SourceTree\NET Framework\CustomButtonLib\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe
+C:\Users\katsumaPC\Desktop\SourceTree\NET Framework\CustomButtonLib\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.pdb
+C:\Users\katsumaPC\Desktop\SourceTree\NET Framework\CustomButtonLib\WindowsFormsApplication1\bin\Debug\ClassLibrary1.dll
+C:\Users\katsumaPC\Desktop\SourceTree\NET Framework\CustomButtonLib\WindowsFormsApplication1\bin\Debug\FormSupportLib.dll
+C:\Users\katsumaPC\Desktop\SourceTree\NET Framework\CustomButtonLib\WindowsFormsApplication1\bin\Debug\HAPTIVITYLib.dll
+C:\Users\katsumaPC\Desktop\SourceTree\NET Framework\CustomButtonLib\WindowsFormsApplication1\bin\Debug\ClassLibrary1.pdb
+C:\Users\katsumaPC\Desktop\SourceTree\NET Framework\CustomButtonLib\WindowsFormsApplication1\bin\Debug\FormSupportLib.pdb
+C:\Users\katsumaPC\Desktop\SourceTree\NET Framework\CustomButtonLib\WindowsFormsApplication1\bin\Debug\HAPTIVITYLib.pdb
+C:\Users\katsumaPC\Desktop\SourceTree\NET Framework\CustomButtonLib\WindowsFormsApplication1\obj\x86\Debug\Test.csprojResolveAssemblyReference.cache
+C:\Users\katsumaPC\Desktop\SourceTree\NET Framework\CustomButtonLib\WindowsFormsApplication1\obj\x86\Debug\WindowsFormsApplication1.Form1.resources
+C:\Users\katsumaPC\Desktop\SourceTree\NET Framework\CustomButtonLib\WindowsFormsApplication1\obj\x86\Debug\WindowsFormsApplication1.Properties.Resources.resources
+C:\Users\katsumaPC\Desktop\SourceTree\NET Framework\CustomButtonLib\WindowsFormsApplication1\obj\x86\Debug\Test.csproj.GenerateResource.Cache
