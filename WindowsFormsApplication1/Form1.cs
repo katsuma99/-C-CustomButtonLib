@@ -16,7 +16,6 @@ namespace WindowsFormsApplication1
             InitializeComponent();
         }
 
-        int count = 0;
         private void Form1_MouseDown(object sender, MouseEventArgs e)
         {
             //TextBox textBox = userControl11.GetAllControls<TextBox>()[0];
@@ -37,6 +36,12 @@ namespace WindowsFormsApplication1
         public void Function()
         {
 
+        }
+
+        int count = 0;
+        private void imageButton2_OnReleaseButton(object sender, EventArgs e)
+        {
+            label1.Text = (++count).ToString();
         }
     }
 }

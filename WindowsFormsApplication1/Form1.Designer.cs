@@ -35,6 +35,7 @@
             this.formSupportUtils1 = new FormSupportLib.FormSupportUtils();
             this.imageButton2 = new ImageButtonLib.ImageButton();
             this.toggleButton1 = new ToggleButton.ToggleButton();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.imageButton1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.toggleButton2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageButton2)).BeginInit();
@@ -118,6 +119,7 @@
             this.imageButton2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imageButton2.TabIndex = 7;
             this.imageButton2.TabStop = false;
+            this.imageButton2.OnReleaseButton += new System.EventHandler(this.imageButton2_OnReleaseButton);
             // 
             // toggleButton1
             // 
@@ -141,17 +143,28 @@
             this.toggleButton1.TabIndex = 8;
             this.toggleButton1.TabStop = false;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(169, 225);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 12);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "label1";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(292, 273);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.toggleButton1);
             this.Controls.Add(this.imageButton2);
             this.Controls.Add(this.imageButton1);
             this.Controls.Add(this.toggleButton2);
             this.Controls.Add(this.interface1);
             this.Controls.Add(this.formSupportUtils1);
+            this.MinimumSize = new System.Drawing.Size(308, 312);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -162,6 +175,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.imageButton2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.toggleButton1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -173,6 +187,7 @@
         private FormSupportLib.FormSupportUtils formSupportUtils1;
         private ImageButtonLib.ImageButton imageButton2;
         private ToggleButton.ToggleButton toggleButton1;
+        private System.Windows.Forms.Label label1;
     }
 }
 

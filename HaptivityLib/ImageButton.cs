@@ -121,20 +121,22 @@ namespace ImageButtonLib
             }
         }
 
-        //public delegate void ButtonFunction(object sender, EventArgs e);
-        //protected ButtonFunction mFunction = null;
-        //[Category("処理")]
-        //public ButtonFunction Function
-        //{
-        //    get
-        //    {
-        //        return null;// mFunction;
-        //    }
-        //    set
-        //    {
-        //        mFunction = value;
-        //    }
-        //}
+        [Category("カスタムボタンイベント")]
+        public event EventHandler OnPushButton = (sender, e) =>
+        {
+            ImageButton btn = sender as ImageButton;
+            btn.mState = State.Push;
+            btn.Image = btn.mPushedImage;
+        };
+
+        [Category("カスタムボタンイベント")]
+        public event EventHandler OnReleaseButton = (sender, e) =>
+        {
+            ImageButton btn = sender as ImageButton;
+            btn.mState = State.Select;
+            btn.Image = btn.mSelectImage;
+        };
+
 
         public ImageButton()
         {
@@ -167,16 +169,13 @@ namespace ImageButtonLib
 
         protected override void OnMouseDown(MouseEventArgs mevent)
         {
-            mState = State.Push;
-            Image = mPushedImage;
+            OnPushButton(this, EventArgs.Empty);
             base.OnMouseDown(mevent);
         }
 
         protected override void OnMouseUp(MouseEventArgs mevent)
         {
-            mState = State.Select;
-            Image = mSelectImage;
-            //if (mFunction != null) mFunction();
+            OnReleaseButton(this, EventArgs.Empty);
             base.OnMouseUp(mevent);
         }
 
@@ -185,8 +184,10 @@ namespace ImageButtonLib
             switch (mHaptivity.DataReceived())
             {
                 case aRecive.PUSH:
+                    OnPushButton(this, EventArgs.Empty);
                     break;
                 case aRecive.RELEASE:
+                    OnReleaseButton(this, EventArgs.Empty);
                     break;
             }
 
