@@ -1,0 +1,5 @@
+C:\Users\katsuma\documents\visual studio 2010\Projects\ValueButtonLib\ValueButtonLib\bin\Debug\ValueButtonLib.dll
+C:\Users\katsuma\documents\visual studio 2010\Projects\ValueButtonLib\ValueButtonLib\bin\Debug\ValueButtonLib.pdb
+C:\Users\katsuma\documents\visual studio 2010\Projects\ValueButtonLib\ValueButtonLib\obj\Debug\ValueButtonLib.dll
+C:\Users\katsuma\documents\visual studio 2010\Projects\ValueButtonLib\ValueButtonLib\obj\Debug\ValueButtonLib.pdb
+C:\Users\katsuma\Documents\Visual Studio 2010\Projects\ValueButtonLib\ValueButtonLib\obj\Debug\ValueButtonLib.csprojResolveAssemblyReference.cache
