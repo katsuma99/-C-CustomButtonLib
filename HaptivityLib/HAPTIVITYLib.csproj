@@ -92,7 +92,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ToggleButton.cs">
-      <SubType>Component</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="ToggleButton.Designer.cs">
       <DependentUpon>ToggleButton.cs</DependentUpon>
@@ -127,6 +127,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="ToggleButton.resx">
+      <DependentUpon>ToggleButton.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\HAPTIVITY.png" />
@@ -141,10 +144,9 @@
     <EmbeddedResource Include="Resources\Pushed.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Button_Hum1TF.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Button_Hum1F.png" />
+    <EmbeddedResource Include="Resources\NormalOn.png" />
+    <EmbeddedResource Include="Resources\PushedOn.png" />
+    <EmbeddedResource Include="Resources\SelectOn.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -70,7 +70,7 @@ namespace SimpleButtonLib
         };
         protected virtual void OnEventPushButton()
         {
-            if (OnPushButton != null) { OnPushButton(this, EventArgs.Empty); }
+            OnPushButton(this, EventArgs.Empty);
         }
 
         [Category("カスタムボタンイベント"), Description("ボタンをリリースした時に入る処理")]
@@ -82,7 +82,7 @@ namespace SimpleButtonLib
         };
         protected virtual void OnEventReleaseButton()
         {
-            if (OnReleaseButton != null) { OnReleaseButton(this, EventArgs.Empty); }
+            OnReleaseButton(this, EventArgs.Empty); 
         }
 
         public BaseButton()

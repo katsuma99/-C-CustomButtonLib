@@ -8,7 +8,6 @@ namespace SimpleButtonLib
     [DefaultProperty("Text")]
     public partial class TextBaseButton : BaseButton
     {
-
         protected string mText;
         [Category("ボタンイメージ"), Description("ボタンに表示させる文字")]
         [Bindable(true),Browsable(true),EditorBrowsable(EditorBrowsableState.Always)]
@@ -32,7 +31,8 @@ namespace SimpleButtonLib
             }
         }
 
-        protected Color mForeColor;
+        protected Color mForeColor = Color.White;
+        [DefaultValue(typeof(Color),"White")]
         [Category("ボタンイメージ"), Description("ボタンに表示させる文字の色")]
         [Bindable(true), Browsable(true), EditorBrowsable(EditorBrowsableState.Always)]
         public override Color ForeColor
@@ -66,11 +66,9 @@ namespace SimpleButtonLib
 
         public TextBaseButton()
         {
-            InitializeComponent();
             mText = "";
-            ForeColor = Color.White;
             mFont = new Font("Arial", 8, FontStyle.Bold);
-
+            InitializeComponent();
         }
 
         protected override void OnPaint(PaintEventArgs pe)

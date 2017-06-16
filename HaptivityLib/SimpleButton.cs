@@ -70,19 +70,21 @@ namespace SimpleButtonLib
 
         protected override void OnMouseEnter(EventArgs e)
         {
-            if (mHaptivity == null) return;
-
-            mHaptivity.EnterVibration(mConfigNo, mEnterConfigNo, mEnterVibrationTime);
-            receiveDataTime.Enabled = true;
+            if (mHaptivity != null)
+            {
+                mHaptivity.EnterVibration(mConfigNo, mEnterConfigNo, mEnterVibrationTime);
+                receiveDataTime.Enabled = true;
+            }
             base.OnMouseEnter(e);
         }
 
         protected override void OnMouseLeave(EventArgs e)
         {
-            if (mHaptivity == null) return;
-
-            mHaptivity.LeaveVibration();
-            receiveDataTime.Enabled = false;
+            if (mHaptivity != null)
+            {
+                mHaptivity.LeaveVibration();
+                receiveDataTime.Enabled = false;
+            }
             base.OnMouseLeave(e);
         }
 
@@ -97,7 +99,6 @@ namespace SimpleButtonLib
                     OnEventReleaseButton();
                     break;
             }
-
         }
     }
 }

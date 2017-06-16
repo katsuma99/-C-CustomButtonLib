@@ -1,111 +1,61 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
+using SimpleButtonLib;
 
 namespace ToggleButton
 {
-    public partial class ToggleButton : SimpleButtonLib.SimpleButton
+    public partial class ToggleButton : UserControl
     {
-        public bool isToggleState = false;
+        public bool mIsToggleOn = false;
 
-        private Image mSelectOffImage = global::HAPTIVITYLib.Properties.Resources.BtSelect;
-        private Image mSelectOnImage = global::HAPTIVITYLib.Properties.Resources.BtSelectOn;
-        [Category("ボタンイメージ")]
-        public Image SelectOnImage
+        [Category("ボタンイメージ"), Description("ON時のsimpleButton設定")]
+        public SimpleButton OnSimpleButton
         {
             get
             {
-                return mSelectOnImage;
+                return mOnSimpleButton;
             }
             set
             {
-                mSelectOnImage = value;
-                mSelectOffImage = mSelectImage;
+                mOnSimpleButton = value;
             }
         }
 
-        private Image mNormalOffImage = global::HAPTIVITYLib.Properties.Resources.BtNormal;
-        private Image mNormalOnImage = global::HAPTIVITYLib.Properties.Resources.BtNormalOn;
-        [Category("ボタンイメージ")]
-        public Image NormalOnImage
+        [Category("ボタンイメージ"), Description("OFF時のsimpleButton設定")]
+        public SimpleButton OffSimpleButton
         {
             get
             {
-                return mNormalOnImage;
+                return mOffSimpleButton;
             }
             set
             {
-                mNormalOnImage = value;
-                mNormalOffImage = mNormalImage;
-            }
-        }
-
-        Image mPushedOffImage = global::HAPTIVITYLib.Properties.Resources.BtPushed;
-        Image mPushedOnImage = global::HAPTIVITYLib.Properties.Resources.BtPushed;
-        [Category("ボタンイメージ")]
-        public Image PushedOnImage
-        {
-            get
-            {
-                return mPushedOnImage;
-            }
-            set
-            {
-                mPushedOnImage = value;
-                mPushedOffImage = mPushedImage;
-            }
-        }
-
-        int mConfigOffNo = 0;
-        int mConfigOnNo = 0;
-        [Category("HAPTIVITY")]
-        public int ConfigOnNo
-        {
-            get
-            {
-                return mConfigOnNo;
-            }
-            set
-            {
-                mConfigOnNo = value;
-                mConfigOffNo = mConfigNo;
+                mOffSimpleButton = value;
             }
         }
 
         public ToggleButton()
         {
             InitializeComponent();
+            mIsToggleOn = false;
+            mOffSimpleButton.Show();
+            mOnSimpleButton.Hide();
         }
 
-        protected override void OnMouseEnter(EventArgs e)
+        private void mOffSimpleButton_OnReleaseButton(object sender, EventArgs e)
         {
-            mConfigNo = isToggleState ? mConfigOnNo : mConfigOffNo;
-            mSelectImage = isToggleState ? mSelectOnImage : mSelectOffImage;
-            base.OnMouseEnter(e);
+            mIsToggleOn = true;
+            mOnSimpleButton.Show();
+            mOffSimpleButton.Hide();
         }
 
-        protected override void OnMouseLeave(EventArgs e)
+        private void mOnSimpleButton_OnReleaseButton(object sender, EventArgs e)
         {
-            mNormalImage = isToggleState ? mNormalOnImage : mNormalOffImage;
-            base.OnMouseLeave(e);
-        }
-
-        protected override void OnMouseDown(MouseEventArgs mevent)
-        {
-            mPushedImage = isToggleState ? mPushedOnImage : mPushedOffImage;
-            base.OnMouseDown(mevent);
-        }
-
-        protected override void OnMouseUp(MouseEventArgs mevent)
-        {
-            isToggleState ^= true;
-            mSelectImage = isToggleState ? mSelectOnImage : mSelectOffImage;
-            base.OnMouseUp(mevent);
+            mIsToggleOn = false;
+            mOnSimpleButton.Hide();
+            mOffSimpleButton.Show();
         }
     }
 }
