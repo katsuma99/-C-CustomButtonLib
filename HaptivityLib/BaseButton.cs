@@ -5,6 +5,7 @@ using System.Windows.Forms;
 
 namespace SimpleButtonLib
 {
+    [DefaultEvent("OnReleaseButton")]
     public partial class BaseButton : PictureBox
     {
         public enum State
@@ -16,7 +17,7 @@ namespace SimpleButtonLib
 
         public State mState = State.None;
         protected Image mSelectImage = global::HAPTIVITYLib.Properties.Resources.BtSelect;
-        [Category("ボタンイメージ")] 
+        [Category("ボタンイメージ"), Description("ボタンを選択した時のイメージ画像")]
         public Image SelectImage
         {
             get
@@ -30,7 +31,7 @@ namespace SimpleButtonLib
         }
 
         protected Image mNormalImage = global::HAPTIVITYLib.Properties.Resources.BtNormal;
-        [Category("ボタンイメージ")]
+        [Category("ボタンイメージ"), Description("通常のボタンのイメージ画像")]
         public Image NormalImage
         {
             get
@@ -46,7 +47,7 @@ namespace SimpleButtonLib
         }
 
         protected Image mPushedImage = global::HAPTIVITYLib.Properties.Resources.BtPushed;
-        [Category("ボタンイメージ")]
+        [Category("ボタンイメージ"), Description("ボタンを押下した時のイメージ画像")]
         public Image PushedImage
         {
             get
@@ -59,7 +60,7 @@ namespace SimpleButtonLib
             }
         }
 
-        [Category("カスタムボタンイベント")]
+        [Category("カスタムボタンイベント"), Description("ボタンを押下した時に入る処理")]
         public event EventHandler OnPushButton = (sender, e) =>
         {
             BaseButton btn = sender as BaseButton;
@@ -71,7 +72,7 @@ namespace SimpleButtonLib
             if (OnPushButton != null) { OnPushButton(this, EventArgs.Empty); }
         }
 
-        [Category("カスタムボタンイベント")]
+        [Category("カスタムボタンイベント"), Description("ボタンをリリースした時に入る処理")]
         public event EventHandler OnReleaseButton = (sender, e) =>
         {
             BaseButton btn = sender as BaseButton;

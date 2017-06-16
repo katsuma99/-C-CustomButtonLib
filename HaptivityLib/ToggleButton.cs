@@ -77,26 +77,6 @@ namespace ToggleButton
             }
         }
 
-        [Category("カスタムボタンイベント")]
-        public event EventHandler OnPushOnButton = (sender, e) =>
-        {
-        };
-
-        [Category("カスタムボタンイベント")]
-        public event EventHandler OnReleaseOnButton = (sender, e) =>
-        {
-        };
-
-        [Category("カスタムボタンイベント")]
-        public event EventHandler OnPushOffButton = (sender, e) =>
-        {
-        };
-
-        [Category("カスタムボタンイベント")]
-        public event EventHandler OnReleaseOffButton = (sender, e) =>
-        {
-        };
-
         public ToggleButton()
         {
             InitializeComponent();

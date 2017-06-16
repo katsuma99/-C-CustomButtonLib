@@ -235,6 +235,6 @@ C:\Users\katsumaPC\Desktop\SourceTree\NET Framework\CustomButtonLib\WindowsForms
 C:\Users\katsumaPC\Desktop\SourceTree\NET Framework\CustomButtonLib\WindowsFormsApplication1\bin\Debug\FormSupportLib.pdb
 C:\Users\katsumaPC\Desktop\SourceTree\NET Framework\CustomButtonLib\WindowsFormsApplication1\bin\Debug\HAPTIVITYLib.pdb
 C:\Users\katsumaPC\Desktop\SourceTree\NET Framework\CustomButtonLib\WindowsFormsApplication1\obj\x86\Debug\Test.csprojResolveAssemblyReference.cache
-C:\Users\katsumaPC\Desktop\SourceTree\NET Framework\CustomButtonLib\WindowsFormsApplication1\obj\x86\Debug\WindowsFormsApplication1.Form1.resources
 C:\Users\katsumaPC\Desktop\SourceTree\NET Framework\CustomButtonLib\WindowsFormsApplication1\obj\x86\Debug\WindowsFormsApplication1.Properties.Resources.resources
 C:\Users\katsumaPC\Desktop\SourceTree\NET Framework\CustomButtonLib\WindowsFormsApplication1\obj\x86\Debug\Test.csproj.GenerateResource.Cache
+C:\Users\katsumaPC\Desktop\SourceTree\NET Framework\CustomButtonLib\WindowsFormsApplication1\obj\x86\Debug\WindowsFormsApplication1.myForm1.resources

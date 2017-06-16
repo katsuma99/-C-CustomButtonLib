@@ -5,7 +5,7 @@ namespace SimpleButtonLib
 {
     using aRecive = HAPTIVITYLib.Interface.RECEIVE_HAPTIVITY_STATE;
 
-    public partial class SimpleButton : BaseButton
+    public partial class SimpleButton : TextBaseButton
     {
         protected HAPTIVITYLib.Interface mHaptivity = null;
         [Category("HAPTIVITY")]

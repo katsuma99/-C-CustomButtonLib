@@ -51,6 +51,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="TextBaseButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="TextBaseButton.Designer.cs">
+      <DependentUpon>TextBaseButton.cs</DependentUpon>
+    </Compile>
     <Compile Include="ComPortEntry.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -93,6 +99,9 @@
     </Compile>
     <Compile Include="UISupport\MessageUtils.cs" />
     <Compile Include="UISupport\XmlFileManager.cs" />
+    <EmbeddedResource Include="TextBaseButton.resx">
+      <DependentUpon>TextBaseButton.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ComPortEntry.resx">
       <DependentUpon>ComPortEntry.cs</DependentUpon>
     </EmbeddedResource>
@@ -120,16 +129,16 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\HAPTIVITY.png" />
+    <EmbeddedResource Include="Resources\HAPTIVITY.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Select.png" />
+    <EmbeddedResource Include="Resources\Select.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Normal.png" />
+    <EmbeddedResource Include="Resources\Normal.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Pushed.png" />
+    <EmbeddedResource Include="Resources\Pushed.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Button_Hum1TF.png" />

@@ -1,6 +1,6 @@
-﻿namespace ImageButtonLib
+﻿namespace SimpleButtonLib
 {
-    partial class ImageButton
+    partial class TextBaseButton
     {
         /// <summary> 
         /// 必要なデザイナー変数です。
@@ -34,7 +34,7 @@
             // ImageButton
             // 
             this.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.Image = global::ImageButtonLib.Properties.Resources.Normal;
+            this.Image = global::HAPTIVITYLib.Properties.Resources.BtNormal;
             this.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);

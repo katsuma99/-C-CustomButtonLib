@@ -31,7 +31,7 @@
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
             // 
-            // ImageButton
+            // BaseButton
             // 
             this.BackColor = System.Drawing.SystemColors.ControlDark;
             this.Image = global::HAPTIVITYLib.Properties.Resources.BtNormal;
