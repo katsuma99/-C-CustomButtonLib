@@ -15,5 +15,10 @@ namespace WindowsFormsApplication1
         {
             InitializeComponent();
         }
+
+        private void simpleButton1_OnReleaseButton(object sender, EventArgs e)
+        {
+
+        }
     }
 }

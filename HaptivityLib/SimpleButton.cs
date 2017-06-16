@@ -8,7 +8,7 @@ namespace SimpleButtonLib
     public partial class SimpleButton : TextBaseButton
     {
         protected HAPTIVITYLib.Interface mHaptivity = null;
-        [Category("HAPTIVITY")]
+        [Category("HAPTIVITY"), Description("HAPTIVITYを使うためには、Interfaceをアタッチする")]
         public HAPTIVITYLib.Interface Haptivity
         {
             get
@@ -22,7 +22,7 @@ namespace SimpleButtonLib
         }
 
         protected int mConfigNo = 0;
-        [Category("HAPTIVITY")]
+        [Category("HAPTIVITY"), Description("押下時振動のコンフィグ（ボタンを押したときの触感と閾値などの設定番号）")]
         public int ConfigNo
         {
             get
@@ -36,7 +36,7 @@ namespace SimpleButtonLib
         }
 
         protected int mEnterConfigNo = 0;
-        [Category("HAPTIVITY")]
+        [Category("HAPTIVITY"), Description("進入時強制振動のコンフィグ")]
         public int EnterConfigNo
         {
             get
@@ -50,7 +50,7 @@ namespace SimpleButtonLib
         }
 
         protected int mEnterVibrationTime = 10;
-        [Category("HAPTIVITY")]
+        [Category("HAPTIVITY"), Description("進入時強制振動の連続振動時間")]
         public int EnterVibrationTime
         {
             get
