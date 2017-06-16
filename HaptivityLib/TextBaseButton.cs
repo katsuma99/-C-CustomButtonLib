@@ -5,37 +5,83 @@ using System.Windows.Forms;
 
 namespace SimpleButtonLib
 {
+    [DefaultProperty("Text")]
     public partial class TextBaseButton : BaseButton
     {
-        [Category("ボタンイメージ")]
-        [Bindable(true)]
-        [Browsable(true)]
-        [EditorBrowsable(EditorBrowsableState.Always)]
-        public override string Text { get; set; }
 
-        [Category("ボタンイメージ")]
-        [Bindable(true)]
-        [Browsable(true)]
-        [EditorBrowsable(EditorBrowsableState.Always)]
-        public override Font Font { get; set; }
+        protected string mText;
+        [Category("ボタンイメージ"), Description("ボタンに表示させる文字")]
+        [Bindable(true),Browsable(true),EditorBrowsable(EditorBrowsableState.Always)]
+        //通知？、プロパティウィンドウに表示、インテリセンスに表示(ソースを書くところで、[.]と入力したあとに出てくるメソッド一覧)
+        public override string Text
+        {
+            get
+            {
+                return mText;
+            }
+            set
+            {
+                mText = value;
+                if (mText.Length > 0)
+                {
+                    //文字のサイズをボタン幅に合わせて調整
+                    float size = (this.Size.Width * 0.9f) / (float)mText.Length;
+                    mFont = new Font(mFont.FontFamily, Math.Max(size,8), mFont.Style);
+                }
+                Invalidate();
+            }
+        }
 
-        [Category("ボタンイメージ")]
-        [Bindable(true)]
-        [Browsable(true)]
-        [EditorBrowsable(EditorBrowsableState.Always)]
-        public override Color ForeColor { get; set; }
+        protected Color mForeColor;
+        [Category("ボタンイメージ"), Description("ボタンに表示させる文字の色")]
+        [Bindable(true), Browsable(true), EditorBrowsable(EditorBrowsableState.Always)]
+        public override Color ForeColor
+        {
+            get
+            {
+                return mForeColor;
+            }
+            set
+            {
+                mForeColor = value;
+                Invalidate();
+            }
+        }
+
+        protected Font mFont;
+        [Category("ボタンイメージ"), Description("ボタンに表示させる文字フォント")]
+        [Bindable(true), Browsable(true), EditorBrowsable(EditorBrowsableState.Always)]
+        public Font MyFont
+        {
+            get
+            {
+                return mFont;
+            }
+            set
+            {
+                mFont = value;
+                Invalidate();
+            }
+        }
 
         public TextBaseButton()
         {
             InitializeComponent();
+            mText = "";
+            ForeColor = Color.White;
+            mFont = new Font("Arial", 8, FontStyle.Bold);
+
         }
 
         protected override void OnPaint(PaintEventArgs pe)
         {
             base.OnPaint(pe);
-            using (Brush brush = new SolidBrush(ForeColor))
+            using (Brush brush = new SolidBrush(mForeColor))
             {
-                pe.Graphics.DrawString(Text, Font, brush, 0, 0);
+                StringFormat strFormat = new StringFormat();
+                strFormat.Alignment = StringAlignment.Center;
+                strFormat.LineAlignment = StringAlignment.Center;
+                pe.Graphics.DrawString(mText, mFont, brush, new RectangleF(new Point(0, 0), this.Size), strFormat);
             }
         }
     }

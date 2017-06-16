@@ -6,6 +6,7 @@ using System.Windows.Forms;
 namespace SimpleButtonLib
 {
     [DefaultEvent("OnReleaseButton")]
+    [DefaultProperty("mNormalImage")]
     public partial class BaseButton : PictureBox
     {
         public enum State

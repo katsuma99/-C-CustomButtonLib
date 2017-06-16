@@ -15,10 +15,5 @@ namespace WindowsFormsApplication1
         {
             InitializeComponent();
         }
-
-        private void baseButton1_OnReleaseButton(object sender, EventArgs e)
-        {
-            label1.Text = "push";
-        }
     }
 }
