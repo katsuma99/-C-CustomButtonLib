@@ -117,3 +117,4 @@ C:\Users\katsumaPC\Desktop\SourceTree\NET Framework\CustomButtonLib\HaptivityLib
 C:\Users\katsumaPC\Desktop\SourceTree\NET Framework\CustomButtonLib\HaptivityLib\obj\x86\Debug\SimpleButtonLib.BaseButton.resources
 C:\Users\katsumaPC\Desktop\SourceTree\NET Framework\CustomButtonLib\HaptivityLib\obj\x86\Debug\SimpleButtonLib.TextBaseButton.resources
 C:\Users\katsumaPC\Desktop\SourceTree\NET Framework\CustomButtonLib\HaptivityLib\obj\x86\Debug\ToggleButton.ToggleButton.resources
+C:\Users\katsumaPC\Desktop\SourceTree\NET Framework\CustomButtonLib\HaptivityLib\obj\x86\Debug\StateButton.StateButton.resources

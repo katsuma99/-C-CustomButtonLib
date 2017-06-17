@@ -82,7 +82,7 @@
             this.Name = "ToggleButton";
             this.Size = new System.Drawing.Size(100, 50);
             this.Load += new System.EventHandler(this.ToggleButton_Load);
-            this.SizeChanged += new System.EventHandler(this.ToggleButton_SizeChanged);
+            this.Resize += new System.EventHandler(this.ToggleButton_SizeChanged);
             ((System.ComponentModel.ISupportInitialize)(this.mOffSimpleButton)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mOnSimpleButton)).EndInit();
             this.ResumeLayout(false);
