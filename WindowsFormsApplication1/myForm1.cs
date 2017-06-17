@@ -25,5 +25,10 @@ namespace WindowsFormsApplication1
         {
 
         }
+
+        private void baseButton2_OnReleaseButton(object sender, EventArgs e)
+        {
+
+        }
     }
 }

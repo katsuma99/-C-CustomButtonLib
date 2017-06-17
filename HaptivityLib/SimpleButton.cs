@@ -16,6 +16,7 @@ namespace SimpleButtonLib
         }
 
         protected int mConfigNo = 0;
+        [DefaultValue(0)]
         [Category("HAPTIVITY"), Description("押下時振動のコンフィグ（ボタンを押したときの触感と閾値などの設定番号）")]
         public int ConfigNo
         {
@@ -25,6 +26,7 @@ namespace SimpleButtonLib
 
         protected int mEnterConfigNo = 0;
         [Category("HAPTIVITY"), Description("進入時強制振動のコンフィグ")]
+        [DefaultValue(0)]
         public int EnterConfigNo
         {
             get { return mEnterConfigNo; }
@@ -33,6 +35,7 @@ namespace SimpleButtonLib
 
         protected int mEnterVibrationTime = 10;
         [Category("HAPTIVITY"), Description("進入時強制振動の連続振動時間")]
+        [DefaultValue(10)]
         public int EnterVibrationTime
         {
             get { return mEnterVibrationTime; }
