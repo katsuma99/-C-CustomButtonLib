@@ -8,6 +8,7 @@ namespace SimpleButtonLib
     public partial class SimpleButton : TextBaseButton
     {
         protected HAPTIVITYLib.Interface mHaptivity = null;
+        [DefaultValue(null)]
         [Category("HAPTIVITY"), Description("HAPTIVITYを使うためには、Interfaceをアタッチする")]
         public HAPTIVITYLib.Interface Haptivity
         {

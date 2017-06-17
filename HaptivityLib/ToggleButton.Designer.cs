@@ -37,9 +37,6 @@
             // mOffSimpleButton
             // 
             this.mOffSimpleButton.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.mOffSimpleButton.ConfigNo = 0;
-            this.mOffSimpleButton.EnterConfigNo = 0;
-            this.mOffSimpleButton.EnterVibrationTime = 10;
             this.mOffSimpleButton.Haptivity = null;
             this.mOffSimpleButton.Image = global::HAPTIVITYLib.Properties.Resources.BtNormal;
             this.mOffSimpleButton.Location = new System.Drawing.Point(0, 0);
@@ -58,9 +55,6 @@
             // mOnSimpleButton
             // 
             this.mOnSimpleButton.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.mOnSimpleButton.ConfigNo = 0;
-            this.mOnSimpleButton.EnterConfigNo = 0;
-            this.mOnSimpleButton.EnterVibrationTime = 10;
             this.mOnSimpleButton.ForeColor = System.Drawing.Color.Aquamarine;
             this.mOnSimpleButton.Haptivity = null;
             this.mOnSimpleButton.Image = global::HAPTIVITYLib.Properties.Resources.BtNormalOn;
@@ -88,6 +82,7 @@
             this.Name = "ToggleButton";
             this.Size = new System.Drawing.Size(100, 50);
             this.Load += new System.EventHandler(this.ToggleButton_Load);
+            this.SizeChanged += new System.EventHandler(this.ToggleButton_SizeChanged);
             ((System.ComponentModel.ISupportInitialize)(this.mOffSimpleButton)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mOnSimpleButton)).EndInit();
             this.ResumeLayout(false);

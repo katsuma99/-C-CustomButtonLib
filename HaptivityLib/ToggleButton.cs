@@ -6,10 +6,12 @@ using SimpleButtonLib;
 
 namespace ToggleButton
 {
+    [DefaultProperty("IsToggleOn")]
     public partial class ToggleButton : UserControl
     {
         public bool mIsToggleOn = false;
-        [Category("ボタンイメージ"), Description("OFF時のsimpleButton設定")]
+        [Category("Off/Onボタンの切り替え"), Description("On/Offボタンを切り替えるフラグ")]
+        [DefaultValue(true)]
         public bool IsToggleOn
         {
             get
@@ -25,40 +27,6 @@ namespace ToggleButton
             }
         }
 
-        //[Category("ボタンイメージ"), Description("ON時のsimpleButton設定")]
-        //public SimpleButton OnSimpleButton
-        //{
-        //    get
-        //    {
-        //        return mOnSimpleButton;
-        //    }
-        //    set
-        //    {
-        //        if(mOnSimpleButton != null) mOnSimpleButton.Dispose();
-        //        if (value == null)
-        //            return;
-        //        mOnSimpleButton = value;
-        //        mOnSimpleButton.OnReleaseButton += new EventHandler(mOnSimpleButton_OnReleaseButton);
-        //    }
-        //}
-
-        [Category("ボタンイメージ"), Description("OFF時のsimpleButton設定")]
-        public SimpleButton OffSimpleButton
-        {
-            get
-            {
-                return mOffSimpleButton;
-            }
-            set
-            {
-                mOffSimpleButton.Dispose();
-                mOffSimpleButton = value;
-                mOffSimpleButton.OnReleaseButton += new EventHandler(mOffSimpleButton_OnReleaseButton);
-            }
-        }
-
-
-
         [Category("On時のボタンイメージ"), Description("ON時のボタンを選択した時のイメージ画像")]
         public Image OnSelectImage
         {
@@ -66,7 +34,7 @@ namespace ToggleButton
             set
             {
                 mOnSimpleButton.SelectImage = value;
-                this.Size = mOnSimpleButton.SelectImage.Size;
+                ResizeToggleButton();
             }
         }
 
@@ -77,7 +45,7 @@ namespace ToggleButton
             set
             {
                 mOnSimpleButton.NormalImage = value;
-                this.Size = mOnSimpleButton.NormalImage.Size;
+                ResizeToggleButton();
             }
         }
 
@@ -88,68 +56,160 @@ namespace ToggleButton
             set
             {
                 mOnSimpleButton.PushedImage = value;
-                this.Size = mOnSimpleButton.PushedImage.Size;
+                ResizeToggleButton();
             }
         }
 
-        [Category("On時のボタンイメージ"), Description("ボタンに表示させる文字")]
-        public override string Text
+        [Category("On時のボタンイメージ"), Description("ON時のボタンに表示させる文字")]
+        [DefaultValue("")]
+        public string OnText
         {
             get { return mOnSimpleButton.Text; }
             set { mOnSimpleButton.Text = value; }
         }
 
-        [Category("On時のボタンイメージ"), Description("ボタンに表示させる文字の色")]
+        [Category("On時のボタンイメージ"), Description("ON時のボタンに表示させる文字の色")]
         [DefaultValue(typeof(Color), "Aquamarine")]
-        public override Color ForeColor
+        public Color OnForeColor
         {
             get { return mOnSimpleButton.ForeColor; }
             set { mOnSimpleButton.ForeColor = value; }
         }
 
-        [Category("On時のボタンイメージ"), Description("ボタンに表示させる文字フォント")]
-        public Font MyFont
+        [Category("On時のボタンイメージ"), Description("ON時のボタンに表示させる文字フォント")]
+        [DefaultValue(typeof(Font), "Arial, 8, style=Bold")]
+        public Font OnMyFont
         {
             get { return mOnSimpleButton.Font; }
             set { mOnSimpleButton.Font = value; }
         }
 
-        [Category("On時のHAPTIVITY"), Description("HAPTIVITYを使うためには、Interfaceをアタッチする")]
-        public HAPTIVITYLib.Interface Haptivity
+        [Category("On時のHAPTIVITY"), Description("ON時のHAPTIVITYを使うためには、Interfaceをアタッチする")]
+        [DefaultValue(null)]
+        public HAPTIVITYLib.Interface OnHaptivity
         {
             get { return mOnSimpleButton.Haptivity; }
             set { mOnSimpleButton.Haptivity = value; }
         }
 
-        [Category("On時のHAPTIVITY"), Description("押下時振動のコンフィグ（ボタンを押したときの触感と閾値などの設定番号）")]
-        public int ConfigNo
+        [Category("On時のHAPTIVITY"), Description("ON時の押下時振動のコンフィグ（ボタンを押したときの触感と閾値などの設定番号）")]
+        [DefaultValue(0)]
+        public int OnConfigNo
         {
             get { return mOnSimpleButton.ConfigNo; }
             set { mOnSimpleButton.ConfigNo = value; }
         }
 
-        [Category("On時のHAPTIVITY"), Description("進入時強制振動のコンフィグ")]
-        public int EnterConfigNo
+        [Category("On時のHAPTIVITY"), Description("ON時の進入時強制振動のコンフィグ")]
+        [DefaultValue(0)]
+        public int OnEnterConfigNo
         {
             get { return mOnSimpleButton.EnterConfigNo; }
             set { mOnSimpleButton.EnterConfigNo = value; }
         }
 
-        [Category("On時のHAPTIVITY"), Description("進入時強制振動の連続振動時間")]
-        public int EnterVibrationTime
+        [Category("On時のHAPTIVITY"), Description("ON時の進入時強制振動の連続振動時間")]
+        [DefaultValue(10)]
+        public int OnEnterVibrationTime
         {
             get { return mOnSimpleButton.EnterVibrationTime; }
             set { mOnSimpleButton.EnterVibrationTime = value; }
+        }
+
+
+        [Category("Off時のボタンイメージ"), Description("Off時のボタンを選択した時のイメージ画像")]
+        public Image OffSelectImage
+        {
+            get { return mOffSimpleButton.SelectImage; }
+            set
+            {
+                mOffSimpleButton.SelectImage = value;
+                ResizeToggleButton();
+            }
+        }
+
+        [Category("Off時のボタンイメージ"), Description("OFF時のボタンのイメージ画像")]
+        public Image OffNormalImage
+        {
+            get { return mOffSimpleButton.NormalImage; }
+            set
+            {
+                mOffSimpleButton.NormalImage = value;
+                ResizeToggleButton();
+            }
+        }
+
+        [Category("Off時のボタンイメージ"), Description("OFF時のボタンを押下した時のイメージ画像")]
+        public Image OffPushedImage
+        {
+            get { return mOffSimpleButton.PushedImage; }
+            set
+            {
+                mOffSimpleButton.PushedImage = value;
+                ResizeToggleButton();
+            }
+        }
+
+        [Category("Off時のボタンイメージ"), Description("OFF時のボタンに表示させる文字")]
+        [DefaultValue("")]
+        public string OffText
+        {
+            get { return mOffSimpleButton.Text; }
+            set { mOffSimpleButton.Text = value; }
+        }
+
+        [Category("Off時のボタンイメージ"), Description("OFF時のボタンに表示させる文字の色")]
+        [DefaultValue(typeof(Color), "White")]
+        public Color OffForeColor
+        {
+            get { return mOffSimpleButton.ForeColor; }
+            set { mOffSimpleButton.ForeColor = value; }
+        }
+
+        [Category("Off時のボタンイメージ"), Description("OFF時のボタンに表示させる文字フォント")]
+        [DefaultValue(typeof(Font), "Arial, 8, style=Bold")]
+        public Font OffMyFont
+        {
+            get { return mOffSimpleButton.Font; }
+            set { mOffSimpleButton.Font = value; }
+        }
+
+        [Category("Off時のHAPTIVITY"), Description("OFF時のHAPTIVITYを使うためには、Interfaceをアタッチする")]
+        [DefaultValue(null)]
+        public HAPTIVITYLib.Interface OffHaptivity
+        {
+            get { return mOffSimpleButton.Haptivity; }
+            set { mOffSimpleButton.Haptivity = value; }
+        }
+
+        [Category("Off時のHAPTIVITY"), Description("OFF時の押下時振動のコンフィグ（ボタンを押したときの触感と閾値などの設定番号）")]
+        [DefaultValue(0)]
+        public int OffConfigNo
+        {
+            get { return mOffSimpleButton.ConfigNo; }
+            set { mOffSimpleButton.ConfigNo = value; }
+        }
+
+        [Category("Off時のHAPTIVITY"), Description("OFF時の進入時強制振動のコンフィグ")]
+        [DefaultValue(0)]
+        public int OffEnterConfigNo
+        {
+            get { return mOffSimpleButton.EnterConfigNo; }
+            set { mOffSimpleButton.EnterConfigNo = value; }
+        }
+
+        [Category("Off時のHAPTIVITY"), Description("OFF時の進入時強制振動の連続振動時間")]
+        [DefaultValue(10)]
+        public int OffEnterVibrationTime
+        {
+            get { return mOffSimpleButton.EnterVibrationTime; }
+            set { mOffSimpleButton.EnterVibrationTime = value; }
         }
 
         //表示されないと呼ばれない（Visible = falseの場合は呼ばれない）コンストラクタで非表示にしたら使えない
         private void ToggleButton_Load(object sender, EventArgs e)
         {
             mOnSimpleButton_OnReleaseButton(this, EventArgs.Empty);
-            Size size = new Size();
-            size.Width = Math.Max(mOnSimpleButton.NormalImage.Size.Width, mOffSimpleButton.NormalImage.Width);
-            size.Height = Math.Max(mOnSimpleButton.NormalImage.Size.Height, mOffSimpleButton.NormalImage.Height);
-            this.Size = size;
         }
 
         public ToggleButton()
@@ -169,6 +229,17 @@ namespace ToggleButton
             mIsToggleOn = false;
             mOnSimpleButton.Hide();
             mOffSimpleButton.Show();
+        }
+
+        private void ToggleButton_SizeChanged(object sender, EventArgs e)
+        {
+            ResizeToggleButton();
+        }
+
+        void  ResizeToggleButton()
+        {
+            mOnSimpleButton.Size = this.Size;
+            mOffSimpleButton.Size = this.Size;
         }
     }
 }
