@@ -19,7 +19,11 @@ namespace ToggleButton
             }
             set
             {
+                if(mOnSimpleButton != null) mOnSimpleButton.Dispose();
+                if (value == null)
+                    return;
                 mOnSimpleButton = value;
+                mOnSimpleButton.OnReleaseButton += new EventHandler(mOnSimpleButton_OnReleaseButton);
             }
         }
 
@@ -32,16 +36,48 @@ namespace ToggleButton
             }
             set
             {
+                mOffSimpleButton.Dispose();
                 mOffSimpleButton = value;
+                mOffSimpleButton.OnReleaseButton += new EventHandler(mOffSimpleButton_OnReleaseButton);
             }
+        }
+
+
+
+        //[Category("On時のボタンイメージ"), Description("ON時のボタンを選択した時のイメージ画像")]
+        //public Image OnSelectImage
+        //{
+        //    get { return mOnSimpleButton.SelectImage; }
+        //    set { mOnSimpleButton.SelectImage = value; }
+        //}
+
+        //[Category("ボタンイメージ"), Description("ON時のボタンのイメージ画像")]
+        //public Image OnNormalImage
+        //{
+        //    get { return mOnSimpleButton.NormalImage; }
+        //    set { mOnSimpleButton.NormalImage = value; }
+        //}
+
+        //[Category("ボタンイメージ"), Description("ON時のボタンを押下した時のイメージ画像")]
+        //public Image OnPushedImage
+        //{
+        //    get { return mOnSimpleButton.PushedImage; }
+        //    set { mOnSimpleButton.PushedImage = value; }
+        //}
+
+        //表示されないと呼ばれない（Visible = falseの場合は呼ばれない）コンストラクタで非表示にしたら使えない
+        private void ToggleButton_Load(object sender, EventArgs e)
+        {
+            if (DesignMode) //フォームデザイン時は設定しない[bug]
+                return;
+
+            this.Visible = false;
+            mOnSimpleButton_OnReleaseButton(this, EventArgs.Empty);
         }
 
         public ToggleButton()
         {
             InitializeComponent();
-            mIsToggleOn = false;
-            mOffSimpleButton.Show();
-            mOnSimpleButton.Hide();
         }
 
         private void mOffSimpleButton_OnReleaseButton(object sender, EventArgs e)

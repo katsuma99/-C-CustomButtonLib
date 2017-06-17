@@ -79,11 +79,15 @@
             // 
             // ToggleButton
             // 
-            this.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.BackColor = System.Drawing.Color.Transparent;
+            this.BackgroundImage = global::HAPTIVITYLib.Properties.Resources.ToggleButton;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.Controls.Add(this.mOffSimpleButton);
             this.Controls.Add(this.mOnSimpleButton);
+            this.DoubleBuffered = true;
             this.Name = "ToggleButton";
             this.Size = new System.Drawing.Size(100, 50);
+            this.Load += new System.EventHandler(this.ToggleButton_Load);
             ((System.ComponentModel.ISupportInitialize)(this.mOffSimpleButton)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mOnSimpleButton)).EndInit();
             this.ResumeLayout(false);

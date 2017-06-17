@@ -6,7 +6,7 @@ using System.Windows.Forms;
 namespace SimpleButtonLib
 {
     [DefaultEvent("OnReleaseButton")]
-    [DefaultProperty("mNormalImage")]
+    [DefaultProperty("NormalImage")]
     public partial class BaseButton : PictureBox
     {
         public enum State
@@ -21,14 +21,8 @@ namespace SimpleButtonLib
         [Category("ボタンイメージ"), Description("ボタンを選択した時のイメージ画像")]
         public Image SelectImage
         {
-            get
-            {
-                return mSelectImage;
-            }
-            set
-            {
-                mSelectImage = value;
-            }
+            get { return mSelectImage; }
+            set { mSelectImage = value; }
         }
 
         protected Image mNormalImage = global::HAPTIVITYLib.Properties.Resources.BtNormal;
@@ -51,14 +45,8 @@ namespace SimpleButtonLib
         [Category("ボタンイメージ"), Description("ボタンを押下した時のイメージ画像")]
         public Image PushedImage
         {
-            get
-            {
-                return mPushedImage;
-            }
-            set
-            {
-                mPushedImage = value;
-            }
+            get { return mPushedImage; }
+            set { mPushedImage = value; }
         }
 
         [Category("カスタムボタンイベント"), Description("ボタンを押下した時に入る処理")]

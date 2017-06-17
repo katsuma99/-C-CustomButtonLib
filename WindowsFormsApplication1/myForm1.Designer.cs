@@ -29,77 +29,102 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(myForm1));
-            this.simpleButton1 = new SimpleButtonLib.SimpleButton();
-            this.textBaseButton1 = new SimpleButtonLib.TextBaseButton();
-            this.toggleButton1 = new ToggleButton.ToggleButton();
-            ((System.ComponentModel.ISupportInitialize)(this.simpleButton1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textBaseButton1)).BeginInit();
+            this.toggleButton2 = new ToggleButton.ToggleButton();
+            this.simpleButton4 = new SimpleButtonLib.SimpleButton();
+            this.simpleButton5 = new SimpleButtonLib.SimpleButton();
+            this.toggleButton3 = new ToggleButton.ToggleButton();
+            ((System.ComponentModel.ISupportInitialize)(this.simpleButton4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.simpleButton5)).BeginInit();
             this.SuspendLayout();
             // 
-            // simpleButton1
+            // toggleButton2
             // 
-            this.simpleButton1.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.simpleButton1.ConfigNo = 0;
-            this.simpleButton1.EnterConfigNo = 0;
-            this.simpleButton1.EnterVibrationTime = 10;
-            this.simpleButton1.Haptivity = null;
-            this.simpleButton1.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.Image")));
-            this.simpleButton1.Location = new System.Drawing.Point(73, 136);
-            this.simpleButton1.MyFont = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Bold);
-            this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.NormalImage = ((System.Drawing.Image)(resources.GetObject("simpleButton1.NormalImage")));
-            this.simpleButton1.PushedImage = ((System.Drawing.Image)(resources.GetObject("simpleButton1.PushedImage")));
-            this.simpleButton1.SelectImage = ((System.Drawing.Image)(resources.GetObject("simpleButton1.SelectImage")));
-            this.simpleButton1.Size = new System.Drawing.Size(100, 50);
-            this.simpleButton1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.simpleButton1.TabIndex = 1;
-            this.simpleButton1.TabStop = false;
-            this.simpleButton1.Text = "simpleButton1";
+            this.toggleButton2.BackColor = System.Drawing.Color.Transparent;
+            this.toggleButton2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("toggleButton2.BackgroundImage")));
+            this.toggleButton2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.toggleButton2.Location = new System.Drawing.Point(31, 26);
+            this.toggleButton2.Name = "toggleButton2";
+            this.toggleButton2.OffSimpleButton = this.simpleButton4;
+            this.toggleButton2.OnSimpleButton = this.simpleButton5;
+            this.toggleButton2.Size = new System.Drawing.Size(100, 50);
+            this.toggleButton2.TabIndex = 3;
             // 
-            // textBaseButton1
+            // simpleButton4
             // 
-            this.textBaseButton1.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.textBaseButton1.Image = ((System.Drawing.Image)(resources.GetObject("textBaseButton1.Image")));
-            this.textBaseButton1.Location = new System.Drawing.Point(73, 68);
-            this.textBaseButton1.MyFont = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Bold);
-            this.textBaseButton1.Name = "textBaseButton1";
-            this.textBaseButton1.NormalImage = ((System.Drawing.Image)(resources.GetObject("textBaseButton1.NormalImage")));
-            this.textBaseButton1.PushedImage = ((System.Drawing.Image)(resources.GetObject("textBaseButton1.PushedImage")));
-            this.textBaseButton1.SelectImage = ((System.Drawing.Image)(resources.GetObject("textBaseButton1.SelectImage")));
-            this.textBaseButton1.Size = new System.Drawing.Size(100, 50);
-            this.textBaseButton1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.textBaseButton1.TabIndex = 0;
-            this.textBaseButton1.TabStop = false;
-            this.textBaseButton1.Text = "textBaseButton1";
+            this.simpleButton4.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.simpleButton4.ConfigNo = 0;
+            this.simpleButton4.EnterConfigNo = 0;
+            this.simpleButton4.EnterVibrationTime = 10;
+            this.simpleButton4.Haptivity = null;
+            this.simpleButton4.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton4.Image")));
+            this.simpleButton4.Location = new System.Drawing.Point(164, 62);
+            this.simpleButton4.MyFont = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Bold);
+            this.simpleButton4.Name = "simpleButton4";
+            this.simpleButton4.NormalImage = ((System.Drawing.Image)(resources.GetObject("simpleButton4.NormalImage")));
+            this.simpleButton4.PushedImage = ((System.Drawing.Image)(resources.GetObject("simpleButton4.PushedImage")));
+            this.simpleButton4.SelectImage = ((System.Drawing.Image)(resources.GetObject("simpleButton4.SelectImage")));
+            this.simpleButton4.Size = new System.Drawing.Size(100, 50);
+            this.simpleButton4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.simpleButton4.TabIndex = 1;
+            this.simpleButton4.TabStop = false;
+            this.simpleButton4.Text = "simpleButton4";
             // 
-            // toggleButton1
+            // simpleButton5
             // 
-            this.toggleButton1.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.toggleButton1.Location = new System.Drawing.Point(73, 203);
-            this.toggleButton1.Name = "toggleButton1";
-            this.toggleButton1.Size = new System.Drawing.Size(100, 50);
-            this.toggleButton1.TabIndex = 2;
+            this.simpleButton5.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.simpleButton5.ConfigNo = 0;
+            this.simpleButton5.EnterConfigNo = 0;
+            this.simpleButton5.EnterVibrationTime = 10;
+            this.simpleButton5.Haptivity = null;
+            this.simpleButton5.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton5.Image")));
+            this.simpleButton5.Location = new System.Drawing.Point(58, 102);
+            this.simpleButton5.MyFont = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Bold);
+            this.simpleButton5.Name = "simpleButton5";
+            this.simpleButton5.NormalImage = ((System.Drawing.Image)(resources.GetObject("simpleButton5.NormalImage")));
+            this.simpleButton5.PushedImage = ((System.Drawing.Image)(resources.GetObject("simpleButton5.PushedImage")));
+            this.simpleButton5.SelectImage = ((System.Drawing.Image)(resources.GetObject("simpleButton5.SelectImage")));
+            this.simpleButton5.Size = new System.Drawing.Size(100, 50);
+            this.simpleButton5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.simpleButton5.TabIndex = 2;
+            this.simpleButton5.TabStop = false;
+            this.simpleButton5.Text = "simpleButton5";
+            // 
+            // toggleButton3
+            // 
+            this.toggleButton3.BackColor = System.Drawing.Color.Transparent;
+            this.toggleButton3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("toggleButton3.BackgroundImage")));
+            this.toggleButton3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.toggleButton3.Location = new System.Drawing.Point(96, 182);
+            this.toggleButton3.Name = "toggleButton3";
+            this.toggleButton3.Size = new System.Drawing.Size(100, 50);
+            this.toggleButton3.TabIndex = 4;
             // 
             // myForm1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 261);
-            this.Controls.Add(this.toggleButton1);
-            this.Controls.Add(this.simpleButton1);
-            this.Controls.Add(this.textBaseButton1);
+            this.Controls.Add(this.toggleButton3);
+            this.Controls.Add(this.toggleButton2);
+            this.Controls.Add(this.simpleButton5);
+            this.Controls.Add(this.simpleButton4);
             this.Name = "myForm1";
             this.Text = "myForm1";
-            ((System.ComponentModel.ISupportInitialize)(this.simpleButton1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textBaseButton1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.simpleButton4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.simpleButton5)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private SimpleButtonLib.TextBaseButton textBaseButton1;
         private SimpleButtonLib.SimpleButton simpleButton1;
         private ToggleButton.ToggleButton toggleButton1;
+        private SimpleButtonLib.SimpleButton simpleButton2;
+        private SimpleButtonLib.SimpleButton simpleButton3;
+        private SimpleButtonLib.SimpleButton simpleButton4;
+        private SimpleButtonLib.SimpleButton simpleButton5;
+        private ToggleButton.ToggleButton toggleButton2;
+        private ToggleButton.ToggleButton toggleButton3;
     }
 }

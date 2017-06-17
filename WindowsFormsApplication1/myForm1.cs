@@ -20,5 +20,10 @@ namespace WindowsFormsApplication1
         {
 
         }
+
+        private void toggleButton1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

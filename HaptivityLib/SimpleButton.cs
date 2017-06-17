@@ -11,56 +11,32 @@ namespace SimpleButtonLib
         [Category("HAPTIVITY"), Description("HAPTIVITYを使うためには、Interfaceをアタッチする")]
         public HAPTIVITYLib.Interface Haptivity
         {
-            get
-            {
-                return mHaptivity;
-            }
-            set
-            {
-                mHaptivity = value;
-            }
+            get { return mHaptivity; }
+            set { mHaptivity = value; }
         }
 
         protected int mConfigNo = 0;
         [Category("HAPTIVITY"), Description("押下時振動のコンフィグ（ボタンを押したときの触感と閾値などの設定番号）")]
         public int ConfigNo
         {
-            get
-            {
-                return mConfigNo;
-            }
-            set
-            {
-                mConfigNo = value;
-            }
+            get { return mConfigNo; }
+            set { mConfigNo = value; }
         }
 
         protected int mEnterConfigNo = 0;
         [Category("HAPTIVITY"), Description("進入時強制振動のコンフィグ")]
         public int EnterConfigNo
         {
-            get
-            {
-                return mEnterConfigNo;
-            }
-            set
-            {
-                mEnterConfigNo = value;
-            }
+            get { return mEnterConfigNo; }
+            set { mEnterConfigNo = value; }
         }
 
         protected int mEnterVibrationTime = 10;
         [Category("HAPTIVITY"), Description("進入時強制振動の連続振動時間")]
         public int EnterVibrationTime
         {
-            get
-            {
-                return mEnterVibrationTime;
-            }
-            set
-            {
-                mEnterVibrationTime = value;
-            }
+            get { return mEnterVibrationTime; }
+            set { mEnterVibrationTime = value; }
         }
 
         public SimpleButton()
