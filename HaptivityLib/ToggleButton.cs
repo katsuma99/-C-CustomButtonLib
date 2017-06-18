@@ -30,10 +30,10 @@ namespace ToggleButton
         [Category("On時のボタンイメージ"), Description("ON時のボタンを選択した時のイメージ画像")]
         public Image OnSelectImage
         {
-            get { return mOnSimpleButton.SelectImage; }
+            get { return mOnSimpleButton.BaseButtonProperty.SelectImage; }
             set
             {
-                mOnSimpleButton.SelectImage = value;
+                mOnSimpleButton.BaseButtonProperty.SelectImage = value;
                 ResizeToggleButton();
             }
         }
@@ -41,10 +41,10 @@ namespace ToggleButton
         [Category("On時のボタンイメージ"), Description("ON時のボタンのイメージ画像")]
         public Image OnNormalImage
         {
-            get { return mOnSimpleButton.NormalImage; }
+            get { return mOnSimpleButton.BaseButtonProperty.NormalImage; }
             set
             {
-                mOnSimpleButton.NormalImage = value;
+                mOnSimpleButton.BaseButtonProperty.NormalImage = value;
                 ResizeToggleButton();
             }
         }
@@ -52,10 +52,10 @@ namespace ToggleButton
         [Category("On時のボタンイメージ"), Description("ON時のボタンを押下した時のイメージ画像")]
         public Image OnPushedImage
         {
-            get { return mOnSimpleButton.PushedImage; }
+            get { return mOnSimpleButton.BaseButtonProperty.PushedImage; }
             set
             {
-                mOnSimpleButton.PushedImage = value;
+                mOnSimpleButton.BaseButtonProperty.PushedImage = value;
                 ResizeToggleButton();
             }
         }
@@ -120,10 +120,10 @@ namespace ToggleButton
         [Category("Off時のボタンイメージ"), Description("Off時のボタンを選択した時のイメージ画像")]
         public Image OffSelectImage
         {
-            get { return mOffSimpleButton.SelectImage; }
+            get { return mOffSimpleButton.BaseButtonProperty.SelectImage; }
             set
             {
-                mOffSimpleButton.SelectImage = value;
+                mOffSimpleButton.BaseButtonProperty.SelectImage = value;
                 ResizeToggleButton();
             }
         }
@@ -131,10 +131,10 @@ namespace ToggleButton
         [Category("Off時のボタンイメージ"), Description("OFF時のボタンのイメージ画像")]
         public Image OffNormalImage
         {
-            get { return mOffSimpleButton.NormalImage; }
+            get { return mOffSimpleButton.BaseButtonProperty.NormalImage; }
             set
             {
-                mOffSimpleButton.NormalImage = value;
+                mOffSimpleButton.BaseButtonProperty.NormalImage = value;
                 ResizeToggleButton();
             }
         }
@@ -142,10 +142,10 @@ namespace ToggleButton
         [Category("Off時のボタンイメージ"), Description("OFF時のボタンを押下した時のイメージ画像")]
         public Image OffPushedImage
         {
-            get { return mOffSimpleButton.PushedImage; }
+            get { return mOffSimpleButton.BaseButtonProperty.PushedImage; }
             set
             {
-                mOffSimpleButton.PushedImage = value;
+                mOffSimpleButton.BaseButtonProperty.PushedImage = value;
                 ResizeToggleButton();
             }
         }

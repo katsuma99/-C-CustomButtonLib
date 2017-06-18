@@ -38,7 +38,6 @@
             this.DoubleBuffered = true;
             this.Name = "StateButton";
             this.Size = new System.Drawing.Size(100, 50);
-            this.Load += new System.EventHandler(this.StateButton_Load);
             this.Resize += new System.EventHandler(this.StateButton_Resize);
             this.ResumeLayout(false);
 

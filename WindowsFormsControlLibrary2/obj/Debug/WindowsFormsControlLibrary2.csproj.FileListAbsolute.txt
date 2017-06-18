@@ -1,0 +1,12 @@
+C:\Users\katsumaPC\Desktop\SourceTree\NET Framework\CustomButtonLib\WindowsFormsControlLibrary2\bin\Debug\WindowsFormsControlLibrary2.dll
+C:\Users\katsumaPC\Desktop\SourceTree\NET Framework\CustomButtonLib\WindowsFormsControlLibrary2\bin\Debug\WindowsFormsControlLibrary2.pdb
+C:\Users\katsumaPC\Desktop\SourceTree\NET Framework\CustomButtonLib\WindowsFormsControlLibrary2\obj\Debug\WindowsFormsControlLibrary2.csprojResolveAssemblyReference.cache
+C:\Users\katsumaPC\Desktop\SourceTree\NET Framework\CustomButtonLib\WindowsFormsControlLibrary2\obj\Debug\WindowsFormsControlLibrary2.dll
+C:\Users\katsumaPC\Desktop\SourceTree\NET Framework\CustomButtonLib\WindowsFormsControlLibrary2\obj\Debug\WindowsFormsControlLibrary2.pdb
+C:\Users\katsumaPC\Desktop\SourceTree\NET Framework\CustomButtonLib\WindowsFormsControlLibrary2\bin\Debug\HAPTIVITYLib.dll
+C:\Users\katsumaPC\Desktop\SourceTree\NET Framework\CustomButtonLib\WindowsFormsControlLibrary2\bin\Debug\HAPTIVITYLib.pdb
+C:\Users\katsumaPC\Desktop\SourceTree\NET Framework\CustomButtonLib\WindowsFormsControlLibrary2\obj\Debug\WindowsFormsControlLibrary2.UserControl1.resources
+C:\Users\katsumaPC\Desktop\SourceTree\NET Framework\CustomButtonLib\WindowsFormsControlLibrary2\obj\Debug\WindowsFormsControlLibrary2.csproj.GenerateResource.Cache
+C:\Users\katsumaPC\Desktop\SourceTree\NET Framework\CustomButtonLib\WindowsFormsControlLibrary2\bin\Debug\FormSupportLib.dll
+C:\Users\katsumaPC\Desktop\SourceTree\NET Framework\CustomButtonLib\WindowsFormsControlLibrary2\bin\Debug\FormSupportLib.pdb
+C:\Users\katsumaPC\Desktop\SourceTree\NET Framework\CustomButtonLib\WindowsFormsControlLibrary2\obj\Debug\WindowsFormsControlLibrary2.Properties.Resources.resources

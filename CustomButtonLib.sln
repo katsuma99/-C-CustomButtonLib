@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HAPTIVITYLib", "HaptivityLi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormSupportLib", "FormSupportLib\FormSupportLib.csproj", "{F9412781-0384-47A6-B507-3E6A086219F0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsFormsControlLibrary2", "WindowsFormsControlLibrary2\WindowsFormsControlLibrary2.csproj", "{C23E4880-15AD-4850-A9AD-559059E65715}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,6 +51,18 @@ Global
 		{F9412781-0384-47A6-B507-3E6A086219F0}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{F9412781-0384-47A6-B507-3E6A086219F0}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{F9412781-0384-47A6-B507-3E6A086219F0}.Release|x86.ActiveCfg = Release|Any CPU
+		{C23E4880-15AD-4850-A9AD-559059E65715}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C23E4880-15AD-4850-A9AD-559059E65715}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C23E4880-15AD-4850-A9AD-559059E65715}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{C23E4880-15AD-4850-A9AD-559059E65715}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{C23E4880-15AD-4850-A9AD-559059E65715}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{C23E4880-15AD-4850-A9AD-559059E65715}.Debug|x86.Build.0 = Debug|Any CPU
+		{C23E4880-15AD-4850-A9AD-559059E65715}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C23E4880-15AD-4850-A9AD-559059E65715}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C23E4880-15AD-4850-A9AD-559059E65715}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{C23E4880-15AD-4850-A9AD-559059E65715}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{C23E4880-15AD-4850-A9AD-559059E65715}.Release|x86.ActiveCfg = Release|Any CPU
+		{C23E4880-15AD-4850-A9AD-559059E65715}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
