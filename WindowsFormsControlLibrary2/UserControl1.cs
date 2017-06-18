@@ -146,7 +146,7 @@ namespace WindowsFormsControlLibrary2
         }
     }
 
-    public class BaseButtonPropertyConverter : TypeConverter
+    public class BaseButtonPropertyConverter : ExpandableObjectConverter
     {
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
         {
@@ -166,7 +166,6 @@ namespace WindowsFormsControlLibrary2
 
         public override object ConvertFrom(ITypeDescriptorContext context, System.Globalization.CultureInfo culture, object value)
         {
-            new ArgumentException("プロパティの値が無効です");
             string strValue = value as string;
             if (strValue == null)
                 return base.ConvertFrom(context, culture, value);
@@ -217,12 +216,14 @@ namespace WindowsFormsControlLibrary2
             BaseButtonProperty baseButtonProp = value as BaseButtonProperty;
             if (baseButtonProp == null || destinationType != typeof(string))
                 return base.ConvertTo(context, culture, value, destinationType);
+            baseButtonProp.SelectImage = global::WindowsFormsControlLibrary2.Properties.Resources.Pushed;
             ImageConverter imageConverter = new ImageConverter();
-            return string.Format("{0}, {1}, {2}",
-                                 imageConverter.ConvertToString(baseButtonProp.SelectImage),
+            string s = string.Format("{0}, {1}, {2}",
+                                 imageConverter.ConvertToString(new Bitmap(baseButtonProp.SelectImage)),
                                  imageConverter.ConvertToString(baseButtonProp.NormalImage),
-                                 imageConverter.ConvertToString(baseButtonProp.PushedImage)
+                                 new Bitmap(baseButtonProp.SelectImage)
                                  );
+            return s;
         }
     }
 }

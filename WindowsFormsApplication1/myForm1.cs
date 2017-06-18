@@ -16,19 +16,9 @@ namespace WindowsFormsApplication1
             InitializeComponent();
         }
 
-        private void simpleButton1_OnReleaseButton(object sender, EventArgs e)
+        private void baseButton1_OnReleaseButtonEvent(object sender, EventArgs e)
         {
-
-        }
-
-        private void toggleButton1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void baseButton2_OnReleaseButton(object sender, EventArgs e)
-        {
-
+            label1.Text = "Push";
         }
     }
 }

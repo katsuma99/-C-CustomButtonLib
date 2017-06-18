@@ -73,10 +73,10 @@ namespace SimpleButtonLib
             switch (mHaptivity.DataReceived())
             {
                 case aRecive.PUSH:
-                    BaseButtonProperty.OnPushButton(Image);
+                    OnPushButton();
                     break;
                 case aRecive.RELEASE:
-                    BaseButtonProperty.OnReleaseButton(Image);
+                    OnReleaseButton();
                     break;
             }
         }
