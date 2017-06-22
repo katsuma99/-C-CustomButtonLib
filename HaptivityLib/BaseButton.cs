@@ -10,7 +10,7 @@ namespace SimpleButtonLib
     [DefaultEvent("OnReleaseButtonEvent")]
     public partial class BaseButton : PictureBox
     {
-        protected BaseButtonProperty mBaseButtonProperty = new BaseButtonProperty();
+        protected BaseButtonProperty mBaseButtonProperty;
         [Category("ボタン"), Description("通常・選択・押下のボタンのイメージ画像")]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
         public BaseButtonProperty BaseButtonProperty
@@ -102,29 +102,18 @@ namespace SimpleButtonLib
     [TypeConverter(typeof(BaseButtonPropertyConverter))]
     public class BaseButtonProperty
     {
+        //public int? mButtonNo = null;
+        //static int cButtonCount = 0;
         PictureBox mButton = null;
         public BaseButtonProperty(PictureBox pb = null)
         {
             mButton = pb;
             mState = State.None;
-            try
-            {
-                using (Image img1 = Image.FromFile("save4.png"), img2 = Image.FromFile("save5.png"), img3 = Image.FromFile("save6.png"))
-                {
-                    img1.Save("save1.png");
-                    img2.Save("save2.png");
-                    img3.Save("save3.png");
-                }
-                mSelectImage = Image.FromFile("save1.png");
-                mNormalImage = Image.FromFile("save2.png");
-                mPushedImage = Image.FromFile("save3.png");
-            }
-            catch (Exception)
-            {
-            mSelectImage = global::HAPTIVITYLib.Properties.Resources.BtSelect;
-            mNormalImage = global::HAPTIVITYLib.Properties.Resources.BtNormal;
-            mPushedImage = global::HAPTIVITYLib.Properties.Resources.BtPushed;
-            }
+            //if (!mButtonNo.HasValue) mButtonNo = cButtonCount++;
+
+            if (mSelectImage == null) mSelectImage = global::HAPTIVITYLib.Properties.Resources.BtSelect;
+            if (mNormalImage == null) mNormalImage = global::HAPTIVITYLib.Properties.Resources.BtNormal;
+            if (mPushedImage == null) mPushedImage = global::HAPTIVITYLib.Properties.Resources.BtPushed;
         }
 
         ~BaseButtonProperty()
@@ -176,6 +165,8 @@ namespace SimpleButtonLib
         {
             if (mButton == null)
                 return;
+            if (mNormalImage == null || mSelectImage == null || mPushedImage == null)
+                return;
 
             mState = state;
             switch (state)
@@ -193,29 +184,38 @@ namespace SimpleButtonLib
                     mButton.Size = mPushedImage.Size;
                     break;
             }
+            mButton.Refresh();
         }
 
         #region ボタンイベント処理
         public void OnPushButton()
         {
+            if (mButton == null)
+                return;
             mState = State.Push;
             mButton.Image = PushedImage;
         }
 
         public void OnReleaseButton()
         {
+            if (mButton == null)
+                return;
             mState = State.Select;
             mButton.Image = SelectImage;
         }
 
         public void OnEnterButton()
         {
+            if (mButton == null)
+                return;
             mState = State.Select;
             mButton.Image = SelectImage;
         }
 
         public void OnLeaveButton()
         {
+            if (mButton == null)
+                return;
             mState = State.None;
             mButton.Image = NormalImage;
         }
@@ -251,27 +251,23 @@ namespace SimpleButtonLib
             int count = values.Length;
             try
             {
-                
                    BaseButtonProperty baseButtonProp = new BaseButtonProperty();
-                System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(culture.GetType());
+                System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(context.Instance.GetType());
 
-                if (count < 1 || values[0].Trim().Length == 0)
-                    baseButtonProp.SelectImage = global::HAPTIVITYLib.Properties.Resources.BtSelect;
-                else
-                    baseButtonProp.SelectImage = ((System.Drawing.Image)(resources.GetObject(values[0])));
+                //if (count < 1 || values[0].Trim().Length == 0)
+                //    baseButtonProp.SelectImage = global::HAPTIVITYLib.Properties.Resources.BtSelect;
+                //else
+                //    baseButtonProp.SelectImage = ((System.Drawing.Image)(resources.GetObject(values[0])));
 
-                if (count < 2 || values[1].Trim().Length == 0)
-                    baseButtonProp.NormalImage = global::HAPTIVITYLib.Properties.Resources.BtSelect;
-                else
-                    baseButtonProp.NormalImage = ((System.Drawing.Image)(resources.GetObject(values[1])));
+                //if (count < 2 || values[1].Trim().Length == 0)
+                //    baseButtonProp.NormalImage = global::HAPTIVITYLib.Properties.Resources.BtNormal;
+                //else
+                //    baseButtonProp.NormalImage = ((System.Drawing.Image)(resources.GetObject(values[1])));
 
-                if (count < 3 || values[2].Trim().Length == 0)
-                    baseButtonProp.PushedImage = global::HAPTIVITYLib.Properties.Resources.BtSelect;
-                else
-
-                    baseButtonProp.PushedImage = ((System.Drawing.Image)(resources.GetObject(values[2])));
-
-
+                //if (count < 3 || values[2].Trim().Length == 0)
+                //    baseButtonProp.PushedImage = global::HAPTIVITYLib.Properties.Resources.BtPushed;
+                //else
+                //    baseButtonProp.PushedImage = ((System.Drawing.Image)(resources.GetObject(values[2])));
 
                 return baseButtonProp;
             }
@@ -287,70 +283,17 @@ namespace SimpleButtonLib
             BaseButtonProperty baseButtonProp = value as BaseButtonProperty;
             if (baseButtonProp == null || destinationType != typeof(string))
                 return base.ConvertTo(context, culture, value, destinationType);
-            ImageConverter imageConverter = new ImageConverter();
-            string save1 = "save4.png";
-            string save2 = "save5.png";
-            string save3 = "save6.png";
 
-            System.Reflection.Assembly assembly;
+            string select = "resource.SelectImage";
+            string normal = "resource.NormalImage";
+            string pushed = "resource.PushedImage";
 
-            assembly = System.Reflection.Assembly.GetExecutingAssembly();
-
-
-            // Get the image from the resources
-
-            System.Resources.ResourceManager rm = new System.Resources.ResourceManager("SimpleButtonLib.Properties.Resources", assembly);
-
-            Image image = (Image)rm.GetObject("dancer");
-
-
-            //現在のコードを実行しているAssemblyを取得
-            System.Reflection.Assembly myAssembly = System.Reflection.Assembly.GetExecutingAssembly();
-
-            //指定されたマニフェストリソースを読み込む
-            string[] resnames = myAssembly.GetManifestResourceNames();
-            foreach (string res in resnames)
-            {
-
-                Console.WriteLine("resource {0}", res);
-            }
-
-
-            try
-            {
-                Image img1 = baseButtonProp.SelectImage;
-                Image img2 = baseButtonProp.NormalImage;
-                Image img3 = baseButtonProp.PushedImage;
-                img1.Save(save1);
-                img2.Save(save2);
-                img3.Save(save3);
-            }
-            catch
-            {
-                throw new ArgumentException("セーブできない画像です");
-            }
-                return string.Format("{0},{1},{2}",
-                                 "save1.png",
-                                 "save2.png",
-                                 "save3.png"
+            return string.Format("{0},{1},{2}",
+                                 select,
+                                 normal,
+                                 pushed
                                  );
         }
-
-
-        //public override bool GetCreateInstanceSupported(ITypeDescriptorContext context)
-        //{
-        //    return true;
-        //}
-
-        //public override object CreateInstance(ITypeDescriptorContext context, System.Collections.IDictionary propertyValues)
-        //{
-        //    BaseButtonProperty baseButtonProp = new BaseButtonProperty();
-        //    baseButtonProp.NormalImage = (Image)propertyValues["NormalImage"];
-        //    baseButtonProp.SelectImage = (Image)propertyValues["SelectImage"];
-        //    baseButtonProp.PushedImage = (Image)propertyValues["PushedImage"];
-        //    baseButtonProp.State = (State)propertyValues["State"];
-        //    return baseButtonProp;
-        //}
     }
 }
 

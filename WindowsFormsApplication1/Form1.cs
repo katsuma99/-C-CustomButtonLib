@@ -9,16 +9,11 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApplication1
 {
-    public partial class myForm1 : Form
+    public partial class Form1 : Form
     {
-        public myForm1()
+        public Form1()
         {
             InitializeComponent();
-        }
-
-        private void baseButton1_OnReleaseButtonEvent(object sender, EventArgs e)
-        {
-            label1.Text = "Push";
         }
     }
 }
