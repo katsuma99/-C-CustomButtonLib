@@ -88,6 +88,10 @@
       <Project>{DCD7ED9C-5471-4DEF-8F23-B7B6CA5A7631}</Project>
       <Name>HAPTIVITYLib</Name>
     </ProjectReference>
+    <ProjectReference Include="..\WindowsFormsControlLibrary2\WindowsFormsControlLibrary2.csproj">
+      <Project>{c23e4880-15ad-4850-a9ad-559059e65715}</Project>
+      <Name>WindowsFormsControlLibrary2</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Home_1.png" />

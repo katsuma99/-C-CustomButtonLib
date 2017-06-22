@@ -2,20 +2,22 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
+using System.Collections;
 using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using System.Diagnostics;
+using System.Resources;
 namespace WindowsFormsControlLibrary2
 {
-    [DefaultProperty("BaseButtonProperty")]
+
     public partial class UserControl1 : UserControl
     {
         protected BaseButtonProperty mBaseButtonProperty = new BaseButtonProperty();
-        [Category("ボタンイメージ"), Description("通常・選択・押下のボタンのイメージ画像")]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
+        [DefaultValue(typeof(BaseButtonPropertyConverter), "None")]
         public BaseButtonProperty BaseButtonProperty
         {
             get { return mBaseButtonProperty; }
@@ -60,16 +62,22 @@ namespace WindowsFormsControlLibrary2
         Push
     }
 
-    [DefaultEvent("OnReleaseButtonEvent")]
-    [DefaultProperty("NormalImage")]
+
     [TypeConverter(typeof(BaseButtonPropertyConverter))]
     public class BaseButtonProperty
     {
         public BaseButtonProperty()
         {
-            mSelectImage = global::WindowsFormsControlLibrary2.Properties.Resources.Select;
-            mNormalImage = global::WindowsFormsControlLibrary2.Properties.Resources.Normal;
-            mPushedImage = global::WindowsFormsControlLibrary2.Properties.Resources.Pushed;
+            try
+            {
+                mSelectImage = Image.FromFile("save1.png");
+                mNormalImage = Image.FromFile("save2.png");
+                mPushedImage = Image.FromFile("save3.png");
+            }
+            catch (Exception)
+            {
+            }
+            
         }
 
         public State mState = State.None;
@@ -163,7 +171,6 @@ namespace WindowsFormsControlLibrary2
             else
                 return base.CanConvertTo(context, destinationType);
         }
-
         public override object ConvertFrom(ITypeDescriptorContext context, System.Globalization.CultureInfo culture, object value)
         {
             string strValue = value as string;
@@ -173,35 +180,11 @@ namespace WindowsFormsControlLibrary2
             int count = values.Length;
             try
             {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(context.GetType());
                 BaseButtonProperty baseButtonProp = new BaseButtonProperty();
-                ImageConverter imageConverter = new ImageConverter();
-                if (count < 1 || values[0].Trim().Length == 0)
-                {
-                    baseButtonProp.SelectImage = global::WindowsFormsControlLibrary2.Properties.Resources.Select;
-                }
-                else
-                {
-                    baseButtonProp.SelectImage = (Image)imageConverter.ConvertFromString(values[0]);
-                }
-
-                if (count < 2 || values[1].Trim().Length == 0)
-                {
-                    baseButtonProp.NormalImage = global::WindowsFormsControlLibrary2.Properties.Resources.Normal;
-                }
-                else
-                {
-                    baseButtonProp.NormalImage = (Image)imageConverter.ConvertFromString(values[1]);
-                }
-
-                if (count < 3 || values[2].Trim().Length == 0)
-                {
-                    baseButtonProp.PushedImage = global::WindowsFormsControlLibrary2.Properties.Resources.Pushed;
-                }
-                else
-                {
-                    baseButtonProp.PushedImage = (Image)imageConverter.ConvertFromString(values[2]);
-                }
-
+                baseButtonProp.SelectImage = ((System.Drawing.Image)(resources.GetObject(values[0])));
+                baseButtonProp.NormalImage = ((System.Drawing.Image)(resources.GetObject(values[1])));
+                baseButtonProp.PushedImage = ((System.Drawing.Image)(resources.GetObject(values[2])));
                 return baseButtonProp;
             }
             catch
@@ -212,18 +195,89 @@ namespace WindowsFormsControlLibrary2
 
         public override object ConvertTo(ITypeDescriptorContext context, System.Globalization.CultureInfo culture, object value, Type destinationType)
         {
-
+            
             BaseButtonProperty baseButtonProp = value as BaseButtonProperty;
             if (baseButtonProp == null || destinationType != typeof(string))
                 return base.ConvertTo(context, culture, value, destinationType);
-            baseButtonProp.SelectImage = global::WindowsFormsControlLibrary2.Properties.Resources.Pushed;
-            ImageConverter imageConverter = new ImageConverter();
-            string s = string.Format("{0}, {1}, {2}",
-                                 imageConverter.ConvertToString(new Bitmap(baseButtonProp.SelectImage)),
-                                 imageConverter.ConvertToString(baseButtonProp.NormalImage),
-                                 new Bitmap(baseButtonProp.SelectImage)
+            var assem = System.Reflection.Assembly.GetExecutingAssembly();
+            var name = assem.GetName();
+            var resources = assem.GetManifestResourceNames();
+
+            string resName = assem.GetName().Name;// + @"\Resources"; 
+
+            using (var stream = assem.GetManifestResourceStream(resName))
+            {
+                
+            }
+
+            //using (ResourceReader resource = new ResourceReader(resName))
+            //{
+            //    IDictionaryEnumerator id = resource.GetEnumerator();
+            //    while (id.MoveNext())
+            //        Console.WriteLine("\n[{0}] \t{1}", id.Key, id.Value);
+            //}
+
+            //var r = ResourceReader.GetEnumerator();
+            ResXResourceReader.FromFileContents(resName);
+            ResXResourceReader xres = new ResXResourceReader(@"C:\Users\katsumaPC\Desktop\SourceTree\NET Framework\CustomButtonLib\WindowsFormsControlLibrary2\Properties\Resources.resx");
+
+            int hashcode = baseButtonProp.NormalImage.GetHashCode();
+
+
+
+            //ResourceReader.GetResourceData();
+
+            //現在のコードを実行しているAssemblyを取得
+            //System.Reflection.Assembly myAssembly = System.Reflection.Assembly.GetExecutingAssembly();
+
+            ////指定されたマニフェストリソースを読み込む
+            //Type[] resnames = myAssembly.GetManifestResourceNames();
+            //System.ComponentModel.ComponentResourceManager resources;
+            //foreach (Type res in resnames)
+            //{
+
+            //    Console.WriteLine("resource {0}", res);
+            //    resources = new System.ComponentModel.ComponentResourceManager(res);
+            //}
+
+            //System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager();
+
+            //ImageConverter imageConverter = new ImageConverter();
+            string save1 = "save1.png";
+            string save2 = "save2.png";
+            string save3 = "save3.png";
+            //try
+            //{
+            //    save1 = "resource.SelectImage";
+            //    save2 = "resource.NormalImage";
+            //    save3 = "resource.PushedImage";
+            //    //baseButtonProp.SelectImage.Save(save1);
+            //    //baseButtonProp.NormalImage.Save(save2);
+            //    //baseButtonProp.PushedImage.Save(save3);
+            //}
+            //catch (Exception)
+            //{
+            //}
+
+            return string.Format("{0},{1},{2}",
+                                 save1,
+                                 save2,
+                                 save3
                                  );
-            return s;
         }
+
+        //public override bool GetCreateInstanceSupported(ITypeDescriptorContext context)
+        //{
+        //    return true;
+        //}
+
+        //public override object CreateInstance(ITypeDescriptorContext context, System.Collections.IDictionary propertyValues)
+        //{
+        //    BaseButtonProperty baseButtonProp = new BaseButtonProperty();
+        //    baseButtonProp.NormalImage = (Image)propertyValues["NormalImage"];
+        //    baseButtonProp.SelectImage = (Image)propertyValues["SelectImage"];
+        //    baseButtonProp.PushedImage = (Image)propertyValues["PushedImage"];
+        //    return baseButtonProp;
+        //}
     }
 }
