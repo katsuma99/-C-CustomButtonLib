@@ -11,7 +11,7 @@ namespace SimpleButtonLib
     public partial class BaseButton : PictureBox
     {
         protected BaseButtonProperty mBaseButtonProperty;
-        [Category("ボタン"), Description("通常・選択・押下のボタンのイメージ画像")]
+        [Category("カスタムボタン"), Description("通常・選択・押下のボタンのイメージ画像")]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
         public BaseButtonProperty BaseButtonProperty
         {
@@ -42,7 +42,7 @@ namespace SimpleButtonLib
 
         protected override void OnMouseDown(MouseEventArgs mevent)
         {
-            OnPushButtonEvent(this,EventArgs.Empty);
+            OnPushButton();
             base.OnMouseDown(mevent);
         }
 
@@ -53,7 +53,7 @@ namespace SimpleButtonLib
 
         protected override void OnMouseUp(MouseEventArgs mevent)
         {
-            OnReleaseButtonEvent(this,EventArgs.Empty);
+            OnReleaseButton();
             base.OnMouseUp(mevent);
         }
 
@@ -75,13 +75,6 @@ namespace SimpleButtonLib
         }
         #endregion
 
-        public bool ShouldSerializeBaseButton()
-        {
-            return mBaseButtonProperty.SelectImage != HAPTIVITYLib.Properties.Resources.BtSelect ||
-                   mBaseButtonProperty.NormalImage != HAPTIVITYLib.Properties.Resources.BtNormal ||
-                   mBaseButtonProperty.PushedImage != HAPTIVITYLib.Properties.Resources.BtPushed;
-        }
-
         public void ResetBaseButton()
         {
             mBaseButtonProperty.SelectImage = HAPTIVITYLib.Properties.Resources.BtSelect;
@@ -102,14 +95,11 @@ namespace SimpleButtonLib
     [TypeConverter(typeof(BaseButtonPropertyConverter))]
     public class BaseButtonProperty
     {
-        //public int? mButtonNo = null;
-        //static int cButtonCount = 0;
         PictureBox mButton = null;
         public BaseButtonProperty(PictureBox pb = null)
         {
             mButton = pb;
             mState = State.None;
-            //if (!mButtonNo.HasValue) mButtonNo = cButtonCount++;
 
             if (mSelectImage == null) mSelectImage = global::HAPTIVITYLib.Properties.Resources.BtSelect;
             if (mNormalImage == null) mNormalImage = global::HAPTIVITYLib.Properties.Resources.BtNormal;
@@ -125,30 +115,31 @@ namespace SimpleButtonLib
 
         State mState = State.None;
         [DefaultValue(typeof(State), "None")]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public State State
         {
             get { return mState; }
             set { mState = value; ChangeButtonState(value); }
         }
 
-        protected Image mSelectImage;
-        [Description("ボタンを選択した時のイメージ画像")]
-        [DefaultValue(null)]
-        [NotifyParentProperty(true)] //親のImageにプロパティ変更を通知して更新してもらう
-        public Image SelectImage
-        {
-            get { return mSelectImage; }
-            set { mSelectImage = value; ChangeButtonState(State.Select); }
-        }
-
         protected Image mNormalImage;
         [Description("通常のボタンのイメージ画像")]
         [DefaultValue(null)]
-        [NotifyParentProperty(true)]
+        [NotifyParentProperty(true)]    //親のImageにプロパティ変更を通知して更新してもらう
         public Image NormalImage
         {
             get { return mNormalImage; }
             set { mNormalImage = value; ChangeButtonState(State.None); }
+        }
+
+        protected Image mSelectImage;
+        [Description("ボタンを選択した時のイメージ画像")]
+        [DefaultValue(null)]
+        [NotifyParentProperty(true)] 
+        public Image SelectImage
+        {
+            get { return mSelectImage; }
+            set { mSelectImage = value; ChangeButtonState(State.Select); }
         }
 
         protected Image mPushedImage;
@@ -163,9 +154,7 @@ namespace SimpleButtonLib
 
         void ChangeButtonState(State state)
         {
-            if (mButton == null)
-                return;
-            if (mNormalImage == null || mSelectImage == null || mPushedImage == null)
+            if (mButton == null || mNormalImage == null || mSelectImage == null || mPushedImage == null)
                 return;
 
             mState = state;
@@ -273,7 +262,7 @@ namespace SimpleButtonLib
             }
             catch
             {
-                throw new ArgumentException("プロパティの値が無効です");
+                throw new ArgumentException("プロパティの値では画像がありません");
             }
         }
 

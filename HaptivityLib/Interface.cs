@@ -162,7 +162,7 @@ namespace HAPTIVITYLib
         {
             if (DesignMode) //フォームデザイン時は設定しない[bug]
                 return;
-
+            
             this.Visible = false;
             InitSetting();
         }
