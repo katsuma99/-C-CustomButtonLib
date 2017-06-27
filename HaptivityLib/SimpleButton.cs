@@ -9,7 +9,7 @@ namespace SimpleButtonLib
     {
         protected HAPTIVITYLib.Interface mHaptivity = null;
         [DefaultValue(null)]
-        [Category("HAPTIVITY"), Description("HAPTIVITYを使うためには、Interfaceをアタッチする")]
+        [Category("カスタムボタンHAPTIVITY"), Description("HAPTIVITYを使うためには、Interfaceをアタッチする")]
         public HAPTIVITYLib.Interface Haptivity
         {
             get { return mHaptivity; }
@@ -18,7 +18,7 @@ namespace SimpleButtonLib
 
         protected int mConfigNo = 0;
         [DefaultValue(0)]
-        [Category("HAPTIVITY"), Description("押下時振動のコンフィグ（ボタンを押したときの触感と閾値などの設定番号）")]
+        [Category("カスタムボタンHAPTIVITY"), Description("押下時振動のコンフィグ（ボタンを押したときの触感と閾値などの設定番号）")]
         public int ConfigNo
         {
             get { return mConfigNo; }
@@ -26,7 +26,7 @@ namespace SimpleButtonLib
         }
 
         protected int mEnterConfigNo = 0;
-        [Category("HAPTIVITY"), Description("進入時強制振動のコンフィグ")]
+        [Category("カスタムボタンHAPTIVITY"), Description("進入時強制振動のコンフィグ")]
         [DefaultValue(0)]
         public int EnterConfigNo
         {
@@ -35,7 +35,7 @@ namespace SimpleButtonLib
         }
 
         protected int mEnterVibrationTime = 10;
-        [Category("HAPTIVITY"), Description("進入時強制振動の連続振動時間")]
+        [Category("カスタムボタンHAPTIVITY"), Description("進入時強制振動の連続振動時間")]
         [DefaultValue(10)]
         public int EnterVibrationTime
         {
@@ -73,10 +73,10 @@ namespace SimpleButtonLib
             switch (mHaptivity.DataReceived())
             {
                 case aRecive.PUSH:
-                    OnEventPushButton();
+                    OnPushButton();
                     break;
                 case aRecive.RELEASE:
-                    OnEventReleaseButton();
+                    OnReleaseButton();
                     break;
             }
         }

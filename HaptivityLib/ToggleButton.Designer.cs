@@ -50,7 +50,7 @@
             this.mOffSimpleButton.TabIndex = 0;
             this.mOffSimpleButton.TabStop = false;
             this.mOffSimpleButton.Text = "toggleButtonOff";
-            this.mOffSimpleButton.OnReleaseButton += new System.EventHandler(this.mOffSimpleButton_OnReleaseButton);
+            this.mOffSimpleButton.OnReleaseButtonEvent += new System.EventHandler(this.mOffSimpleButton_OnReleaseButton);
             // 
             // mOnSimpleButton
             // 
@@ -69,7 +69,7 @@
             this.mOnSimpleButton.TabIndex = 1;
             this.mOnSimpleButton.TabStop = false;
             this.mOnSimpleButton.Text = "toggleButtonOn";
-            this.mOnSimpleButton.OnReleaseButton += new System.EventHandler(this.mOnSimpleButton_OnReleaseButton);
+            this.mOnSimpleButton.OnReleaseButtonEvent += new System.EventHandler(this.mOnSimpleButton_OnReleaseButton);
             // 
             // ToggleButton
             // 

@@ -8,9 +8,17 @@ using SimpleButtonLib;
 namespace StateButton
 {
     [DefaultProperty("ButtonState")]
-    [TypeConverter(typeof(StateButtonConverter))]
     public partial class StateButton : UserControl
     {
+        protected BaseButton mBaseButton;
+        [Category("カスタムボタン"), Description("通常・選択・押下のボタンのイメージ画像")]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
+        public BaseButton BaseButton
+        {
+            get { return mBaseButton; }
+            set { mBaseButton = value; }
+        }
+
         List<SimpleButton> mSimpleButtonList = new List<SimpleButton>();
         int mButtonState = 0;
         [Category("StateButtonの状態"), Description("ステートボタンの状態（現在の状態のボタンが編集できる）")]
@@ -167,8 +175,6 @@ namespace StateButton
                 simpleButton.TabIndex = 0;
                 simpleButton.TabStop = false;
                 simpleButton.Text = "StateButton" + no.ToString();
-                simpleButton.OnReleaseButton += new System.EventHandler(mSimpleButton_OnReleaseButton);
-                ((System.ComponentModel.ISupportInitialize)(simpleButton)).EndInit();
                 simpleButton.Visible = false;
                 this.Controls.Add(simpleButton);
                 mSimpleButtonList.Add(simpleButton);
@@ -194,71 +200,6 @@ namespace StateButton
         {
             for (int i = 0; i < mSimpleButtonList.Count; i++)
                 mSimpleButtonList[i].Size = this.Size;
-        }
-    }
-
-    public class StateButtonConverter : TypeConverter
-    {
-        public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
-        {
-            if (sourceType == typeof(string))
-                return true;
-            else
-                return base.CanConvertFrom(context, sourceType);
-        }
-
-        public override bool CanConvertTo(ITypeDescriptorContext context, Type destinationType)
-        {
-            if (destinationType == typeof(string))
-                return true;
-            else
-                return base.CanConvertTo(context, destinationType);
-        }
-
-        public override object ConvertFrom(ITypeDescriptorContext context, System.Globalization.CultureInfo culture, object value)
-        {
-            string strValue = value as string;
-            if (strValue == null)
-                return base.ConvertFrom(context, culture, value);
-            string[] values = strValue.Split(',');
-            int count = values.Length;
-            try
-            {
-                Shadow shadow = new Shadow();
-                if (count < 1 || values[0].Trim().Length == 0)
-                {
-                    shadow.Color = SystemColors.GrayText;
-                }
-                else
-                {
-                    ColorConverter colorConverter = new ColorConverter();
-                    shadow.Color = (Color)colorConverter.ConvertFromString(values[0]);
-                }
-                if (count < 2)
-                    shadow.Depth = 1;
-                else
-                    shadow.Depth = int.Parse(values[1]);
-                if (count < 3)
-                    shadow.Direction = ShadowDirection.ToBottomRight;
-                else
-                    shadow.Direction = (ShadowDirection)Enum.Parse(typeof(ShadowDirection), values[2], true);
-                return shadow;
-            }
-            catch
-            {
-                throw new ArgumentException("プロパティの値が無効です");
-            }
-        }
-
-        public override object ConvertTo(ITypeDescriptorContext context, System.Globalization.CultureInfo culture, object value, Type destinationType)
-        {
-            SimpleButton simpleButton = value as Shadow;
-            if (shadow == null || destinationType != typeof(string))
-                return base.ConvertTo(context, culture, value, destinationType);
-            ColorConverter colorConverter = new ColorConverter();
-            return string.Format("{0}, {1}, {2}",
-                                 colorConverter.ConvertToString(shadow.Color),
-                                 shadow.Depth, shadow.Direction);
         }
     }
 }
