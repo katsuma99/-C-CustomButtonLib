@@ -35,10 +35,8 @@
             this.BackColor = System.Drawing.Color.Transparent;
             this.BackgroundImage = global::HAPTIVITYLib.Properties.Resources.StateButton;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.DoubleBuffered = true;
             this.Name = "StateButton";
             this.Size = new System.Drawing.Size(100, 50);
-            this.Load += new System.EventHandler(this.StateButton_Load);
             this.Resize += new System.EventHandler(this.StateButton_Resize);
             this.ResumeLayout(false);
 
