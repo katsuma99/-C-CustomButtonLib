@@ -42,13 +42,17 @@
             this.stateButton1.CustomButton.PushedImage = ((System.Drawing.Image)(resources.GetObject("resource.PushedImage")));
             this.stateButton1.CustomButton.SelectImage = ((System.Drawing.Image)(resources.GetObject("resource.SelectImage")));
             this.stateButton1.CustomButton.State = StateButton.BtState.Normal;
-            this.stateButton1.CustomButtonState = 2;
+            this.stateButton1.CustomButton2.NormalImage = ((System.Drawing.Image)(resources.GetObject("resource.NormalImage1")));
+            this.stateButton1.CustomButton2.PushedImage = ((System.Drawing.Image)(resources.GetObject("resource.PushedImage1")));
+            this.stateButton1.CustomButton2.SelectImage = ((System.Drawing.Image)(resources.GetObject("resource.SelectImage1")));
+            this.stateButton1.CustomButton2.State = StateButton.BtState.Normal;
+            this.stateButton1.CustomButton3.State = StateButton.BtState.Normal;
+            this.stateButton1.CustomButtonState = 1;
             this.stateButton1.Image = ((System.Drawing.Image)(resources.GetObject("stateButton1.Image")));
-            this.stateButton1.Location = new System.Drawing.Point(52, 98);
-            this.stateButton1.mCustomButton2 = this.stateButton1.CustomButton;
+            this.stateButton1.Location = new System.Drawing.Point(152, 120);
             this.stateButton1.Name = "stateButton1";
             this.stateButton1.Size = new System.Drawing.Size(120, 48);
-            this.stateButton1.StateMax = 2;
+            this.stateButton1.StateMax = 4;
             this.stateButton1.TabIndex = 0;
             this.stateButton1.TabStop = false;
             // 

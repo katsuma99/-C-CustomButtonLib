@@ -11,22 +11,71 @@ namespace StateButton
     [DefaultProperty("CustomButton")]
     public partial class StateButton : PictureBox
     {
-        List<CustomButtonProperty> mCustomButtonList;
-        //[DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
-        //public IEnumerable<CustomButtonProperty> CustomButtonList
-        //{
-        //    get { foreach (var item in mCustomButtonList) yield return item; }
-        //    set { foreach (var item in value.Select((s,i) => new { i,s })) mCustomButtonList[item.i] = item.s; }
-        //}
+        //セーブするために変数作る
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
+        public CustomButtonProperty mCustomButton1;
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
+        public CustomButtonProperty mCustomButton2;
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
+        public CustomButtonProperty mCustomButton3;
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
+        public CustomButtonProperty mCustomButton4;
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
+        public CustomButtonProperty mCustomButton5;
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
+        public CustomButtonProperty mCustomButton6;
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
+        public CustomButtonProperty mCustomButton7;
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
+        public CustomButtonProperty mCustomButton8;
 
         public StateButton()
         {
             InitializeComponent();
-            //StateButtonを初めにフォームに張った時
-            if (mCustomButtonList == null)
+            InitCustomButton();
+        }
+
+        void InitCustomButton()
+        {
+            mCustomButton1 = new CustomButtonProperty(this);
+            mCustomButton2 = new CustomButtonProperty(this);
+            mCustomButton3 = new CustomButtonProperty(this);
+            mCustomButton4 = new CustomButtonProperty(this);
+            mCustomButton5 = new CustomButtonProperty(this);
+            mCustomButton6 = new CustomButtonProperty(this);
+            mCustomButton7 = new CustomButtonProperty(this);
+            mCustomButton8 = new CustomButtonProperty(this);
+        }
+
+        CustomButtonProperty GetCustomButtonNow()
+        {
+            CustomButtonProperty cbp = mCustomButton1;
+            switch (CustomButtonState)
             {
-                mCustomButtonList = new List<CustomButtonProperty>();
-                mCustomButtonList.Add(new CustomButtonProperty(this));
+                case 1: cbp = mCustomButton1; break;
+                case 2: cbp = mCustomButton2; break;
+                case 3: cbp = mCustomButton3; break;
+                case 4: cbp = mCustomButton4; break;
+                case 5: cbp = mCustomButton5; break;
+                case 6: cbp = mCustomButton6; break;
+                case 7: cbp = mCustomButton7; break;
+                case 8: cbp = mCustomButton8; break;
+            }
+            return cbp;
+        }
+
+        void SetCustomButtonNow(CustomButtonProperty cbp)
+        {
+            switch (CustomButtonState)
+            {
+                case 1: mCustomButton1 = cbp; break;
+                case 2: mCustomButton2 = cbp; break;
+                case 3: mCustomButton3 = cbp; break;
+                case 4: mCustomButton4 = cbp; break;
+                case 5: mCustomButton5 = cbp; break;
+                case 6: mCustomButton6 = cbp; break;
+                case 7: mCustomButton7 = cbp; break;
+                case 8: mCustomButton8 = cbp; break;
             }
         }
 
@@ -34,8 +83,32 @@ namespace StateButton
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
         public CustomButtonProperty CustomButton
         {
-            get { return mCustomButtonList[mCustomButtonState]; }
-            set { mCustomButtonList[mCustomButtonState] = value; }
+            get { return GetCustomButtonNow(); }
+            set { SetCustomButtonNow(value); }
+        }
+
+        [Category("カスタムステートボタン"), Description("通常・選択・押下のボタンのイメージ画像")]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
+        public CustomButtonProperty CustomButton1
+        {
+            get { return mCustomButton1; }
+            set { mCustomButton1 = value; }
+        }
+
+        [Category("カスタムステートボタン"), Description("通常・選択・押下のボタンのイメージ画像")]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
+        public CustomButtonProperty CustomButton2
+        {
+            get { return mCustomButton2; }
+            set { mCustomButton2 = value; }
+        }
+
+        [Category("カスタムステートボタン"), Description("通常・選択・押下のボタンのイメージ画像")]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
+        public CustomButtonProperty CustomButton3
+        {
+            get { return mCustomButton1; }
+            set { mCustomButton3 = value; }
         }
 
         public int mCustomButtonState = 0;
@@ -50,37 +123,20 @@ namespace StateButton
             }
             set
             {
-                mCustomButtonState = Math.Max(1, Math.Min(mCustomButtonList.Count, value)) - 1;
-                mCustomButtonList[mCustomButtonState].DrawButtonNowState();
+                mCustomButtonState = Math.Max(1, Math.Min(mStateMax, value)) - 1;
+                GetCustomButtonNow().DrawButtonNowState();
             }
         }
 
+        int mStateMax = 1;
         [Category("カスタムステートボタンの状態"), Description("ステートボタンのパターン数(max:8)")]
         [NotifyParentProperty(true)]    //親のImageにプロパティ変更を通知して更新してもらう
         [DefaultValue(0)]
         public int StateMax
         {
-            get
-            {
-                return mCustomButtonList.Count;
-            }
-            set
-            {
-                
-                int addList = value - mCustomButtonList.Count;
-                if(addList > 0)
-                {
-                    for (int i = 0; i < addList; i++)
-                        mCustomButtonList.Add(new CustomButtonProperty(this));
-                }
-                else
-                {
-                    for (int i = 0; i > addList; i--)
-                        mCustomButtonList.RemoveAt(mCustomButtonList.Count - 1);
-                }
-            }
+            get { return mStateMax; }
+            set { mStateMax = Math.Min(8,value); }
         }
-
 
 
         //[Category("HAPTIVITY"), Description("現在の状態でのHAPTIVITYを使うためには、Interfaceをアタッチする")]
@@ -91,73 +147,73 @@ namespace StateButton
         //    set { mSimpleButtonList[mCustomButtonState].Haptivity = value; }
         //}
 
-        //[Category("HAPTIVITY"), Description("現在の状態での押下時振動のコンフィグ（ボタンを押したときの触感と閾値などの設定番号）")]
-        //[DefaultValue(0)]
-        //public int OnConfigNo
-        //{
-        //    get { return mSimpleButtonList[mCustomButtonState].ConfigNo; }
-        //    set { mSimpleButtonList[mCustomButtonState].ConfigNo = value; }
-        //}
+            //[Category("HAPTIVITY"), Description("現在の状態での押下時振動のコンフィグ（ボタンを押したときの触感と閾値などの設定番号）")]
+            //[DefaultValue(0)]
+            //public int OnConfigNo
+            //{
+            //    get { return mSimpleButtonList[mCustomButtonState].ConfigNo; }
+            //    set { mSimpleButtonList[mCustomButtonState].ConfigNo = value; }
+            //}
 
-        //[Category("HAPTIVITY"), Description("現在の状態での進入時強制振動のコンフィグ")]
-        //[DefaultValue(0)]
-        //public int OnEnterConfigNo
-        //{
-        //    get { return mSimpleButtonList[mCustomButtonState].EnterConfigNo; }
-        //    set { mSimpleButtonList[mCustomButtonState].EnterConfigNo = value; }
-        //}
+            //[Category("HAPTIVITY"), Description("現在の状態での進入時強制振動のコンフィグ")]
+            //[DefaultValue(0)]
+            //public int OnEnterConfigNo
+            //{
+            //    get { return mSimpleButtonList[mCustomButtonState].EnterConfigNo; }
+            //    set { mSimpleButtonList[mCustomButtonState].EnterConfigNo = value; }
+            //}
 
-        //[Category("HAPTIVITY"), Description("現在の状態での進入時強制振動の連続振動時間")]
-        //[DefaultValue(10)]
-        //public int OnEnterVibrationTime
-        //{
-        //    get { return mSimpleButtonList[mCustomButtonState].EnterVibrationTime; }
-        //    set { mSimpleButtonList[mCustomButtonState].EnterVibrationTime = value; }
-        //}
-
-
+            //[Category("HAPTIVITY"), Description("現在の状態での進入時強制振動の連続振動時間")]
+            //[DefaultValue(10)]
+            //public int OnEnterVibrationTime
+            //{
+            //    get { return mSimpleButtonList[mCustomButtonState].EnterVibrationTime; }
+            //    set { mSimpleButtonList[mCustomButtonState].EnterVibrationTime = value; }
+            //}
 
 
 
-        //void InitSimpleButtonList(int countMax)
-        //{
-        //    mSimpleButtonList.Clear();
-        //    this.Controls.Clear();
 
-        //    for (int no = 1; no <= countMax; no++)
-        //    {
-        //        SimpleButton simpleButton = new SimpleButton();
 
-        //        ((System.ComponentModel.ISupportInitialize)(simpleButton)).BeginInit();
-        //        simpleButton.BackColor = System.Drawing.SystemColors.ControlDark;
-        //        simpleButton.Haptivity = null;
-        //        simpleButton.Image = global::HAPTIVITYLib.Properties.Resources.BtNormal;
-        //        simpleButton.Location = new System.Drawing.Point(0, 0);
-        //        simpleButton.MyFont = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Bold);
-        //        simpleButton.Name = "mStateButton" + no.ToString();
-        //        simpleButton.NormalImage = global::HAPTIVITYLib.Properties.Resources.BtNormal;
-        //        simpleButton.PushedImage = global::HAPTIVITYLib.Properties.Resources.BtPushed;
-        //        simpleButton.SelectImage = global::HAPTIVITYLib.Properties.Resources.BtSelect;
-        //        simpleButton.Size = new System.Drawing.Size(100, 50);
-        //        simpleButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-        //        simpleButton.TabIndex = 0;
-        //        simpleButton.TabStop = false;
-        //        simpleButton.Text = "StateButton" + no.ToString();
-        //        simpleButton.Visible = false;
-        //        this.Controls.Add(simpleButton);
-        //        mSimpleButtonList.Add(simpleButton);
-        //    }
-        //    mSimpleButtonList[0].Show();
-        //    CustomButtonState = 1;
-        //    Invalidate();
-        //}
+            //void InitSimpleButtonList(int countMax)
+            //{
+            //    mSimpleButtonList.Clear();
+            //    this.Controls.Clear();
 
-        //private void mSimpleButton_OnReleaseButton(object sender, EventArgs e)
-        //{
-        //    mSimpleButtonList[mCustomButtonState].Hide();
-        //    if(++mCustomButtonState >= mSimpleButtonList.Count) mCustomButtonState = 0;
-        //    mSimpleButtonList[mCustomButtonState].Show();
-        //}
+            //    for (int no = 1; no <= countMax; no++)
+            //    {
+            //        SimpleButton simpleButton = new SimpleButton();
+
+            //        ((System.ComponentModel.ISupportInitialize)(simpleButton)).BeginInit();
+            //        simpleButton.BackColor = System.Drawing.SystemColors.ControlDark;
+            //        simpleButton.Haptivity = null;
+            //        simpleButton.Image = global::HAPTIVITYLib.Properties.Resources.BtNormal;
+            //        simpleButton.Location = new System.Drawing.Point(0, 0);
+            //        simpleButton.MyFont = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Bold);
+            //        simpleButton.Name = "mStateButton" + no.ToString();
+            //        simpleButton.NormalImage = global::HAPTIVITYLib.Properties.Resources.BtNormal;
+            //        simpleButton.PushedImage = global::HAPTIVITYLib.Properties.Resources.BtPushed;
+            //        simpleButton.SelectImage = global::HAPTIVITYLib.Properties.Resources.BtSelect;
+            //        simpleButton.Size = new System.Drawing.Size(100, 50);
+            //        simpleButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            //        simpleButton.TabIndex = 0;
+            //        simpleButton.TabStop = false;
+            //        simpleButton.Text = "StateButton" + no.ToString();
+            //        simpleButton.Visible = false;
+            //        this.Controls.Add(simpleButton);
+            //        mSimpleButtonList.Add(simpleButton);
+            //    }
+            //    mSimpleButtonList[0].Show();
+            //    CustomButtonState = 1;
+            //    Invalidate();
+            //}
+
+            //private void mSimpleButton_OnReleaseButton(object sender, EventArgs e)
+            //{
+            //    mSimpleButtonList[mCustomButtonState].Hide();
+            //    if(++mCustomButtonState >= mSimpleButtonList.Count) mCustomButtonState = 0;
+            //    mSimpleButtonList[mCustomButtonState].Show();
+            //}
 
         private void StateButton_Resize(object sender, EventArgs e)
         {
@@ -193,7 +249,7 @@ namespace StateButton
 
         public void OnPushButton()
         {
-            mCustomButtonList[mCustomButtonState].OnPushButton();
+            GetCustomButtonNow().OnPushButton();
             OnPushButtonEvent(this, EventArgs.Empty);
         }
 
@@ -205,21 +261,21 @@ namespace StateButton
 
         public void OnReleaseButton()
         {
-            if(++mCustomButtonState >= mCustomButtonList.Count) mCustomButtonState = 0;
-            mCustomButtonList[mCustomButtonState].OnReleaseButton();
+            if(++mCustomButtonState >= mStateMax) mCustomButtonState = 0;
+            GetCustomButtonNow().OnReleaseButton();
             OnReleaseButtonEvent(this, EventArgs.Empty);
         }
 
         protected override void OnMouseEnter(EventArgs e)
         {
-            mCustomButtonList[mCustomButtonState].OnEnterButton();
+            GetCustomButtonNow().OnEnterButton();
             OnEnterButtonEvent(this, EventArgs.Empty);
             base.OnMouseEnter(e);
         }
 
         protected override void OnMouseLeave(EventArgs e)
         {
-            mCustomButtonList[mCustomButtonState].OnLeaveButton();
+            GetCustomButtonNow().OnLeaveButton();
             OnLeaveButtonEvent(this, EventArgs.Empty);
             base.OnMouseLeave(e);
         }
