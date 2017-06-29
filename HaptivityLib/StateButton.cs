@@ -11,109 +11,119 @@ namespace StateButton
     [DefaultProperty("CustomButton")]
     public partial class StateButton : PictureBox
     {
+        #region 変数定義
         //セーブするために変数作る
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
-        public CustomButtonProperty mCustomButton1;
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
-        public CustomButtonProperty mCustomButton2;
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
-        public CustomButtonProperty mCustomButton3;
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
-        public CustomButtonProperty mCustomButton4;
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
-        public CustomButtonProperty mCustomButton5;
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
-        public CustomButtonProperty mCustomButton6;
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
-        public CustomButtonProperty mCustomButton7;
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
-        public CustomButtonProperty mCustomButton8;
-
-        public StateButton()
-        {
-            InitializeComponent();
-            InitCustomButton();
-        }
-
-        void InitCustomButton()
-        {
-            mCustomButton1 = new CustomButtonProperty(this);
-            mCustomButton2 = new CustomButtonProperty(this);
-            mCustomButton3 = new CustomButtonProperty(this);
-            mCustomButton4 = new CustomButtonProperty(this);
-            mCustomButton5 = new CustomButtonProperty(this);
-            mCustomButton6 = new CustomButtonProperty(this);
-            mCustomButton7 = new CustomButtonProperty(this);
-            mCustomButton8 = new CustomButtonProperty(this);
-        }
-
-        CustomButtonProperty GetCustomButtonNow()
-        {
-            CustomButtonProperty cbp = mCustomButton1;
-            switch (CustomButtonState)
-            {
-                case 1: cbp = mCustomButton1; break;
-                case 2: cbp = mCustomButton2; break;
-                case 3: cbp = mCustomButton3; break;
-                case 4: cbp = mCustomButton4; break;
-                case 5: cbp = mCustomButton5; break;
-                case 6: cbp = mCustomButton6; break;
-                case 7: cbp = mCustomButton7; break;
-                case 8: cbp = mCustomButton8; break;
-            }
-            return cbp;
-        }
-
-        void SetCustomButtonNow(CustomButtonProperty cbp)
-        {
-            switch (CustomButtonState)
-            {
-                case 1: mCustomButton1 = cbp; break;
-                case 2: mCustomButton2 = cbp; break;
-                case 3: mCustomButton3 = cbp; break;
-                case 4: mCustomButton4 = cbp; break;
-                case 5: mCustomButton5 = cbp; break;
-                case 6: mCustomButton6 = cbp; break;
-                case 7: mCustomButton7 = cbp; break;
-                case 8: mCustomButton8 = cbp; break;
-            }
-        }
-
-        [Category("カスタムステートボタン"), Description("通常・選択・押下のボタンのイメージ画像")]
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
-        public CustomButtonProperty CustomButton
-        {
-            get { return GetCustomButtonNow(); }
-            set { SetCustomButtonNow(value); }
-        }
-
+        CustomButtonProperty mCustomButton1 = new CustomButtonProperty();
         [Category("カスタムステートボタン"), Description("通常・選択・押下のボタンのイメージ画像")]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
         public CustomButtonProperty CustomButton1
         {
-            get { return mCustomButton1; }
-            set { mCustomButton1 = value; }
+            get {return mCustomButton1; }
+            set { mCustomButton1 = value; mCustomButton1.DrawButtonNowState(); }
         }
 
+        CustomButtonProperty mCustomButton2 = new CustomButtonProperty();
         [Category("カスタムステートボタン"), Description("通常・選択・押下のボタンのイメージ画像")]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
         public CustomButtonProperty CustomButton2
         {
             get { return mCustomButton2; }
-            set { mCustomButton2 = value; }
+            set { mCustomButton2 = value; mCustomButton2.DrawButtonNowState(); }
         }
 
+        CustomButtonProperty mCustomButton3 = new CustomButtonProperty();
         [Category("カスタムステートボタン"), Description("通常・選択・押下のボタンのイメージ画像")]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
         public CustomButtonProperty CustomButton3
         {
-            get { return mCustomButton1; }
-            set { mCustomButton3 = value; }
+            get { return mCustomButton3; }
+            set { mCustomButton3 = value; mCustomButton3.DrawButtonNowState(); }
+        }
+
+        CustomButtonProperty mCustomButton4 = new CustomButtonProperty();
+        [Category("カスタムステートボタン"), Description("通常・選択・押下のボタンのイメージ画像")]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
+        public CustomButtonProperty CustomButton4
+        {
+            get { return mCustomButton4; }
+            set { mCustomButton4 = value; mCustomButton4.DrawButtonNowState(); }
+        }
+
+        CustomButtonProperty mCustomButton5 = new CustomButtonProperty();
+        [Category("カスタムステートボタン"), Description("通常・選択・押下のボタンのイメージ画像")]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
+        public CustomButtonProperty CustomButton5
+        {
+            get { return mCustomButton5; }
+            set { mCustomButton5 = value; mCustomButton5.DrawButtonNowState(); }
+        }
+
+        CustomButtonProperty mCustomButton6 = new CustomButtonProperty();
+        [Category("カスタムステートボタン"), Description("通常・選択・押下のボタンのイメージ画像")]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
+        public CustomButtonProperty CustomButton6
+        {
+            get { return mCustomButton6; }
+            set { mCustomButton6 = value; mCustomButton6.DrawButtonNowState(); }
+        }
+
+        CustomButtonProperty mCustomButton7 = new CustomButtonProperty();
+        [Category("カスタムステートボタン"), Description("通常・選択・押下のボタンのイメージ画像")]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
+        public CustomButtonProperty CustomButton7
+        {
+            get { return mCustomButton7; }
+            set { mCustomButton7 = value; mCustomButton7.DrawButtonNowState(); }
+        }
+
+        CustomButtonProperty mCustomButton8 = new CustomButtonProperty();
+        [Category("カスタムステートボタン"), Description("通常・選択・押下のボタンのイメージ画像")]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
+        public CustomButtonProperty CustomButton8
+        {
+            get { return mCustomButton8; }
+            set { mCustomButton8 = value; mCustomButton8.DrawButtonNowState(); }
+        }
+        #endregion
+
+        public StateButton()
+        {
+            InitializeComponent();
+            ResizeCustomButton(mStateMax);
+            GetCustomButtonNow().DrawButtonNowState();
+        }
+
+        void ResizeCustomButton(int stateMax)
+        {
+            CustomButton1.mButton = stateMax >= 1 ? this : null;
+            CustomButton2.mButton = stateMax >= 2 ? this : null;
+            CustomButton3.mButton = stateMax >= 3 ? this : null;
+            CustomButton4.mButton = stateMax >= 4 ? this : null;
+            CustomButton5.mButton = stateMax >= 5 ? this : null;
+            CustomButton6.mButton = stateMax >= 6 ? this : null;
+            CustomButton7.mButton = stateMax >= 7 ? this : null;
+            CustomButton8.mButton = stateMax >= 8 ? this : null;
+        }
+
+        CustomButtonProperty GetCustomButtonNow()
+        {
+            CustomButtonProperty cbp = CustomButton1;
+            switch (CustomButtonState)
+            {
+                case 1: cbp = CustomButton1; break;
+                case 2: cbp = CustomButton2; break;
+                case 3: cbp = CustomButton3; break;
+                case 4: cbp = CustomButton4; break;
+                case 5: cbp = CustomButton5; break;
+                case 6: cbp = CustomButton6; break;
+                case 7: cbp = CustomButton7; break;
+                case 8: cbp = CustomButton8; break;
+            }
+            return cbp;
         }
 
         public int mCustomButtonState = 0;
         [Category("カスタムステートボタンの状態"), Description("ステートボタンの状態（現在の状態のボタンが編集できる）")]
-        [NotifyParentProperty(true)]    //親のImageにプロパティ変更を通知して更新してもらう
         [DefaultValue(0)]
         public int CustomButtonState
         {
@@ -130,12 +140,12 @@ namespace StateButton
 
         int mStateMax = 1;
         [Category("カスタムステートボタンの状態"), Description("ステートボタンのパターン数(max:8)")]
-        [NotifyParentProperty(true)]    //親のImageにプロパティ変更を通知して更新してもらう
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         [DefaultValue(0)]
         public int StateMax
         {
             get { return mStateMax; }
-            set { mStateMax = Math.Min(8,value); }
+            set { mStateMax = Math.Min(8,value); ResizeCustomButton(mStateMax); }
         }
 
 
@@ -291,7 +301,7 @@ namespace StateButton
 
     [DefaultProperty("NormalImage")]
     [TypeConverter(typeof(CustomButtonPropertyConverter))]
-    public class CustomButtonProperty
+    public class CustomButtonProperty:ICloneable
     {
         public PictureBox mButton = null;
         public CustomButtonProperty(PictureBox pb = null)
@@ -404,6 +414,16 @@ namespace StateButton
         //    set { mSimpleButtonList[mCustomButtonState].Font = value; }
         //}
 
+        public object Clone()
+        {
+            CustomButtonProperty work = new CustomButtonProperty(mButton);
+            work = (CustomButtonProperty)this.MemberwiseClone();
+            work.NormalImage = (Image)this.NormalImage.Clone();
+            work.SelectImage = (Image)this.SelectImage.Clone();
+            work.PushedImage = (Image)this.PushedImage.Clone();
+            return work;
+        }
+
         #region ボタンイベント処理
         public void OnPushButton()
         {
@@ -457,42 +477,17 @@ namespace StateButton
                 return base.CanConvertTo(context, destinationType);
         }
 
-        //public override object ConvertFrom(ITypeDescriptorContext context, System.Globalization.CultureInfo culture, object value)
-        //{
-        //    string strValue = value as string;
-        //    if (strValue == null)
-        //        return base.ConvertFrom(context, culture, value);
-        //    string[] values = strValue.Split(',');
-        //    int count = values.Length;
-        //    try
-        //    {
-        //        CustomButtonProperty baseButtonProp = new CustomButtonProperty();
-        //        System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(context.Instance.GetType());
+        public override object ConvertTo(ITypeDescriptorContext context, System.Globalization.CultureInfo culture, object value, Type destinationType)
+        {
 
-        //        return baseButtonProp;
-        //    }
-        //    catch
-        //    {
-        //        throw new ArgumentException("プロパティの値では画像がありません");
-        //    }
-        //}
+            CustomButtonProperty baseButtonProp = value as CustomButtonProperty;
+            if (baseButtonProp == null || destinationType != typeof(string))
+                return base.ConvertTo(context, culture, value, destinationType);
 
-        //public override object ConvertTo(ITypeDescriptorContext context, System.Globalization.CultureInfo culture, object value, Type destinationType)
-        //{
-
-        //    CustomButtonProperty baseButtonProp = value as CustomButtonProperty;
-        //    if (baseButtonProp == null || destinationType != typeof(string))
-        //        return base.ConvertTo(context, culture, value, destinationType);
-
-        //    string select = "resource.SelectImage";
-        //    string normal = "resource.NormalImage";
-        //    string pushed = "resource.PushedImage";
-
-        //    return string.Format("{0},{1},{2}",
-        //                         select,
-        //                         normal,
-        //                         pushed
-        //                         );
-        //}
+            if(baseButtonProp.mButton == null)
+                return string.Format("Out of Range");
+            else
+                return base.ConvertTo(context, culture, value, destinationType);
+        }
     }
 }
