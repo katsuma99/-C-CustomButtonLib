@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
             // 
             // StateButton
@@ -35,9 +36,8 @@
             this.BackColor = System.Drawing.Color.Transparent;
             this.BackgroundImage = global::HAPTIVITYLib.Properties.Resources.StateButton;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.Name = "StateButton";
-            this.Size = new System.Drawing.Size(100, 50);
-            this.Resize += new System.EventHandler(this.StateButton_Resize);
+            this.SizeChanged += new System.EventHandler(this.StateButton_SizeChanged);
+            ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
 
         }

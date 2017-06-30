@@ -225,17 +225,6 @@ namespace StateButton
             //    mSimpleButtonList[mCustomButtonState].Show();
             //}
 
-        private void StateButton_Resize(object sender, EventArgs e)
-        {
-            ResizeStateButton();
-        }
-
-        void ResizeStateButton()
-        {
-            //for (int i = 0; i < mCustomButtonList.Count; i++)
-            //    mCustomButtonList[i].NormalImage.mode = Image.Size;
-        }
-
 
         #region ボタンイベント処理
         [Category("ボタン処理"), Description("ボタンを押下した時に入る処理")]
@@ -290,6 +279,12 @@ namespace StateButton
             base.OnMouseLeave(e);
         }
         #endregion
+
+        private void StateButton_SizeChanged(object sender, EventArgs e)
+        {
+            mCustomButton1.ResizeImage(((PictureBox)sender).Size);
+            mCustomButton1.DrawButtonNowState();
+        }
     }
 
     public enum BtState
@@ -316,9 +311,12 @@ namespace StateButton
                 return;
             mButtonImage = new List<Image>();
             mButtonImage.Add(global::HAPTIVITYLib.Properties.Resources.BtNormal);
+            mOriNormalImage = (Image)mButtonImage[0].Clone();
             mButtonImage.Add(global::HAPTIVITYLib.Properties.Resources.BtSelect);
+            mOriSelectlImage = (Image)mButtonImage[1].Clone();
             mButtonImage.Add(global::HAPTIVITYLib.Properties.Resources.BtPushed);
-            ChangeButtonState(BtState.Normal);
+            mOriPushedImage = (Image)mButtonImage[2].Clone();
+            ChangeButton(BtState.Normal);
         }
 
         ~CustomButtonProperty()
@@ -328,49 +326,54 @@ namespace StateButton
             PushedImage?.Dispose();
         }
 
-        public BtState mInitState = BtState.Normal;
+        public BtState mState = BtState.Normal;
         [DefaultValue(typeof(BtState), "None")]
-        public BtState State
+        public BtState InitState
         {
-            get { return mInitState; }
-            set { mInitState = value; ChangeButtonState(value); }
+            get { return mState; }
+            set { mState = value; ChangeButton(value); }
         }
 
         protected List<Image> mButtonImage;
+        Image mOriNormalImage = null;
         [Description("通常のボタンのイメージ画像")]
         [DefaultValue(null)]
         [NotifyParentProperty(true)]    //親のImageにプロパティ変更を通知して更新してもらう
         public Image NormalImage
         {
             get { return mButtonImage[(int)BtState.Normal]; }
-            set { mButtonImage[(int)BtState.Normal] = value; }
+            set { if (value == null) return; mButtonImage[(int)BtState.Normal] = value;
+                mOriNormalImage = (Image)value.Clone(); ChangeButton(BtState.Normal); }
         }
 
+        Image mOriSelectlImage = null;
         [Description("ボタンを選択した時のイメージ画像")]
         [DefaultValue(null)]
         [NotifyParentProperty(true)]
         public Image SelectImage
         {
             get { return mButtonImage[(int)BtState.Select]; }
-            set { mButtonImage[(int)BtState.Select] = value; }
+            set { if (value == null) return; mButtonImage[(int)BtState.Select] = value;
+                mOriSelectlImage = (Image)value.Clone(); ChangeButton(BtState.Select); }
         }
 
+        Image mOriPushedImage = null;
         [Description("ボタンを押下した時のイメージ画像")]
         [DefaultValue(null)]
         [NotifyParentProperty(true)]
         public Image PushedImage
         {
             get { return mButtonImage[(int)BtState.Push]; }
-            set { mButtonImage[(int)BtState.Push] = value; }
+            set { if (value == null) return; mButtonImage[(int)BtState.Push] = value;
+                mOriPushedImage = (Image)value.Clone(); ChangeButton(BtState.Push); }
         }
 
-        public void DrawButtonNowState() { ChangeButtonState(mInitState); }
-        void ChangeButtonState(BtState state)
+        public void DrawButtonNowState() { ChangeButton(mState); }
+        void ChangeButton(BtState state)
         {
-            if (mButton == null || mButtonImage == null)
+            if (mButton == null || mButtonImage == null || NormalImage == null || SelectImage == null || PushedImage == null)
                 return;
 
-            mInitState = state;
             switch (state)
             {
                 case BtState.Normal:
@@ -387,6 +390,27 @@ namespace StateButton
                     break;
             }
             mButton.Refresh();
+        }
+
+        public void ResizeImage(Size size)
+        {
+            if (mOriNormalImage == null)
+                return;
+            for (int state = 0; state < mButtonImage.Count; state++)
+            {
+                switch (state)
+                {
+                    case (int)BtState.Normal:
+                        mButtonImage[state] = new Bitmap(mOriNormalImage, size);
+                        break;
+                    case (int)BtState.Select:
+                        mButtonImage[state] = new Bitmap(mOriSelectlImage, size);
+                        break;
+                    case (int)BtState.Push:
+                        mButtonImage[state] = new Bitmap(mOriPushedImage, size);
+                        break;
+                }
+            }
         }
 
 
@@ -429,7 +453,7 @@ namespace StateButton
         {
             if (mButton == null)
                 return;
-            mInitState = BtState.Push;
+            mState = BtState.Push;
             mButton.Image = PushedImage;
         }
 
@@ -437,7 +461,7 @@ namespace StateButton
         {
             if (mButton == null)
                 return;
-            mInitState = BtState.Select;
+            mState = BtState.Select;
             mButton.Image = SelectImage;
         }
 
@@ -445,7 +469,7 @@ namespace StateButton
         {
             if (mButton == null)
                 return;
-            mInitState = BtState.Select;
+            mState = BtState.Select;
             mButton.Image = SelectImage;
         }
 
@@ -453,7 +477,7 @@ namespace StateButton
         {
             if (mButton == null)
                 return;
-            mInitState = BtState.Normal;
+            mState = BtState.Normal;
             mButton.Image = NormalImage;
         }
         #endregion

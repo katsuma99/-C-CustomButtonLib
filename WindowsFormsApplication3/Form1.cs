@@ -16,5 +16,10 @@ namespace WindowsFormsApplication3
         {
             InitializeComponent();
         }
+
+        private void stateButton1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

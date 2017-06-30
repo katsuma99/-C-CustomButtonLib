@@ -77,7 +77,6 @@ namespace SimpleButtonLib
             if (mNormalImage == null || mSelectImage == null || mPushedImage == null)
                 return;
 
-            mState = state;
             switch (state)
             {
                 case BtState.None:

@@ -63,6 +63,16 @@ namespace WindowsFormsApplication3.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
+        internal static System.Drawing.Bitmap AIRDIR11 {
+            get {
+                object obj = ResourceManager.GetObject("AIRDIR11", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
         internal static System.Drawing.Bitmap HAPTIVITY {
             get {
                 object obj = ResourceManager.GetObject("HAPTIVITY", resourceCulture);
