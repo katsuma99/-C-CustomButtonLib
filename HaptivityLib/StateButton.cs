@@ -12,14 +12,14 @@ namespace StateButton
     public partial class StateButton : PictureBox
     {
         #region 変数定義
-        //セーブするために変数作る
+        //セーブするために変数作る（クラスの配列はセーブできない？）
         CustomButtonProperty mCustomButton1 = new CustomButtonProperty();
         [Category("カスタムステートボタン"), Description("通常・選択・押下のボタンのイメージ画像")]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
         public CustomButtonProperty CustomButton1
         {
             get {return mCustomButton1; }
-            set { mCustomButton1 = value; mCustomButton1.DrawButtonNowState(); }
+            set { mCustomButton1 = value; CustomButtonPattern = 1; }
         }
 
         CustomButtonProperty mCustomButton2 = new CustomButtonProperty();
@@ -28,7 +28,7 @@ namespace StateButton
         public CustomButtonProperty CustomButton2
         {
             get { return mCustomButton2; }
-            set { mCustomButton2 = value; mCustomButton2.DrawButtonNowState(); }
+            set { mCustomButton2 = value; CustomButtonPattern = 2; }
         }
 
         CustomButtonProperty mCustomButton3 = new CustomButtonProperty();
@@ -37,7 +37,7 @@ namespace StateButton
         public CustomButtonProperty CustomButton3
         {
             get { return mCustomButton3; }
-            set { mCustomButton3 = value; mCustomButton3.DrawButtonNowState(); }
+            set { mCustomButton3 = value; CustomButtonPattern = 3; }
         }
 
         CustomButtonProperty mCustomButton4 = new CustomButtonProperty();
@@ -46,7 +46,7 @@ namespace StateButton
         public CustomButtonProperty CustomButton4
         {
             get { return mCustomButton4; }
-            set { mCustomButton4 = value; mCustomButton4.DrawButtonNowState(); }
+            set { mCustomButton4 = value; CustomButtonPattern = 4; }
         }
 
         CustomButtonProperty mCustomButton5 = new CustomButtonProperty();
@@ -55,7 +55,7 @@ namespace StateButton
         public CustomButtonProperty CustomButton5
         {
             get { return mCustomButton5; }
-            set { mCustomButton5 = value; mCustomButton5.DrawButtonNowState(); }
+            set { mCustomButton5 = value; CustomButtonPattern = 5; }
         }
 
         CustomButtonProperty mCustomButton6 = new CustomButtonProperty();
@@ -64,7 +64,7 @@ namespace StateButton
         public CustomButtonProperty CustomButton6
         {
             get { return mCustomButton6; }
-            set { mCustomButton6 = value; mCustomButton6.DrawButtonNowState(); }
+            set { mCustomButton6 = value; CustomButtonPattern = 6; }
         }
 
         CustomButtonProperty mCustomButton7 = new CustomButtonProperty();
@@ -73,7 +73,7 @@ namespace StateButton
         public CustomButtonProperty CustomButton7
         {
             get { return mCustomButton7; }
-            set { mCustomButton7 = value; mCustomButton7.DrawButtonNowState(); }
+            set { mCustomButton7 = value; CustomButtonPattern = 7; }
         }
 
         CustomButtonProperty mCustomButton8 = new CustomButtonProperty();
@@ -82,7 +82,16 @@ namespace StateButton
         public CustomButtonProperty CustomButton8
         {
             get { return mCustomButton8; }
-            set { mCustomButton8 = value; mCustomButton8.DrawButtonNowState(); }
+            set { mCustomButton8 = value; CustomButtonPattern = 8; }
+        }
+
+        public BtState mState = BtState.Normal;
+        [DefaultValue(typeof(BtState), "None")]
+        [Category("カスタムステートボタン"), Description("通常・選択・押下のボタンのイメージ画像")]
+        public BtState InitState
+        {
+            get { return mState; }
+            set { mState = value; GetCustomButtonNow().ChangeButton(mState); }
         }
         #endregion
 
@@ -90,7 +99,7 @@ namespace StateButton
         {
             InitializeComponent();
             ResizeCustomButton(mStateMax);
-            GetCustomButtonNow().DrawButtonNowState();
+            GetCustomButtonNow().ChangeButton(mState);
         }
 
         void ResizeCustomButton(int stateMax)
@@ -108,7 +117,7 @@ namespace StateButton
         CustomButtonProperty GetCustomButtonNow()
         {
             CustomButtonProperty cbp = CustomButton1;
-            switch (CustomButtonState)
+            switch (CustomButtonPattern)
             {
                 case 1: cbp = CustomButton1; break;
                 case 2: cbp = CustomButton2; break;
@@ -123,9 +132,9 @@ namespace StateButton
         }
 
         public int mCustomButtonState = 0;
-        [Category("カスタムステートボタンの状態"), Description("ステートボタンの状態（現在の状態のボタンが編集できる）")]
+        [Category("カスタムステートボタンパターン"), Description("ステートボタンの現在のパターン")]
         [DefaultValue(0)]
-        public int CustomButtonState
+        public int CustomButtonPattern
         {
             get
             {
@@ -134,12 +143,12 @@ namespace StateButton
             set
             {
                 mCustomButtonState = Math.Max(1, Math.Min(mStateMax, value)) - 1;
-                GetCustomButtonNow().DrawButtonNowState();
+                GetCustomButtonNow().ChangeButton(mState);
             }
         }
 
         int mStateMax = 1;
-        [Category("カスタムステートボタンの状態"), Description("ステートボタンのパターン数(max:8)")]
+        [Category("カスタムステートボタンパターン"), Description("ステートボタンのパターン数(max:8)")]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         [DefaultValue(0)]
         public int StateMax
@@ -248,6 +257,7 @@ namespace StateButton
 
         public void OnPushButton()
         {
+            mState = BtState.Push;
             GetCustomButtonNow().OnPushButton();
             OnPushButtonEvent(this, EventArgs.Empty);
         }
@@ -260,6 +270,7 @@ namespace StateButton
 
         public void OnReleaseButton()
         {
+            mState = BtState.Select;
             if(++mCustomButtonState >= mStateMax) mCustomButtonState = 0;
             GetCustomButtonNow().OnReleaseButton();
             OnReleaseButtonEvent(this, EventArgs.Empty);
@@ -267,6 +278,7 @@ namespace StateButton
 
         protected override void OnMouseEnter(EventArgs e)
         {
+            mState = BtState.Select;
             GetCustomButtonNow().OnEnterButton();
             OnEnterButtonEvent(this, EventArgs.Empty);
             base.OnMouseEnter(e);
@@ -274,6 +286,7 @@ namespace StateButton
 
         protected override void OnMouseLeave(EventArgs e)
         {
+            mState = BtState.Normal;
             GetCustomButtonNow().OnLeaveButton();
             OnLeaveButtonEvent(this, EventArgs.Empty);
             base.OnMouseLeave(e);
@@ -282,8 +295,23 @@ namespace StateButton
 
         private void StateButton_SizeChanged(object sender, EventArgs e)
         {
-            mCustomButton1.ResizeImage(((PictureBox)sender).Size);
-            mCustomButton1.DrawButtonNowState();
+            CustomButtonProperty cbp = null;
+            for (int state = 1; state <= 8; state++)
+            {
+                switch (state)
+                {
+                    case 1: cbp = CustomButton1; break; 
+                    case 2: cbp = CustomButton2; break; 
+                    case 3: cbp = CustomButton3; break; 
+                    case 4: cbp = CustomButton4; break; 
+                    case 5: cbp = CustomButton5; break; 
+                    case 6: cbp = CustomButton6; break; 
+                    case 7: cbp = CustomButton7; break; 
+                    case 8: cbp = CustomButton8; break; 
+                }
+                cbp.ResizeImage(((PictureBox)sender).Size);
+                cbp.ChangeButton(mState);
+            }
         }
     }
 
@@ -326,14 +354,6 @@ namespace StateButton
             PushedImage?.Dispose();
         }
 
-        public BtState mState = BtState.Normal;
-        [DefaultValue(typeof(BtState), "None")]
-        public BtState InitState
-        {
-            get { return mState; }
-            set { mState = value; ChangeButton(value); }
-        }
-
         protected List<Image> mButtonImage;
         Image mOriNormalImage = null;
         [Description("通常のボタンのイメージ画像")]
@@ -368,8 +388,7 @@ namespace StateButton
                 mOriPushedImage = (Image)value.Clone(); ChangeButton(BtState.Push); }
         }
 
-        public void DrawButtonNowState() { ChangeButton(mState); }
-        void ChangeButton(BtState state)
+        public void ChangeButton(BtState state)
         {
             if (mButton == null || mButtonImage == null || NormalImage == null || SelectImage == null || PushedImage == null)
                 return;
@@ -453,7 +472,6 @@ namespace StateButton
         {
             if (mButton == null)
                 return;
-            mState = BtState.Push;
             mButton.Image = PushedImage;
         }
 
@@ -461,7 +479,6 @@ namespace StateButton
         {
             if (mButton == null)
                 return;
-            mState = BtState.Select;
             mButton.Image = SelectImage;
         }
 
@@ -469,7 +486,6 @@ namespace StateButton
         {
             if (mButton == null)
                 return;
-            mState = BtState.Select;
             mButton.Image = SelectImage;
         }
 
@@ -477,7 +493,6 @@ namespace StateButton
         {
             if (mButton == null)
                 return;
-            mState = BtState.Normal;
             mButton.Image = NormalImage;
         }
         #endregion
