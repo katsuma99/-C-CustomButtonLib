@@ -12,9 +12,9 @@ namespace StateButton
     public partial class StateButton : PictureBox
     {
         #region 変数定義
-        //セーブするために変数作る（クラスの配列はセーブできない？）
+        //設定データを記録するために変数作る（クラスの配列は記録できない？）
         CustomButtonProperty mCustomButton1 = new CustomButtonProperty();
-        [Category("カスタムステートボタン"), Description("通常・選択・押下のボタンのイメージ画像")]
+        [Category("カスタム：ボタン"), Description("通常・選択・押下のボタンのイメージ画像")]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
         public CustomButtonProperty CustomButton1
         {
@@ -23,7 +23,7 @@ namespace StateButton
         }
 
         CustomButtonProperty mCustomButton2 = new CustomButtonProperty();
-        [Category("カスタムステートボタン"), Description("通常・選択・押下のボタンのイメージ画像")]
+        [Category("カスタム：ボタン"), Description("通常・選択・押下のボタンのイメージ画像")]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
         public CustomButtonProperty CustomButton2
         {
@@ -32,7 +32,7 @@ namespace StateButton
         }
 
         CustomButtonProperty mCustomButton3 = new CustomButtonProperty();
-        [Category("カスタムステートボタン"), Description("通常・選択・押下のボタンのイメージ画像")]
+        [Category("カスタム：ボタン"), Description("通常・選択・押下のボタンのイメージ画像")]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
         public CustomButtonProperty CustomButton3
         {
@@ -41,7 +41,7 @@ namespace StateButton
         }
 
         CustomButtonProperty mCustomButton4 = new CustomButtonProperty();
-        [Category("カスタムステートボタン"), Description("通常・選択・押下のボタンのイメージ画像")]
+        [Category("カスタム：ボタン"), Description("通常・選択・押下のボタンのイメージ画像")]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
         public CustomButtonProperty CustomButton4
         {
@@ -50,7 +50,7 @@ namespace StateButton
         }
 
         CustomButtonProperty mCustomButton5 = new CustomButtonProperty();
-        [Category("カスタムステートボタン"), Description("通常・選択・押下のボタンのイメージ画像")]
+        [Category("カスタム：ボタン"), Description("通常・選択・押下のボタンのイメージ画像")]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
         public CustomButtonProperty CustomButton5
         {
@@ -59,7 +59,7 @@ namespace StateButton
         }
 
         CustomButtonProperty mCustomButton6 = new CustomButtonProperty();
-        [Category("カスタムステートボタン"), Description("通常・選択・押下のボタンのイメージ画像")]
+        [Category("カスタム：ボタン"), Description("通常・選択・押下のボタンのイメージ画像")]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
         public CustomButtonProperty CustomButton6
         {
@@ -68,7 +68,7 @@ namespace StateButton
         }
 
         CustomButtonProperty mCustomButton7 = new CustomButtonProperty();
-        [Category("カスタムステートボタン"), Description("通常・選択・押下のボタンのイメージ画像")]
+        [Category("カスタム：ボタン"), Description("通常・選択・押下のボタンのイメージ画像")]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
         public CustomButtonProperty CustomButton7
         {
@@ -77,7 +77,7 @@ namespace StateButton
         }
 
         CustomButtonProperty mCustomButton8 = new CustomButtonProperty();
-        [Category("カスタムステートボタン"), Description("通常・選択・押下のボタンのイメージ画像")]
+        [Category("カスタム：ボタン"), Description("通常・選択・押下のボタンのイメージ画像")]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
         public CustomButtonProperty CustomButton8
         {
@@ -87,22 +87,49 @@ namespace StateButton
 
         public BtState mState = BtState.Normal;
         [DefaultValue(typeof(BtState), "None")]
-        [Category("カスタムステートボタン"), Description("通常・選択・押下のボタンのイメージ画像")]
+        [Category("カスタム：ボタン"), Description("ボタンの初期状態（編集時にも変更すると確認できる）")]
         public BtState InitState
         {
             get { return mState; }
-            set { mState = value; GetCustomButtonNow().ChangeButton(mState); }
+            set { mState = value; GetNowCustomButton().ChangeButton(mState); }
+        }
+
+        public int mCustomButtonState = 0;
+        [Category("カスタム：ステートボタンパターン"), Description("ステートボタンの現在のパターン")]
+        [DefaultValue(0)]
+        public int CustomButtonPattern
+        {
+            get
+            {
+                return mCustomButtonState + 1;
+            }
+            set
+            {
+                mCustomButtonState = Math.Max(1, Math.Min(mStateMax, value)) - 1;
+                GetNowCustomButton().ChangeButton(mState);
+            }
+        }
+
+        int mStateMax = 1;
+        [Category("カスタム：ステートボタンパターン"), Description("ステートボタンのパターン数(max:8)")]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+        [DefaultValue(0)]
+        public int StateMax
+        {
+            get { return mStateMax; }
+            set { mStateMax = Math.Min(8, value); ResizeStatePattern(mStateMax); }
         }
         #endregion
 
         public StateButton()
         {
             InitializeComponent();
-            ResizeCustomButton(mStateMax);
-            GetCustomButtonNow().ChangeButton(mState);
+            ResizeStatePattern(mStateMax);
+            GetNowCustomButton().ChangeButton(mState);
         }
 
-        void ResizeCustomButton(int stateMax)
+        //ステートボタンの状態パターンを変更する
+        void ResizeStatePattern(int stateMax)
         {
             CustomButton1.mButton = stateMax >= 1 ? this : null;
             CustomButton2.mButton = stateMax >= 2 ? this : null;
@@ -114,7 +141,8 @@ namespace StateButton
             CustomButton8.mButton = stateMax >= 8 ? this : null;
         }
 
-        CustomButtonProperty GetCustomButtonNow()
+        //現在のカスタムボタンを取得（ステートボタンはカスタムボタンの集まり）
+        CustomButtonProperty GetNowCustomButton()
         {
             CustomButtonProperty cbp = CustomButton1;
             switch (CustomButtonPattern)
@@ -131,31 +159,7 @@ namespace StateButton
             return cbp;
         }
 
-        public int mCustomButtonState = 0;
-        [Category("カスタムステートボタンパターン"), Description("ステートボタンの現在のパターン")]
-        [DefaultValue(0)]
-        public int CustomButtonPattern
-        {
-            get
-            {
-                return mCustomButtonState + 1;
-            }
-            set
-            {
-                mCustomButtonState = Math.Max(1, Math.Min(mStateMax, value)) - 1;
-                GetCustomButtonNow().ChangeButton(mState);
-            }
-        }
-
-        int mStateMax = 1;
-        [Category("カスタムステートボタンパターン"), Description("ステートボタンのパターン数(max:8)")]
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
-        [DefaultValue(0)]
-        public int StateMax
-        {
-            get { return mStateMax; }
-            set { mStateMax = Math.Min(8,value); ResizeCustomButton(mStateMax); }
-        }
+        
 
 
         //[Category("HAPTIVITY"), Description("現在の状態でのHAPTIVITYを使うためには、Interfaceをアタッチする")]
@@ -227,25 +231,17 @@ namespace StateButton
             //    Invalidate();
             //}
 
-            //private void mSimpleButton_OnReleaseButton(object sender, EventArgs e)
-            //{
-            //    mSimpleButtonList[mCustomButtonState].Hide();
-            //    if(++mCustomButtonState >= mSimpleButtonList.Count) mCustomButtonState = 0;
-            //    mSimpleButtonList[mCustomButtonState].Show();
-            //}
-
-
         #region ボタンイベント処理
-        [Category("ボタン処理"), Description("ボタンを押下した時に入る処理")]
+        [Category("カスタム：ボタン処理"), Description("ボタンを押下した時に入る処理")]
         public event EventHandler OnPushButtonEvent = (sender, e) => { };
 
-        [Category("ボタン処理"), Description("ボタンをリリースした時に入る処理")]
+        [Category("カスタム：ボタン処理"), Description("ボタンをリリースした時に入る処理")]
         public event EventHandler OnReleaseButtonEvent = (sender, e) => { };
 
-        [Category("ボタン処理"), Description("ボタンに侵入した時に入る処理")]
+        [Category("カスタム：ボタン処理"), Description("ボタンに侵入した時に入る処理")]
         public event EventHandler OnEnterButtonEvent = (sender, e) => { };
 
-        [Category("ボタン処理"), Description("ボタンから退出した時に入る処理")]
+        [Category("カスタム：ボタン処理"), Description("ボタンから退出した時に入る処理")]
         public event EventHandler OnLeaveButtonEvent = (sender, e) => { };
 
 
@@ -258,7 +254,7 @@ namespace StateButton
         public void OnPushButton()
         {
             mState = BtState.Push;
-            GetCustomButtonNow().OnPushButton();
+            GetNowCustomButton().OnPushButton();
             OnPushButtonEvent(this, EventArgs.Empty);
         }
 
@@ -272,14 +268,14 @@ namespace StateButton
         {
             mState = BtState.Select;
             if(++mCustomButtonState >= mStateMax) mCustomButtonState = 0;
-            GetCustomButtonNow().OnReleaseButton();
+            GetNowCustomButton().OnReleaseButton();
             OnReleaseButtonEvent(this, EventArgs.Empty);
         }
 
         protected override void OnMouseEnter(EventArgs e)
         {
             mState = BtState.Select;
-            GetCustomButtonNow().OnEnterButton();
+            GetNowCustomButton().OnEnterButton();
             OnEnterButtonEvent(this, EventArgs.Empty);
             base.OnMouseEnter(e);
         }
@@ -287,12 +283,13 @@ namespace StateButton
         protected override void OnMouseLeave(EventArgs e)
         {
             mState = BtState.Normal;
-            GetCustomButtonNow().OnLeaveButton();
+            GetNowCustomButton().OnLeaveButton();
             OnLeaveButtonEvent(this, EventArgs.Empty);
             base.OnMouseLeave(e);
         }
         #endregion
 
+        //イメージ画像リサイズ
         private void StateButton_SizeChanged(object sender, EventArgs e)
         {
             CustomButtonProperty cbp = null;

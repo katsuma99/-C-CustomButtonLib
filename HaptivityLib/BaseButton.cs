@@ -16,6 +16,47 @@ namespace SimpleButtonLib
             Push
         }
 
+        #region 変数
+        BtState mState = BtState.None;
+        [Category("カスタム：ボタンイメージ"), Description("初期のボタン状態（通常・選択・決定）")]
+        [DefaultValue(typeof(BtState), "None")]
+        public BtState InitButtonState
+        {
+            get { return mState; }
+            set { mState = value; ChangeButtonState(value); }
+        }
+
+        protected Image mNormalImage;
+        [Category("カスタム：ボタンイメージ"), Description("通常のボタンのイメージ画像")]
+        [DefaultValue(null)]
+        [NotifyParentProperty(true)]    //親のImageにプロパティ変更を通知して更新してもらう
+        public Image NormalImage
+        {
+            get { return mNormalImage; }
+            set { mNormalImage = value; Size = mNormalImage.Size; }
+        }
+
+        protected Image mSelectImage;
+        [Category("カスタム：ボタンイメージ"), Description("ボタンを選択した時のイメージ画像")]
+        [DefaultValue(null)]
+        [NotifyParentProperty(true)]
+        public Image SelectImage
+        {
+            get { return mSelectImage; }
+            set { mSelectImage = value; Size = mSelectImage.Size; }
+        }
+
+        protected Image mPushedImage;
+        [Category("カスタム：ボタンイメージ"), Description("ボタンを押下した時のイメージ画像")]
+        [DefaultValue(null)]
+        [NotifyParentProperty(true)]
+        public Image PushedImage
+        {
+            get { return mPushedImage; }
+            set { mPushedImage = value; Size = mPushedImage.Size; }
+        }
+        #endregion
+
         public BaseButton()
         {
             InitializeComponent();
@@ -31,45 +72,6 @@ namespace SimpleButtonLib
             mSelectImage?.Dispose();
             mNormalImage?.Dispose();
             mPushedImage?.Dispose();
-        }
-
-        BtState mState = BtState.None;
-        [Category("カスタムボタンイメージ"), Description("初期のボタン状態（通常・選択・決定）")]
-        [DefaultValue(typeof(BtState), "None")]
-        public BtState InitButtonState
-        {
-            get { return mState; }
-            set { mState = value; ChangeButtonState(value); }
-        }
-
-        protected Image mNormalImage;
-        [Category("カスタムボタンイメージ"), Description("通常のボタンのイメージ画像")]
-        [DefaultValue(null)]
-        [NotifyParentProperty(true)]    //親のImageにプロパティ変更を通知して更新してもらう
-        public Image NormalImage
-        {
-            get { return mNormalImage; }
-            set { mNormalImage = value; Size = mNormalImage.Size; }
-        }
-
-        protected Image mSelectImage;
-        [Category("カスタムボタンイメージ"), Description("ボタンを選択した時のイメージ画像")]
-        [DefaultValue(null)]
-        [NotifyParentProperty(true)]
-        public Image SelectImage
-        {
-            get { return mSelectImage; }
-            set { mSelectImage = value; Size = mSelectImage.Size; }
-        }
-
-        protected Image mPushedImage;
-        [Category("カスタムボタンイメージ"), Description("ボタンを押下した時のイメージ画像")]
-        [DefaultValue(null)]
-        [NotifyParentProperty(true)]
-        public Image PushedImage
-        {
-            get { return mPushedImage; }
-            set { mPushedImage = value; Size = mPushedImage.Size; }
         }
 
         void ChangeButtonState(BtState state)
@@ -96,28 +98,28 @@ namespace SimpleButtonLib
         }
 
         #region ボタンイベント処理
-        [Category("カスタムボタン処理"), Description("ボタンを押下した時に入る処理")]
+        [Category("カスタム：ボタン処理"), Description("ボタンを押下した時に入る処理")]
         public event EventHandler OnPushButtonEvent = (sender, e) => {
             BaseButton btn = sender as BaseButton;
             btn.mState = BtState.Push;
             btn.Image = btn.mPushedImage;
         };
 
-        [Category("カスタムボタン処理"), Description("ボタンをリリースした時に入る処理")]
+        [Category("カスタム：ボタン処理"), Description("ボタンをリリースした時に入る処理")]
         public event EventHandler OnReleaseButtonEvent = (sender, e) => {
             BaseButton btn = sender as BaseButton;
             btn.mState = BtState.Select;
             btn.Image = btn.mSelectImage;
         };
 
-        [Category("カスタムボタン処理"), Description("ボタンに侵入した時に入る処理")]
+        [Category("カスタム：ボタン処理"), Description("ボタンに侵入した時に入る処理")]
         public event EventHandler OnEnterButtonEvent = (sender, e) => {
             BaseButton btn = sender as BaseButton;
             btn.mState = BtState.Select;
             btn.Image = btn.mSelectImage;
         };
 
-        [Category("カスタムボタン処理"), Description("ボタンから退出した時に入る処理")]
+        [Category("カスタム：ボタン処理"), Description("ボタンから退出した時に入る処理")]
         public event EventHandler OnLeaveButtonEvent = (sender, e) => {
             BaseButton btn = sender as BaseButton;
             btn.mState = BtState.None;

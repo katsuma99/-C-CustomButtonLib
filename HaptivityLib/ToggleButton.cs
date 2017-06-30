@@ -2,15 +2,15 @@
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
-using SimpleButtonLib;
 
 namespace ToggleButton
 {
     [DefaultProperty("IsToggleOn")]
     public partial class ToggleButton : UserControl
     {
+        #region 変数
         public bool mIsToggleOn = false;
-        [Category("カスタムOff/Onボタンの切り替え"), Description("On/Offボタンを切り替えるフラグ")]
+        [Category("カスタム：Off/Onボタンの切り替え"), Description("On/Offボタンを切り替えるフラグ")]
         [DefaultValue(true)]
         public bool IsToggleOn
         {
@@ -27,7 +27,7 @@ namespace ToggleButton
             }
         }
 
-        [Category("カスタムOnボタンイメージ"), Description("ON時のボタンを選択した時のイメージ画像")]
+        [Category("カスタム：Onボタンイメージ"), Description("ON時のボタンを選択した時のイメージ画像")]
         public Image OnSelectImage
         {
             get { return mOnSimpleButton.SelectImage; }
@@ -38,7 +38,7 @@ namespace ToggleButton
             }
         }
 
-        [Category("カスタムOnボタンイメージ"), Description("ON時のボタンのイメージ画像")]
+        [Category("カスタム：Onボタンイメージ"), Description("ON時のボタンのイメージ画像")]
         public Image OnNormalImage
         {
             get { return mOnSimpleButton.NormalImage; }
@@ -49,7 +49,7 @@ namespace ToggleButton
             }
         }
 
-        [Category("カスタムOnボタンイメージ"), Description("ON時のボタンを押下した時のイメージ画像")]
+        [Category("カスタム：Onボタンイメージ"), Description("ON時のボタンを押下した時のイメージ画像")]
         public Image OnPushedImage
         {
             get { return mOnSimpleButton.PushedImage; }
@@ -60,7 +60,7 @@ namespace ToggleButton
             }
         }
 
-        [Category("カスタムOnボタンテキスト"), Description("ON時のボタンに表示させる文字")]
+        [Category("カスタム：Onボタンテキスト"), Description("ON時のボタンに表示させる文字")]
         [DefaultValue("")]
         public string OnText
         {
@@ -68,7 +68,7 @@ namespace ToggleButton
             set { mOnSimpleButton.Text = value; }
         }
 
-        [Category("カスタムOnボタンテキスト"), Description("ON時のボタンに表示させる文字の色")]
+        [Category("カスタム：Onボタンテキスト"), Description("ON時のボタンに表示させる文字の色")]
         [DefaultValue(typeof(Color), "Aquamarine")]
         public Color OnForeColor
         {
@@ -76,7 +76,7 @@ namespace ToggleButton
             set { mOnSimpleButton.ForeColor = value; }
         }
 
-        [Category("カスタムOnボタンテキスト"), Description("ON時のボタンに表示させる文字フォント")]
+        [Category("カスタム：Onボタンテキスト"), Description("ON時のボタンに表示させる文字フォント")]
         [DefaultValue(typeof(Font), "Arial, 8, style=Bold")]
         public Font OnMyFont
         {
@@ -84,7 +84,7 @@ namespace ToggleButton
             set { mOnSimpleButton.Font = value; }
         }
 
-        [Category("カスタムOnボタンHAPTIVITY"), Description("ON時のHAPTIVITYを使うためには、Interfaceをアタッチする")]
+        [Category("カスタム：OnボタンHAPTIVITY"), Description("ON時のHAPTIVITYを使うためには、Interfaceをアタッチする")]
         [DefaultValue(null)]
         public HAPTIVITYLib.Interface OnHaptivity
         {
@@ -92,7 +92,7 @@ namespace ToggleButton
             set { mOnSimpleButton.Haptivity = value; }
         }
 
-        [Category("カスタムOnボタンHAPTIVITY"), Description("ON時の押下時振動のコンフィグ（ボタンを押したときの触感と閾値などの設定番号）")]
+        [Category("カスタム：OnボタンHAPTIVITY"), Description("ON時の押下時振動のコンフィグ（ボタンを押したときの触感と閾値などの設定番号）")]
         [DefaultValue(0)]
         public int OnConfigNo
         {
@@ -100,7 +100,7 @@ namespace ToggleButton
             set { mOnSimpleButton.ConfigNo = value; }
         }
 
-        [Category("カスタムOnボタンHAPTIVITY"), Description("ON時の進入時強制振動のコンフィグ")]
+        [Category("カスタム：OnボタンHAPTIVITY"), Description("ON時の進入時強制振動のコンフィグ")]
         [DefaultValue(0)]
         public int OnEnterConfigNo
         {
@@ -108,7 +108,7 @@ namespace ToggleButton
             set { mOnSimpleButton.EnterConfigNo = value; }
         }
 
-        [Category("カスタムOnボタンHAPTIVITY"), Description("ON時の進入時強制振動の連続振動時間")]
+        [Category("カスタム：OnボタンHAPTIVITY"), Description("ON時の進入時強制振動の連続振動時間")]
         [DefaultValue(10)]
         public int OnEnterVibrationTime
         {
@@ -117,7 +117,7 @@ namespace ToggleButton
         }
 
 
-        [Category("カスタムOffボタンイメージ"), Description("Off時のボタンを選択した時のイメージ画像")]
+        [Category("カスタム：Offボタンイメージ"), Description("Off時のボタンを選択した時のイメージ画像")]
         public Image OffSelectImage
         {
             get { return mOffSimpleButton.SelectImage; }
@@ -128,7 +128,7 @@ namespace ToggleButton
             }
         }
 
-        [Category("カスタムOffボタンイメージ"), Description("OFF時のボタンのイメージ画像")]
+        [Category("カスタム：Offボタンイメージ"), Description("OFF時のボタンのイメージ画像")]
         public Image OffNormalImage
         {
             get { return mOffSimpleButton.NormalImage; }
@@ -139,7 +139,7 @@ namespace ToggleButton
             }
         }
 
-        [Category("カスタムOffボタンイメージ"), Description("OFF時のボタンを押下した時のイメージ画像")]
+        [Category("カスタム：Offボタンイメージ"), Description("OFF時のボタンを押下した時のイメージ画像")]
         public Image OffPushedImage
         {
             get { return mOffSimpleButton.PushedImage; }
@@ -150,7 +150,7 @@ namespace ToggleButton
             }
         }
 
-        [Category("カスタムOffボタンテキスト"), Description("OFF時のボタンに表示させる文字")]
+        [Category("カスタム：Offボタンテキスト"), Description("OFF時のボタンに表示させる文字")]
         [DefaultValue("")]
         public string OffText
         {
@@ -158,7 +158,7 @@ namespace ToggleButton
             set { mOffSimpleButton.Text = value; }
         }
 
-        [Category("カスタムOffボタンテキスト"), Description("OFF時のボタンに表示させる文字の色")]
+        [Category("カスタム：Offボタンテキスト"), Description("OFF時のボタンに表示させる文字の色")]
         [DefaultValue(typeof(Color), "White")]
         public Color OffForeColor
         {
@@ -166,7 +166,7 @@ namespace ToggleButton
             set { mOffSimpleButton.ForeColor = value; }
         }
 
-        [Category("カスタムOffボタンテキスト"), Description("OFF時のボタンに表示させる文字フォント")]
+        [Category("カスタム：Offボタンテキスト"), Description("OFF時のボタンに表示させる文字フォント")]
         [DefaultValue(typeof(Font), "Arial, 8, style=Bold")]
         public Font OffMyFont
         {
@@ -174,7 +174,7 @@ namespace ToggleButton
             set { mOffSimpleButton.Font = value; }
         }
 
-        [Category("カスタムOffボタンHAPTIVITY"), Description("OFF時のHAPTIVITYを使うためには、Interfaceをアタッチする")]
+        [Category("カスタム：OffボタンHAPTIVITY"), Description("OFF時のHAPTIVITYを使うためには、Interfaceをアタッチする")]
         [DefaultValue(null)]
         public HAPTIVITYLib.Interface OffHaptivity
         {
@@ -182,7 +182,7 @@ namespace ToggleButton
             set { mOffSimpleButton.Haptivity = value; }
         }
 
-        [Category("カスタムOffボタンHAPTIVITY"), Description("OFF時の押下時振動のコンフィグ（ボタンを押したときの触感と閾値などの設定番号）")]
+        [Category("カスタム：OffボタンHAPTIVITY"), Description("OFF時の押下時振動のコンフィグ（ボタンを押したときの触感と閾値などの設定番号）")]
         [DefaultValue(0)]
         public int OffConfigNo
         {
@@ -190,7 +190,7 @@ namespace ToggleButton
             set { mOffSimpleButton.ConfigNo = value; }
         }
 
-        [Category("カスタムOffボタンHAPTIVITY"), Description("OFF時の進入時強制振動のコンフィグ")]
+        [Category("カスタム：OffボタンHAPTIVITY"), Description("OFF時の進入時強制振動のコンフィグ")]
         [DefaultValue(0)]
         public int OffEnterConfigNo
         {
@@ -198,13 +198,14 @@ namespace ToggleButton
             set { mOffSimpleButton.EnterConfigNo = value; }
         }
 
-        [Category("カスタムOffボタンHAPTIVITY"), Description("OFF時の進入時強制振動の連続振動時間")]
+        [Category("カスタム：OffボタンHAPTIVITY"), Description("OFF時の進入時強制振動の連続振動時間")]
         [DefaultValue(10)]
         public int OffEnterVibrationTime
         {
             get { return mOffSimpleButton.EnterVibrationTime; }
             set { mOffSimpleButton.EnterVibrationTime = value; }
         }
+        #endregion
 
         //表示されないと呼ばれない（Visible = falseの場合は呼ばれない）コンストラクタで非表示にしたら使えない
         private void ToggleButton_Load(object sender, EventArgs e)

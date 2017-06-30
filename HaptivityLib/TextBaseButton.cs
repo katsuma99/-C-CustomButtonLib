@@ -8,10 +8,11 @@ namespace SimpleButtonLib
     [DefaultProperty("Text")]
     public partial class TextBaseButton : BaseButton
     {
+        #region 変数
         protected string mText;
-        [Category("カスタムボタンテキスト"), Description("ボタンに表示させる文字")]
+        [Category("カスタム：ボタンテキスト"), Description("ボタンに表示させる文字")]
         [Bindable(true),Browsable(true),EditorBrowsable(EditorBrowsableState.Always)]
-        //通知？、プロパティウィンドウに表示、インテリセンスに表示(ソースを書くところで、[.]と入力したあとに出てくるメソッド一覧)
+        //[通知？、プロパティウィンドウに表示、インテリセンスに表示(ソースを書くところで、[.]と入力したあとに出てくるメソッド一覧)]
         public override string Text
         {
             get
@@ -33,7 +34,7 @@ namespace SimpleButtonLib
 
         protected Color mForeColor = Color.White;
         [DefaultValue(typeof(Color),"White")]
-        [Category("カスタムボタンテキスト"), Description("ボタンに表示させる文字の色")]
+        [Category("カスタム：ボタンテキスト"), Description("ボタンに表示させる文字の色")]
         [Bindable(true), Browsable(true), EditorBrowsable(EditorBrowsableState.Always)]
         public override Color ForeColor
         {
@@ -49,7 +50,7 @@ namespace SimpleButtonLib
         }
 
         protected Font mFont;
-        [Category("カスタムボタンテキスト"), Description("ボタンに表示させる文字フォント")]
+        [Category("カスタム：ボタンテキスト"), Description("ボタンに表示させる文字フォント")]
         [Bindable(true), Browsable(true), EditorBrowsable(EditorBrowsableState.Always)]
         public Font MyFont
         {
@@ -63,6 +64,7 @@ namespace SimpleButtonLib
                 Invalidate();
             }
         }
+        #endregion
 
         public TextBaseButton()
         {

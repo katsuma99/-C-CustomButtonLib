@@ -7,9 +7,10 @@ namespace SimpleButtonLib
 
     public partial class SimpleButton : TextBaseButton
     {
+        #region　変数
         protected HAPTIVITYLib.Interface mHaptivity = null;
         [DefaultValue(null)]
-        [Category("カスタムボタンHAPTIVITY"), Description("HAPTIVITYを使うためには、Interfaceをアタッチする")]
+        [Category("カスタム：HAPTIVITY"), Description("HAPTIVITYを使うためには、Interfaceをアタッチする")]
         public HAPTIVITYLib.Interface Haptivity
         {
             get { return mHaptivity; }
@@ -18,7 +19,7 @@ namespace SimpleButtonLib
 
         protected int mConfigNo = 0;
         [DefaultValue(0)]
-        [Category("カスタムボタンHAPTIVITY"), Description("押下時振動のコンフィグ（ボタンを押したときの触感と閾値などの設定番号）")]
+        [Category("カスタム：HAPTIVITY"), Description("押下時振動のコンフィグ（ボタンを押したときの触感と閾値などの設定番号）")]
         public int ConfigNo
         {
             get { return mConfigNo; }
@@ -26,7 +27,7 @@ namespace SimpleButtonLib
         }
 
         protected int mEnterConfigNo = 0;
-        [Category("カスタムボタンHAPTIVITY"), Description("進入時強制振動のコンフィグ")]
+        [Category("カスタム：HAPTIVITY"), Description("進入時強制振動のコンフィグ")]
         [DefaultValue(0)]
         public int EnterConfigNo
         {
@@ -35,19 +36,21 @@ namespace SimpleButtonLib
         }
 
         protected int mEnterVibrationTime = 10;
-        [Category("カスタムボタンHAPTIVITY"), Description("進入時強制振動の連続振動時間")]
+        [Category("カスタム：HAPTIVITY"), Description("進入時強制振動の連続振動時間")]
         [DefaultValue(10)]
         public int EnterVibrationTime
         {
             get { return mEnterVibrationTime; }
             set { mEnterVibrationTime = value; }
         }
+        #endregion
 
         public SimpleButton()
         {
             InitializeComponent();
         }
 
+        #region ボタンイベント処理
         protected override void OnMouseEnter(EventArgs e)
         {
             if (mHaptivity != null)
@@ -68,6 +71,7 @@ namespace SimpleButtonLib
             base.OnMouseLeave(e);
         }
 
+        //定期的にHAPTIVITYICからコマンドが受信されていないか確認する
         private void receiveDataTime_Tick(object sender, EventArgs e)
         {
             switch (mHaptivity.DataReceived())
@@ -80,5 +84,6 @@ namespace SimpleButtonLib
                     break;
             }
         }
+        #endregion
     }
 }
