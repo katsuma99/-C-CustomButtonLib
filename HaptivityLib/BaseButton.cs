@@ -11,19 +11,19 @@ namespace SimpleButtonLib
     {
         public enum BtState
         {
-            None,
+            Normal,
             Select,
-            Push
+            Pushed
         }
 
         #region 変数
-        BtState mState = BtState.None;
+        BtState mState = BtState.Normal;
         [Category("カスタム：ボタンイメージ"), Description("初期のボタン状態（通常・選択・決定）")]
         [DefaultValue(typeof(BtState), "None")]
         public BtState InitButtonState
         {
             get { return mState; }
-            set { mState = value; ChangeButtonState(value); }
+            set { mState = value; ChangeButtonState(value,false); }
         }
 
         protected Image mNormalImage;
@@ -60,7 +60,7 @@ namespace SimpleButtonLib
         public BaseButton()
         {
             InitializeComponent();
-            mState = BtState.None;
+            mState = BtState.Normal;
 
             if (mSelectImage == null) SelectImage = global::HAPTIVITYLib.Properties.Resources.BtSelect;
             if (mPushedImage == null) PushedImage = global::HAPTIVITYLib.Properties.Resources.BtPushed;
@@ -74,24 +74,24 @@ namespace SimpleButtonLib
             mPushedImage?.Dispose();
         }
 
-        void ChangeButtonState(BtState state)
+        void ChangeButtonState(BtState state,bool isResize = true)
         {
             if (mNormalImage == null || mSelectImage == null || mPushedImage == null)
                 return;
 
             switch (state)
             {
-                case BtState.None:
-                    Image = mNormalImage;
-                    Size = mNormalImage.Size;
+                case BtState.Normal:
+                    Image = NormalImage;
+                    if(isResize) Size = NormalImage.Size;
                     break;
                 case BtState.Select:
-                    Image = mSelectImage;
-                    Size = mSelectImage.Size;
+                    Image = SelectImage;
+                    if (isResize) Size = SelectImage.Size;
                     break;
-                case BtState.Push:
-                    Image = mPushedImage;
-                    Size = mPushedImage.Size;
+                case BtState.Pushed:
+                    Image = PushedImage;
+                    if (isResize) Size = PushedImage.Size;
                     break;
             }
             Refresh();
@@ -101,7 +101,7 @@ namespace SimpleButtonLib
         [Category("カスタム：ボタン処理"), Description("ボタンを押下した時に入る処理")]
         public event EventHandler OnPushButtonEvent = (sender, e) => {
             BaseButton btn = sender as BaseButton;
-            btn.mState = BtState.Push;
+            btn.mState = BtState.Pushed;
             btn.Image = btn.mPushedImage;
         };
 
@@ -122,7 +122,7 @@ namespace SimpleButtonLib
         [Category("カスタム：ボタン処理"), Description("ボタンから退出した時に入る処理")]
         public event EventHandler OnLeaveButtonEvent = (sender, e) => {
             BaseButton btn = sender as BaseButton;
-            btn.mState = BtState.None;
+            btn.mState = BtState.Normal;
             btn.Image = btn.mNormalImage;
         };
 
