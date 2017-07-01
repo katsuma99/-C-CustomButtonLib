@@ -29,16 +29,31 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            this.baseButton1 = new SimpleButtonLib.BaseButton();
             this.toggleButton1 = new ToggleButton.ToggleButton();
             this.stateButton1 = new StateButton.StateButton();
             this.textBaseButton1 = new SimpleButtonLib.TextBaseButton();
             this.simpleButton1 = new SimpleButtonLib.SimpleButton();
-            this.baseButton1 = new SimpleButtonLib.BaseButton();
+            ((System.ComponentModel.ISupportInitialize)(this.baseButton1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.stateButton1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textBaseButton1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.simpleButton1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.baseButton1)).BeginInit();
             this.SuspendLayout();
+            // 
+            // baseButton1
+            // 
+            this.baseButton1.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.baseButton1.Image = global::WindowsFormsApplication3.Properties.Resources.HAPTIVITY;
+            this.baseButton1.InitButtonState = SimpleButtonLib.BaseButton.BtState.Select;
+            this.baseButton1.Location = new System.Drawing.Point(12, 12);
+            this.baseButton1.Name = "baseButton1";
+            this.baseButton1.NormalImage = global::WindowsFormsApplication3.Properties.Resources.AIRDIR11;
+            this.baseButton1.PushedImage = global::WindowsFormsApplication3.Properties.Resources.HAPTIVITY;
+            this.baseButton1.SelectImage = global::WindowsFormsApplication3.Properties.Resources.HAPTIVITY;
+            this.baseButton1.Size = new System.Drawing.Size(100, 50);
+            this.baseButton1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.baseButton1.TabIndex = 5;
+            this.baseButton1.TabStop = false;
             // 
             // toggleButton1
             // 
@@ -94,8 +109,8 @@
             this.stateButton1.InitState = StateButton.BtState.Normal;
             this.stateButton1.Location = new System.Drawing.Point(138, 132);
             this.stateButton1.Name = "stateButton1";
-            this.stateButton1.Size = new System.Drawing.Size(134, 94);
-            this.stateButton1.State = 2;
+            this.stateButton1.Size = new System.Drawing.Size(120, 65);
+            this.stateButton1.State = 1;
             this.stateButton1.StateMax = 2;
             this.stateButton1.TabIndex = 3;
             this.stateButton1.TabStop = false;
@@ -111,7 +126,7 @@
             this.textBaseButton1.NormalImage = ((System.Drawing.Image)(resources.GetObject("textBaseButton1.NormalImage")));
             this.textBaseButton1.PushedImage = ((System.Drawing.Image)(resources.GetObject("textBaseButton1.PushedImage")));
             this.textBaseButton1.SelectImage = ((System.Drawing.Image)(resources.GetObject("textBaseButton1.SelectImage")));
-            this.textBaseButton1.Size = new System.Drawing.Size(120, 48);
+            this.textBaseButton1.Size = new System.Drawing.Size(174, 65);
             this.textBaseButton1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.textBaseButton1.TabIndex = 2;
             this.textBaseButton1.TabStop = false;
@@ -134,48 +149,32 @@
             this.simpleButton1.TabStop = false;
             this.simpleButton1.Text = "simpleButton1";
             // 
-            // baseButton1
-            // 
-            this.baseButton1.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.baseButton1.Image = ((System.Drawing.Image)(resources.GetObject("baseButton1.Image")));
-            this.baseButton1.InitButtonState = SimpleButtonLib.BaseButton.BtState.Select;
-            this.baseButton1.Location = new System.Drawing.Point(12, 12);
-            this.baseButton1.Name = "baseButton1";
-            this.baseButton1.NormalImage = ((System.Drawing.Image)(resources.GetObject("baseButton1.NormalImage")));
-            this.baseButton1.PushedImage = ((System.Drawing.Image)(resources.GetObject("baseButton1.PushedImage")));
-            this.baseButton1.SelectImage = ((System.Drawing.Image)(resources.GetObject("baseButton1.SelectImage")));
-            this.baseButton1.Size = new System.Drawing.Size(215, 114);
-            this.baseButton1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.baseButton1.TabIndex = 0;
-            this.baseButton1.TabStop = false;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Controls.Add(this.baseButton1);
             this.Controls.Add(this.toggleButton1);
             this.Controls.Add(this.stateButton1);
             this.Controls.Add(this.textBaseButton1);
             this.Controls.Add(this.simpleButton1);
-            this.Controls.Add(this.baseButton1);
             this.Name = "Form1";
             this.Text = "Form1";
+            ((System.ComponentModel.ISupportInitialize)(this.baseButton1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.stateButton1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textBaseButton1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.simpleButton1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.baseButton1)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private SimpleButtonLib.BaseButton baseButton1;
         private SimpleButtonLib.SimpleButton simpleButton1;
         private SimpleButtonLib.TextBaseButton textBaseButton1;
         private StateButton.StateButton stateButton1;
         private ToggleButton.ToggleButton toggleButton1;
+        private SimpleButtonLib.BaseButton baseButton1;
     }
 }
 

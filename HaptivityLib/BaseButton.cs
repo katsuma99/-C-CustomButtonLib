@@ -33,7 +33,7 @@ namespace SimpleButtonLib
         public Image NormalImage
         {
             get { return mNormalImage; }
-            set { mNormalImage = value; Size = mNormalImage.Size; }
+            set { if (value == null) return;  mNormalImage = value; ChangeButtonState(BtState.Normal); }
         }
 
         protected Image mSelectImage;
@@ -43,7 +43,7 @@ namespace SimpleButtonLib
         public Image SelectImage
         {
             get { return mSelectImage; }
-            set { mSelectImage = value; Size = mSelectImage.Size; }
+            set { if (value == null) return; mSelectImage = value; ChangeButtonState(BtState.Select); }
         }
 
         protected Image mPushedImage;
@@ -53,7 +53,7 @@ namespace SimpleButtonLib
         public Image PushedImage
         {
             get { return mPushedImage; }
-            set { mPushedImage = value; Size = mPushedImage.Size; }
+            set { if (value == null) return; mPushedImage = value; ChangeButtonState(BtState.Pushed); }
         }
         #endregion
 
@@ -65,6 +65,7 @@ namespace SimpleButtonLib
             if (mSelectImage == null) SelectImage = global::HAPTIVITYLib.Properties.Resources.BtSelect;
             if (mPushedImage == null) PushedImage = global::HAPTIVITYLib.Properties.Resources.BtPushed;
             if (mNormalImage == null) NormalImage = global::HAPTIVITYLib.Properties.Resources.BtNormal;
+
         }
 
         ~BaseButton()
@@ -82,16 +83,16 @@ namespace SimpleButtonLib
             switch (state)
             {
                 case BtState.Normal:
-                    Image = NormalImage;
-                    if(isResize) Size = NormalImage.Size;
+                    Image = mNormalImage;
+                    if(isResize) Size = mNormalImage.Size;
                     break;
                 case BtState.Select:
-                    Image = SelectImage;
-                    if (isResize) Size = SelectImage.Size;
+                    Image = mSelectImage;
+                    if (isResize) Size = mSelectImage.Size;
                     break;
                 case BtState.Pushed:
-                    Image = PushedImage;
-                    if (isResize) Size = PushedImage.Size;
+                    Image = mPushedImage;
+                    if (isResize) Size = mPushedImage.Size;
                     break;
             }
             Refresh();
