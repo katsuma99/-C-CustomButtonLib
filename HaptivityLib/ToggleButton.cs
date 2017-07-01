@@ -250,15 +250,16 @@ namespace ToggleButton
             mOffSimpleButton.Show();
         }
 
-        private void ToggleButton_SizeChanged(object sender, EventArgs e)
-        {
-            ResizeToggleButton();
-        }
-
         void  ResizeToggleButton()
         {
             mOnSimpleButton.Size = this.Size;
             mOffSimpleButton.Size = this.Size;
+        }
+
+        private void ToggleButton_KeyUp(object sender, KeyEventArgs e)
+        {
+            int i = 0;
+            i++;
         }
     }
 }

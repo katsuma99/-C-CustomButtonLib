@@ -16,10 +16,6 @@ namespace FormSupportLib
         Point mousePoint;       //フォーム動かす用のマウス座標
         int displayType = 0;
         Form mFocusForm = null;
-        [Category("カスタム：ボタンテキスト"), Description("ボタンに表示させる文字フォント")]
-        [Bindable(true), Browsable(true), EditorBrowsable(EditorBrowsableState.Always)]
-        [DefaultValue(null)]
-        Form FocusForm { get; set; }
         FormWindowState preWindowState = FormWindowState.Normal;
 
         #region 初期設定
@@ -34,6 +30,7 @@ namespace FormSupportLib
             mFocusForm = (Form)this.Parent;//フォーム生成時にthis.Activate()しないと、エラーメッセージ生成時にとまる
             AddEventHandler();
             InitWindowSetting();
+            mFocusForm.KeyPreview = true;
         }
 
         private void InitWindowSetting()
@@ -136,18 +133,14 @@ namespace FormSupportLib
                 {
                     ctl.Font = new Font(ctl.Font.Name, ctl.Font.Size * resize_perY);
                 }
-                catch (Exception)
-                {
-                }
+                catch (Exception) { }
 
                 try
                 {
                     Font myFont = (ctl as uTextBaseButton).MyFont;
                     (ctl as uTextBaseButton).MyFont = new Font(myFont.Name, myFont.Size * resize_perY);
                 }
-                catch (Exception)
-                {
-                }
+                catch (Exception) { }
 
                 ctl.Invalidate();
             }

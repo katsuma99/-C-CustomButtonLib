@@ -37,7 +37,6 @@
             // mOffSimpleButton
             // 
             this.mOffSimpleButton.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.mOffSimpleButton.Haptivity = null;
             this.mOffSimpleButton.Image = global::HAPTIVITYLib.Properties.Resources.BtNormal;
             this.mOffSimpleButton.Location = new System.Drawing.Point(0, 0);
             this.mOffSimpleButton.MyFont = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Bold);
@@ -47,6 +46,7 @@
             this.mOffSimpleButton.SelectImage = global::HAPTIVITYLib.Properties.Resources.BtSelect;
             this.mOffSimpleButton.Size = new System.Drawing.Size(100, 50);
             this.mOffSimpleButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.mOffSimpleButton.State = SimpleButtonLib.BaseButton.BtState.Normal;
             this.mOffSimpleButton.TabIndex = 0;
             this.mOffSimpleButton.TabStop = false;
             this.mOffSimpleButton.Text = "toggleButtonOff";
@@ -56,7 +56,6 @@
             // 
             this.mOnSimpleButton.BackColor = System.Drawing.SystemColors.ControlDark;
             this.mOnSimpleButton.ForeColor = System.Drawing.Color.Aquamarine;
-            this.mOnSimpleButton.Haptivity = null;
             this.mOnSimpleButton.Image = global::HAPTIVITYLib.Properties.Resources.BtNormalOn;
             this.mOnSimpleButton.Location = new System.Drawing.Point(0, 0);
             this.mOnSimpleButton.MyFont = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Bold);
@@ -66,6 +65,7 @@
             this.mOnSimpleButton.SelectImage = global::HAPTIVITYLib.Properties.Resources.BtSelectOn;
             this.mOnSimpleButton.Size = new System.Drawing.Size(100, 50);
             this.mOnSimpleButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.mOnSimpleButton.State = SimpleButtonLib.BaseButton.BtState.Normal;
             this.mOnSimpleButton.TabIndex = 1;
             this.mOnSimpleButton.TabStop = false;
             this.mOnSimpleButton.Text = "toggleButtonOn";
@@ -82,7 +82,7 @@
             this.Name = "ToggleButton";
             this.Size = new System.Drawing.Size(100, 50);
             this.Load += new System.EventHandler(this.ToggleButton_Load);
-            this.Resize += new System.EventHandler(this.ToggleButton_SizeChanged);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.ToggleButton_KeyUp);
             ((System.ComponentModel.ISupportInitialize)(this.mOffSimpleButton)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mOnSimpleButton)).EndInit();
             this.ResumeLayout(false);
