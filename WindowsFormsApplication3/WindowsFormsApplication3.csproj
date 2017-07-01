@@ -82,6 +82,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\FormSupportLib\FormSupportLib.csproj">
+      <Project>{F9412781-0384-47A6-B507-3E6A086219F0}</Project>
+      <Name>FormSupportLib</Name>
+    </ProjectReference>
     <ProjectReference Include="..\HaptivityLib\HAPTIVITYLib.csproj">
       <Project>{DCD7ED9C-5471-4DEF-8F23-B7B6CA5A7631}</Project>
       <Name>HAPTIVITYLib</Name>

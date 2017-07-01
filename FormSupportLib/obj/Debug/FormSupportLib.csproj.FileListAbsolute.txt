@@ -81,3 +81,5 @@ C:\Users\katsumaPC\Desktop\SourceTree\NET Framework\CustomButtonLib\FormSupportL
 C:\Users\katsumaPC\Desktop\SourceTree\NET Framework\CustomButtonLib\FormSupportLib\obj\Debug\FormSupportLib.csproj.GenerateResource.Cache
 C:\Users\katsumaPC\Desktop\SourceTree\NET Framework\CustomButtonLib\FormSupportLib\obj\Debug\FormSupportLib.dll
 C:\Users\katsumaPC\Desktop\SourceTree\NET Framework\CustomButtonLib\FormSupportLib\obj\Debug\FormSupportLib.pdb
+C:\Users\katsumaPC\Desktop\SourceTree\NET Framework\CustomButtonLib\FormSupportLib\bin\Debug\HAPTIVITYLib.dll
+C:\Users\katsumaPC\Desktop\SourceTree\NET Framework\CustomButtonLib\FormSupportLib\bin\Debug\HAPTIVITYLib.pdb

@@ -1,5 +1,4 @@
-﻿using System;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -22,12 +21,12 @@ namespace SimpleButtonLib
             set
             {
                 mText = value;
-                if (mText.Length > 0)
-                {
-                    //文字のサイズをボタン幅に合わせて調整
-                    float size = (this.Size.Width * 0.9f) / (float)mText.Length;
-                    mFont = new Font(mFont.FontFamily, Math.Max(size,8), mFont.Style);
-                }
+                //if (mText.Length > 0)
+                //{
+                //    //文字のサイズをボタン幅に合わせて調整
+                //    float size = (this.Size.Width * 0.9f) / (float)mText.Length;
+                //    mFont = new Font(mFont.FontFamily, Math.Max(size,8), mFont.Style);
+                //}
                 Invalidate();
             }
         }

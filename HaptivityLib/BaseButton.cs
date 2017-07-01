@@ -20,10 +20,10 @@ namespace SimpleButtonLib
         BtState mState = BtState.Normal;
         [Category("カスタム：ボタンイメージ"), Description("初期のボタン状態（通常・選択・決定）")]
         [DefaultValue(typeof(BtState), "None")]
-        public BtState InitButtonState
+        public BtState State //名前で自動コードの順番が決まるため、normal,pushed,select,stateの順にSetが実行される
         {
             get { return mState; }
-            set { mState = value; ChangeButtonState(value,false); }
+            set { mState = value; DrawNowStateButton(false); }
         }
 
         protected Image mNormalImage;
@@ -33,7 +33,7 @@ namespace SimpleButtonLib
         public Image NormalImage
         {
             get { return mNormalImage; }
-            set { if (value == null) return;  mNormalImage = value; ChangeButtonState(BtState.Normal); }
+            set { if (value == null) return;  mNormalImage = value; DrawNowStateButton(); }
         }
 
         protected Image mSelectImage;
@@ -43,7 +43,7 @@ namespace SimpleButtonLib
         public Image SelectImage
         {
             get { return mSelectImage; }
-            set { if (value == null) return; mSelectImage = value; ChangeButtonState(BtState.Select); }
+            set { if (value == null) return; mSelectImage = value; DrawNowStateButton(); }
         }
 
         protected Image mPushedImage;
@@ -53,7 +53,7 @@ namespace SimpleButtonLib
         public Image PushedImage
         {
             get { return mPushedImage; }
-            set { if (value == null) return; mPushedImage = value; ChangeButtonState(BtState.Pushed); }
+            set { if (value == null) return; mPushedImage = value; DrawNowStateButton(); }
         }
         #endregion
 
@@ -75,12 +75,12 @@ namespace SimpleButtonLib
             mPushedImage?.Dispose();
         }
 
-        void ChangeButtonState(BtState state,bool isResize = true)
+        void DrawNowStateButton(bool isResize = true)
         {
             if (mNormalImage == null || mSelectImage == null || mPushedImage == null)
                 return;
 
-            switch (state)
+            switch (mState)
             {
                 case BtState.Normal:
                     Image = mNormalImage;

@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
+using SimpleButtonLib;
 
 namespace ToggleButton
 {
@@ -25,6 +26,14 @@ namespace ToggleButton
                 else
                     mOnSimpleButton_OnReleaseButton(this, EventArgs.Empty);
             }
+        }
+
+        #region Onボタン
+        [Category("カスタム：Onボタンイメージ"), Description("初期のボタン状態（通常・選択・決定）")]
+        public BaseButton.BtState OnState //名前で自動コードの順番が決まるため、normal,pushed,select,stateの順にSetが実行される
+        {
+            get { return mOnSimpleButton.State; }
+            set { mOnSimpleButton.State = value; }
         }
 
         [Category("カスタム：Onボタンイメージ"), Description("ON時のボタンを選択した時のイメージ画像")]
@@ -80,8 +89,8 @@ namespace ToggleButton
         [DefaultValue(typeof(Font), "Arial, 8, style=Bold")]
         public Font OnMyFont
         {
-            get { return mOnSimpleButton.Font; }
-            set { mOnSimpleButton.Font = value; }
+            get { return mOnSimpleButton.MyFont; }
+            set { mOnSimpleButton.MyFont = value; }
         }
 
         [Category("カスタム：OnボタンHAPTIVITY"), Description("ON時のHAPTIVITYを使うためには、Interfaceをアタッチする")]
@@ -115,7 +124,15 @@ namespace ToggleButton
             get { return mOnSimpleButton.EnterVibrationTime; }
             set { mOnSimpleButton.EnterVibrationTime = value; }
         }
+        #endregion
 
+        #region Offボタン
+        [Category("カスタム：Offボタンイメージ"), Description("初期のボタン状態（通常・選択・決定）")]
+        public BaseButton.BtState OffState //名前で自動コードの順番が決まるため、normal,pushed,select,stateの順にSetが実行される
+        {
+            get { return mOffSimpleButton.State; }
+            set { mOffSimpleButton.State = value; }
+        }
 
         [Category("カスタム：Offボタンイメージ"), Description("Off時のボタンを選択した時のイメージ画像")]
         public Image OffSelectImage
@@ -170,8 +187,8 @@ namespace ToggleButton
         [DefaultValue(typeof(Font), "Arial, 8, style=Bold")]
         public Font OffMyFont
         {
-            get { return mOffSimpleButton.Font; }
-            set { mOffSimpleButton.Font = value; }
+            get { return mOffSimpleButton.MyFont; }
+            set { mOffSimpleButton.MyFont = value; }
         }
 
         [Category("カスタム：OffボタンHAPTIVITY"), Description("OFF時のHAPTIVITYを使うためには、Interfaceをアタッチする")]
@@ -205,6 +222,7 @@ namespace ToggleButton
             get { return mOffSimpleButton.EnterVibrationTime; }
             set { mOffSimpleButton.EnterVibrationTime = value; }
         }
+        #endregion
         #endregion
 
         //表示されないと呼ばれない（Visible = falseの場合は呼ばれない）コンストラクタで非表示にしたら使えない
