@@ -76,7 +76,8 @@ namespace StateButton
         #region ボタンテキスト
         protected string mText;
         [Description("ボタンに表示させる文字")]
-        public string Text
+        [DefaultValue("StateButton")]
+        public string MyText
         {
             get
             {
@@ -105,6 +106,7 @@ namespace StateButton
             }
         }
 
+        float mTextScale = 0.06667f;
         protected Font mFont;
         [Description("ボタンに表示させる文字フォント")]
         public Font Font
@@ -116,7 +118,10 @@ namespace StateButton
             set
             {
                 mFont = value;
-                if (mButton != null) mButton.Invalidate();
+                if (mButton == null) return;
+                mTextScale = mFont.Size / (float)mButton.Size.Width;//リサイズ用にフォントとボタンのサイズ比率記録
+                if (mText == "") mTextScale = 0.06667f;
+                mButton.Invalidate();
             }
         }
         #endregion
@@ -145,7 +150,7 @@ namespace StateButton
 
         void InitText()
         {
-            mText = "";
+            mText = "StateButton";
             mFont = new Font("Arial", 8, FontStyle.Bold);
         }
 
@@ -198,6 +203,8 @@ namespace StateButton
                         mButtonImage[state] = new Bitmap(mOriPushedImage, size);
                         break;
                 }
+
+            if(mButton != null) mFont = new Font(mFont.FontFamily, mButton.Size.Width * mTextScale, mFont.Style);
             }
         }
 

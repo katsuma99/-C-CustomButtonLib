@@ -132,14 +132,14 @@ namespace FormSupportLib
 
                 try
                 {
-                    ctl.Font = new Font(ctl.Font.Name, ctl.Font.Size * resize_perY);
+                    ctl.Font = new Font(ctl.Font.Name, ctl.Font.Size * resize_perX);
                 }
                 catch (Exception) { }
 
                 try
                 {
                     Font myFont = (ctl as uTextBaseButton).MyFont;
-                    (ctl as uTextBaseButton).MyFont = new Font(myFont.Name, myFont.Size * resize_perY);
+                    (ctl as uTextBaseButton).MyFont = new Font(myFont.Name, myFont.Size * resize_perX);
                 }
                 catch (Exception) { }
 
