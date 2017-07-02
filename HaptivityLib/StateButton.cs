@@ -1,10 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
-using System.Drawing;
 using System.Windows.Forms;
-using System.Collections.Generic;
-using SimpleButtonLib;
-using System.Linq;
 
 namespace StateButton
 {
@@ -103,7 +99,7 @@ namespace StateButton
             Button5,
             Button6,
             Button7,
-            Button8,
+            Button8
         }
 
         public int mCustomButtonState = 0;
@@ -151,14 +147,14 @@ namespace StateButton
         //ステートボタンの状態パターンを変更する
         void ResizeStatePattern(int stateMax)
         {
-            Button1.mButton = stateMax >= 1 ? this : null;
-            Button2.mButton = stateMax >= 2 ? this : null;
-            Button3.mButton = stateMax >= 3 ? this : null;
-            Button4.mButton = stateMax >= 4 ? this : null;
-            Button5.mButton = stateMax >= 5 ? this : null;
-            Button6.mButton = stateMax >= 6 ? this : null;
-            Button7.mButton = stateMax >= 7 ? this : null;
-            Button8.mButton = stateMax >= 8 ? this : null;
+            Button1.Button = stateMax >= 1 ? this : null;
+            Button2.Button = stateMax >= 2 ? this : null;
+            Button3.Button = stateMax >= 3 ? this : null;
+            Button4.Button = stateMax >= 4 ? this : null;
+            Button5.Button = stateMax >= 5 ? this : null;
+            Button6.Button = stateMax >= 6 ? this : null;
+            Button7.Button = stateMax >= 7 ? this : null;
+            Button8.Button = stateMax >= 8 ? this : null;
         }
 
         //現在のカスタムボタンを取得（ステートボタンはカスタムボタンの集まり）
@@ -215,41 +211,6 @@ namespace StateButton
             //}
 
 
-
-
-
-            //void InitSimpleButtonList(int countMax)
-            //{
-            //    mSimpleButtonList.Clear();
-            //    this.Controls.Clear();
-
-            //    for (int no = 1; no <= countMax; no++)
-            //    {
-            //        SimpleButton simpleButton = new SimpleButton();
-
-            //        ((System.ComponentModel.ISupportInitialize)(simpleButton)).BeginInit();
-            //        simpleButton.BackColor = System.Drawing.SystemColors.ControlDark;
-            //        simpleButton.Haptivity = null;
-            //        simpleButton.Image = global::HAPTIVITYLib.Properties.Resources.BtNormal;
-            //        simpleButton.Location = new System.Drawing.Point(0, 0);
-            //        simpleButton.MyFont = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Bold);
-            //        simpleButton.Name = "mStateButton" + no.ToString();
-            //        simpleButton.NormalImage = global::HAPTIVITYLib.Properties.Resources.BtNormal;
-            //        simpleButton.PushedImage = global::HAPTIVITYLib.Properties.Resources.BtPushed;
-            //        simpleButton.SelectImage = global::HAPTIVITYLib.Properties.Resources.BtSelect;
-            //        simpleButton.Size = new System.Drawing.Size(100, 50);
-            //        simpleButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            //        simpleButton.TabIndex = 0;
-            //        simpleButton.TabStop = false;
-            //        simpleButton.Text = "StateButton" + no.ToString();
-            //        simpleButton.Visible = false;
-            //        this.Controls.Add(simpleButton);
-            //        mSimpleButtonList.Add(simpleButton);
-            //    }
-            //    mSimpleButtonList[0].Show();
-            //    CustomButtonState = 1;
-            //    Invalidate();
-            //}
 
         #region ボタンイベント処理
         [Category("カスタム：ボタン処理"), Description("ボタンを押下した時に入る処理")]
@@ -309,6 +270,13 @@ namespace StateButton
         }
         #endregion
 
+
+        protected override void OnPaint(PaintEventArgs pe)
+        {
+            base.OnPaint(pe);
+            GetNowCustomButton().OnPaint(pe);
+        }
+
         //イメージ画像リサイズ
         private void StateButton_SizeChanged(object sender, EventArgs e)
         {
@@ -329,220 +297,6 @@ namespace StateButton
                 cbp.ResizeImage(((PictureBox)sender).Size);
             }
             GetNowCustomButton().ChangeButton(mState);
-        }
-    }
-
-    public enum BtState
-    {
-        Normal,
-        Select,
-        Pushed
-    }
-
-    [DefaultProperty("NormalImage")]
-    [TypeConverter(typeof(CustomButtonPropertyConverter))]
-    public class CustomButtonProperty:ICloneable
-    {
-        #region 変数
-        public PictureBox mButton = null;
-
-        protected List<Image> mButtonImage;
-        Image mOriNormalImage = null;
-        [Description("通常のボタンのイメージ画像")]
-        [DefaultValue(null)]
-        [NotifyParentProperty(true)]    //親のImageにプロパティ変更を通知して更新してもらう
-        public Image NormalImage
-        {
-            get { return mButtonImage[(int)BtState.Normal]; }
-            set { if (value == null) return; mButtonImage[(int)BtState.Normal] = value;
-                mOriNormalImage = (Image)value.Clone(); ChangeButton(BtState.Normal); }
-        }
-
-        Image mOriSelectlImage = null;
-        [Description("ボタンを選択した時のイメージ画像")]
-        [DefaultValue(null)]
-        [NotifyParentProperty(true)]
-        public Image SelectImage
-        {
-            get { return mButtonImage[(int)BtState.Select]; }
-            set { if (value == null) return; mButtonImage[(int)BtState.Select] = value;
-                mOriSelectlImage = (Image)value.Clone(); ChangeButton(BtState.Select); }
-        }
-
-        Image mOriPushedImage = null;
-        [Description("ボタンを押下した時のイメージ画像")]
-        [DefaultValue(null)]
-        [NotifyParentProperty(true)]
-        public Image PushedImage
-        {
-            get { return mButtonImage[(int)BtState.Pushed]; }
-            set { if (value == null) return; mButtonImage[(int)BtState.Pushed] = value;
-                mOriPushedImage = (Image)value.Clone(); ChangeButton(BtState.Pushed); }
-        }
-        #endregion
-
-        public CustomButtonProperty(PictureBox pb = null)
-        {
-            mButton = pb;
-            InitImage();
-        }
-
-        void InitImage()
-        {
-            if (mButtonImage != null)
-                return;
-            mButtonImage = new List<Image>();
-            mButtonImage.Add(global::HAPTIVITYLib.Properties.Resources.BtNormal);
-            mOriNormalImage = (Image)mButtonImage[0].Clone();
-            mButtonImage.Add(global::HAPTIVITYLib.Properties.Resources.BtSelect);
-            mOriSelectlImage = (Image)mButtonImage[1].Clone();
-            mButtonImage.Add(global::HAPTIVITYLib.Properties.Resources.BtPushed);
-            mOriPushedImage = (Image)mButtonImage[2].Clone();
-            ChangeButton(BtState.Normal);
-        }
-
-        ~CustomButtonProperty()
-        {
-            SelectImage?.Dispose();
-            NormalImage?.Dispose();
-            PushedImage?.Dispose();
-        }
-
-        public void ChangeButton(BtState state)
-        {
-            if (mButton == null || mButtonImage == null || NormalImage == null || SelectImage == null || PushedImage == null)
-                return;
-
-            switch (state)
-            {
-                case BtState.Normal:
-                    mButton.Image = NormalImage;
-                    mButton.Size = NormalImage.Size;
-                    break;
-                case BtState.Select:
-                    mButton.Image = SelectImage;
-                    mButton.Size = SelectImage.Size;
-                    break;
-                case BtState.Pushed:
-                    mButton.Image = PushedImage;
-                    mButton.Size = PushedImage.Size;
-                    break;
-            }
-            mButton.Refresh();
-        }
-
-        public void ResizeImage(Size size)
-        {
-            if (mOriNormalImage == null)
-                return;
-            for (int state = 0; state < mButtonImage.Count; state++)
-            {
-                switch (state)
-                {
-                    case (int)BtState.Normal:
-                        mButtonImage[state] = new Bitmap(mOriNormalImage, size);
-                        break;
-                    case (int)BtState.Select:
-                        mButtonImage[state] = new Bitmap(mOriSelectlImage, size);
-                        break;
-                    case (int)BtState.Pushed:
-                        mButtonImage[state] = new Bitmap(mOriPushedImage, size);
-                        break;
-                }
-            }
-        }
-
-
-        //[Description("現在の状態でのボタンに表示させる文字")]
-        //[DefaultValue("")]
-        //public string OnText
-        //{
-        //    get { return mSimpleButtonList[mCustomButtonState].Text; }
-        //    set { mSimpleButtonList[mCustomButtonState].Text = value; }
-        //}
-
-        //[Description("現在の状態でのボタンに表示させる文字の色")]
-        //[DefaultValue(typeof(Color), "Aquamarine")]
-        //public Color OnForeColor
-        //{
-        //    get { return mSimpleButtonList[mCustomButtonState].ForeColor; }
-        //    set { mSimpleButtonList[mCustomButtonState].ForeColor = value; }
-        //}
-
-        //[Description("現在の状態でのボタンに表示させる文字フォント")]
-        //[DefaultValue(typeof(Font), "Arial, 8, style=Bold")]
-        //public Font OnMyFont
-        //{
-        //    get { return mSimpleButtonList[mCustomButtonState].Font; }
-        //    set { mSimpleButtonList[mCustomButtonState].Font = value; }
-        //}
-
-        public object Clone()
-        {
-            CustomButtonProperty work = new CustomButtonProperty(mButton);
-            work = (CustomButtonProperty)this.MemberwiseClone();
-            work.NormalImage = (Image)this.NormalImage.Clone();
-            work.SelectImage = (Image)this.SelectImage.Clone();
-            work.PushedImage = (Image)this.PushedImage.Clone();
-            return work;
-        }
-
-        #region ボタンイベント処理
-        public void OnPushButton()
-        {
-            if (mButton == null) return;
-            mButton.Image = PushedImage;
-        }
-
-        public void OnReleaseButton()
-        {
-            if (mButton == null) return;
-            mButton.Image = SelectImage;
-        }
-
-        public void OnEnterButton()
-        {
-            if (mButton == null) return;
-            mButton.Image = SelectImage;
-        }
-
-        public void OnLeaveButton()
-        {
-            if (mButton == null) return;
-            mButton.Image = NormalImage;
-        }
-        #endregion
-    }
-
-    public class CustomButtonPropertyConverter : ExpandableObjectConverter
-    {
-        public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
-        {
-            if (sourceType == typeof(string))
-                return true;
-            else
-                return base.CanConvertFrom(context, sourceType);
-        }
-
-        public override bool CanConvertTo(ITypeDescriptorContext context, Type destinationType)
-        {
-            if (destinationType == typeof(string))
-                return true;
-            else
-                return base.CanConvertTo(context, destinationType);
-        }
-
-        public override object ConvertTo(ITypeDescriptorContext context, System.Globalization.CultureInfo culture, object value, Type destinationType)
-        {
-
-            CustomButtonProperty baseButtonProp = value as CustomButtonProperty;
-            if (baseButtonProp == null || destinationType != typeof(string))
-                return base.ConvertTo(context, culture, value, destinationType);
-
-            if(baseButtonProp.mButton == null)
-                return string.Format("Out of Range");
-            else
-                return base.ConvertTo(context, culture, value, destinationType);
         }
     }
 }
