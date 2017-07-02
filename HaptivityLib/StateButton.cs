@@ -117,9 +117,10 @@ namespace StateButton
             }
             set
             {
-                if ((int)value < 0)
+                mCustomButtonState = (int)value;
+                if (mStateMax != (int)SBtState.Button8 && mCustomButtonState == (int)SBtState.Button8)
                     mCustomButtonState = mStateMax - 1;
-                else if((int)value >= mStateMax)
+                else if(mCustomButtonState >= mStateMax)
                     mCustomButtonState = 0;
                 GetNowCustomButton().ChangeButton(mState);
             }
@@ -132,7 +133,11 @@ namespace StateButton
         public int StateMax
         {
             get { return mStateMax; }
-            set { mStateMax = Math.Min(8, value); ResizeStatePattern(mStateMax); }
+            set
+            {
+                mStateMax = Math.Min(8, value); ResizeStatePattern(mStateMax);
+                State = State;//Maxを更新したため、範囲内にシュリンク
+            }
         }
         #endregion
 

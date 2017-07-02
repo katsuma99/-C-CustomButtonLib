@@ -67,8 +67,8 @@
             this.stateButton1.Location = new System.Drawing.Point(48, 69);
             this.stateButton1.Name = "stateButton1";
             this.stateButton1.Size = new System.Drawing.Size(120, 48);
-            this.stateButton1.State = StateButton.StateButton.SBtState.Button2;
-            this.stateButton1.StateMax = 8;
+            this.stateButton1.State = StateButton.StateButton.SBtState.Button3;
+            this.stateButton1.StateMax = 4;
             this.stateButton1.TabIndex = 0;
             this.stateButton1.TabStop = false;
             // 
