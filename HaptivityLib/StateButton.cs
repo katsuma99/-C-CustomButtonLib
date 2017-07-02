@@ -176,43 +176,6 @@ namespace StateButton
             return cbp;
         }
 
-        
-
-
-        //[Category("HAPTIVITY"), Description("現在の状態でのHAPTIVITYを使うためには、Interfaceをアタッチする")]
-        //[DefaultValue(null)]
-        //public HAPTIVITYLib.Interface OnHaptivity
-        //{
-        //    get { return mSimpleButtonList[mCustomButtonState].Haptivity; }
-        //    set { mSimpleButtonList[mCustomButtonState].Haptivity = value; }
-        //}
-
-            //[Category("HAPTIVITY"), Description("現在の状態での押下時振動のコンフィグ（ボタンを押したときの触感と閾値などの設定番号）")]
-            //[DefaultValue(0)]
-            //public int OnConfigNo
-            //{
-            //    get { return mSimpleButtonList[mCustomButtonState].ConfigNo; }
-            //    set { mSimpleButtonList[mCustomButtonState].ConfigNo = value; }
-            //}
-
-            //[Category("HAPTIVITY"), Description("現在の状態での進入時強制振動のコンフィグ")]
-            //[DefaultValue(0)]
-            //public int OnEnterConfigNo
-            //{
-            //    get { return mSimpleButtonList[mCustomButtonState].EnterConfigNo; }
-            //    set { mSimpleButtonList[mCustomButtonState].EnterConfigNo = value; }
-            //}
-
-            //[Category("HAPTIVITY"), Description("現在の状態での進入時強制振動の連続振動時間")]
-            //[DefaultValue(10)]
-            //public int OnEnterVibrationTime
-            //{
-            //    get { return mSimpleButtonList[mCustomButtonState].EnterVibrationTime; }
-            //    set { mSimpleButtonList[mCustomButtonState].EnterVibrationTime = value; }
-            //}
-
-
-
         #region ボタンイベント処理
         [Category("カスタム：ボタン処理"), Description("ボタンを押下した時に入る処理")]
         public event EventHandler OnPushButtonEvent = (sender, e) => { };

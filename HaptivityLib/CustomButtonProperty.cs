@@ -8,6 +8,7 @@ using System.Windows.Forms;
 
 namespace StateButton
 {
+    using aRecive = HAPTIVITYLib.Interface.RECEIVE_HAPTIVITY_STATE;
     public enum BtState
     {
         Normal,
@@ -41,6 +42,9 @@ namespace StateButton
             {
                 if (value == null) return; mButtonImage[(int)BtState.Normal] = value;
                 mOriNormalImage = (Image)value.Clone(); ChangeButton(BtState.Normal);
+                //リサイズ用にフォントとボタンのサイズ比率記録
+                if (mFont != null && mText.Length != 0)
+                    mTextScale = mFont.Size * mText.Length / NormalImage.Size.Width;
             }
         }
 
@@ -86,14 +90,16 @@ namespace StateButton
             set
             {
                 mText = value;
-                if(mButton != null) mButton.Invalidate();
+                if (mButton == null)
+                    return;
+                mButton.Invalidate();
             }
         }
 
         protected Color mForeColor = Color.White;
         [DefaultValue(typeof(Color), "White")]
         [Description("ボタンに表示させる文字の色")]
-        public Color ForeColor
+        public Color MyForeColor
         {
             get
             {
@@ -106,10 +112,10 @@ namespace StateButton
             }
         }
 
-        float mTextScale = 0.06667f;
+        float mTextScale = -1;
         protected Font mFont;
         [Description("ボタンに表示させる文字フォント")]
-        public Font Font
+        public Font MyFont
         {
             get
             {
@@ -119,11 +125,50 @@ namespace StateButton
             {
                 mFont = value;
                 if (mButton == null) return;
-                mTextScale = mFont.Size / (float)mButton.Size.Width;//リサイズ用にフォントとボタンのサイズ比率記録
-                if (mText == "") mTextScale = 0.06667f;
+
                 mButton.Invalidate();
             }
         }
+        #endregion
+
+        #region　HAPTIVITY
+        protected HAPTIVITYLib.Interface mHaptivity = null;
+        [DefaultValue(null)]
+        [Description("HAPTIVITYを使うためには、Interfaceをアタッチする")]
+        public HAPTIVITYLib.Interface Haptivity
+        {
+            get { return mHaptivity; }
+            set { mHaptivity = value; }
+        }
+
+        protected int mConfigNo = 0;
+        [DefaultValue(0)]
+        [Description("押下時振動のコンフィグ（ボタンを押したときの触感と閾値などの設定番号）")]
+        public int HapConfigNo
+        {
+            get { return mConfigNo; }
+            set { mConfigNo = value; }
+        }
+
+        protected int mEnterConfigNo = 0;
+        [Description("進入時強制振動のコンフィグ")]
+        [DefaultValue(0)]
+        public int HapEnterConfigNo
+        {
+            get { return mEnterConfigNo; }
+            set { mEnterConfigNo = value; }
+        }
+
+        protected int mEnterVibrationTime = 10;
+        [Description("進入時強制振動の連続振動時間")]
+        [DefaultValue(10)]
+        public int HapEnterVibrationTime
+        {
+            get { return mEnterVibrationTime; }
+            set { mEnterVibrationTime = value; }
+        }
+
+        private System.Windows.Forms.Timer receiveDataTime;
         #endregion
         #endregion
 
@@ -132,6 +177,7 @@ namespace StateButton
             Button = pb;
             InitImage();
             InitText();
+            InitHaptivity();
         }
 
         void InitImage()
@@ -152,6 +198,15 @@ namespace StateButton
         {
             mText = "StateButton";
             mFont = new Font("Arial", 8, FontStyle.Bold);
+        }
+
+        void InitHaptivity()
+        {
+            if (mHaptivity == null)
+                return;
+
+            this.receiveDataTime.Interval = 1;
+            this.receiveDataTime.Tick += new System.EventHandler(this.receiveDataTime_Tick);
         }
 
         ~CustomButtonProperty()
@@ -204,7 +259,7 @@ namespace StateButton
                         break;
                 }
 
-            if(mButton != null) mFont = new Font(mFont.FontFamily, mButton.Size.Width * mTextScale, mFont.Style);
+            if(mButton != null && mTextScale != -1) mFont = new Font(mFont.FontFamily, mButton.Size.Width * mTextScale / mText.Length, mFont.Style);
             }
         }
 
@@ -236,12 +291,36 @@ namespace StateButton
         {
             if (Button == null) return;
             Button.Image = SelectImage;
+            if (mHaptivity != null)
+            {
+                mHaptivity.EnterVibration(mConfigNo, mEnterConfigNo, mEnterVibrationTime);
+                receiveDataTime.Enabled = true;
+            }
         }
 
         public void OnLeaveButton()
         {
             if (Button == null) return;
             Button.Image = NormalImage;
+            if (mHaptivity != null)
+            {
+                mHaptivity.LeaveVibration();
+                receiveDataTime.Enabled = false;
+            }
+        }
+
+        //定期的にHAPTIVITYICからコマンドが受信されていないか確認する
+        private void receiveDataTime_Tick(object sender, EventArgs e)
+        {
+            switch (mHaptivity.DataReceived())
+            {
+                case aRecive.PUSH:
+                    OnPushButton();
+                    break;
+                case aRecive.RELEASE:
+                    OnReleaseButton();
+                    break;
+            }
         }
         #endregion
 
