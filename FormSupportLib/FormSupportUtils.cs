@@ -77,6 +77,7 @@ namespace FormSupportLib
         {
             if (DesignMode)
                 return;
+
             this.Visible = false;
         }
         #endregion
@@ -89,7 +90,7 @@ namespace FormSupportLib
 
         void F1_SizeChanged(object sender, EventArgs e)
         {
-            if (mFocusForm.WindowState == preWindowState)
+            if (mFocusForm == null || mFocusForm.WindowState == preWindowState)
                 return;
 
             ResizeButton();
@@ -99,7 +100,7 @@ namespace FormSupportLib
         /// <summary> ボタンサイズをFormサイズに合わせてリサイズ </summary>
         public void ResizeButton()
         {
-            if (mFocusForm.WindowState == FormWindowState.Minimized)//最小化のとき無視する
+            if (mFocusForm == null || mFocusForm.WindowState == FormWindowState.Minimized)//最小化のとき無視する
                 return;
 
             float resize_perX = 1.0f;
@@ -151,6 +152,9 @@ namespace FormSupportLib
 
         public void FitFormToWindow(bool isRatioEvenly = false)
         {
+            if (mFocusForm == null)
+                return;
+
             //現在フォームが存在しているディスプレイを取得
             System.Windows.Forms.Screen s =
                 System.Windows.Forms.Screen.FromControl(mFocusForm);
@@ -169,15 +173,8 @@ namespace FormSupportLib
 
         public void ChangeWindowSize(object sender, KeyEventArgs e)
         {
-
-            //if (e.KeyData == Keys.Up || e.KeyData == Keys.Down || e.KeyData == Keys.F)
-            //{
-            ////ダブルバッファリングを有効にする
-            //forcusForm.SetStyle(
-            //   ControlStyles.DoubleBuffer |
-            //   ControlStyles.UserPaint |
-            //   ControlStyles.AllPaintingInWmPaint,
-            //   true);
+            if (mFocusForm == null)
+                return;
 
             if (e.KeyData == Keys.F)
             {
@@ -227,11 +224,13 @@ namespace FormSupportLib
                     ResizeWindow(initWindow.Size);
                     break;
             }
-            //}
         }
 
         public void ResizeWindow(int w, int h)
         {
+            if (mFocusForm == null)
+                return;
+
             //ボタンResizeのための初期化
             if (preWindow == new Rectangle(0, 0, 0, 0))
             {

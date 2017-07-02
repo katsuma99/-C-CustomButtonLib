@@ -19,7 +19,7 @@ namespace StateButton
         public CustomButtonProperty Button1
         {
             get {return mCustomButton1; }
-            set { mCustomButton1 = value; State = 1; }
+            set { mCustomButton1 = value; State = SBtState.Button1; }
         }
 
         CustomButtonProperty mCustomButton2 = new CustomButtonProperty();
@@ -28,7 +28,7 @@ namespace StateButton
         public CustomButtonProperty Button2
         {
             get { return mCustomButton2; }
-            set { mCustomButton2 = value; State = 2; }
+            set { mCustomButton2 = value; State = SBtState.Button2; }
         }
 
         CustomButtonProperty mCustomButton3 = new CustomButtonProperty();
@@ -37,7 +37,7 @@ namespace StateButton
         public CustomButtonProperty Button3
         {
             get { return mCustomButton3; }
-            set { mCustomButton3 = value; State = 3; }
+            set { mCustomButton3 = value; State = SBtState.Button3; }
         }
 
         CustomButtonProperty mCustomButton4 = new CustomButtonProperty();
@@ -46,7 +46,7 @@ namespace StateButton
         public CustomButtonProperty Button4
         {
             get { return mCustomButton4; }
-            set { mCustomButton4 = value; State = 4; }
+            set { mCustomButton4 = value; State = SBtState.Button4; }
         }
 
         CustomButtonProperty mCustomButton5 = new CustomButtonProperty();
@@ -55,7 +55,7 @@ namespace StateButton
         public CustomButtonProperty Button5
         {
             get { return mCustomButton5; }
-            set { mCustomButton5 = value; State = 5; }
+            set { mCustomButton5 = value; State = SBtState.Button5; }
         }
 
         CustomButtonProperty mCustomButton6 = new CustomButtonProperty();
@@ -64,7 +64,7 @@ namespace StateButton
         public CustomButtonProperty Button6
         {
             get { return mCustomButton6; }
-            set { mCustomButton6 = value; State = 6; }
+            set { mCustomButton6 = value; State = SBtState.Button6; }
         }
 
         CustomButtonProperty mCustomButton7 = new CustomButtonProperty();
@@ -73,7 +73,7 @@ namespace StateButton
         public CustomButtonProperty Button7
         {
             get { return mCustomButton7; }
-            set { mCustomButton7 = value; State = 7; }
+            set { mCustomButton7 = value; State = SBtState.Button7; }
         }
 
         CustomButtonProperty mCustomButton8 = new CustomButtonProperty();
@@ -82,7 +82,7 @@ namespace StateButton
         public CustomButtonProperty Button8
         {
             get { return mCustomButton8; }
-            set { mCustomButton8 = value; State = 8; }
+            set { mCustomButton8 = value; State = SBtState.Button8; }
         }
 
         public BtState mState = BtState.Normal;
@@ -94,18 +94,33 @@ namespace StateButton
             set { mState = value; GetNowCustomButton().ChangeButton(mState); }
         }
 
+        public enum SBtState
+        {
+            Button1,
+            Button2,
+            Button3,
+            Button4,
+            Button5,
+            Button6,
+            Button7,
+            Button8,
+        }
+
         public int mCustomButtonState = 0;
         [Category("カスタム：ステート"), Description("ステートボタンの現在のパターン")]
         [DefaultValue(0)]
-        public int State
+        public SBtState State
         {
             get
             {
-                return mCustomButtonState + 1;
+                return (SBtState)mCustomButtonState;
             }
             set
             {
-                mCustomButtonState = Math.Max(1, Math.Min(mStateMax, value)) - 1;
+                if ((int)value < 0)
+                    mCustomButtonState = mStateMax - 1;
+                else if((int)value >= mStateMax)
+                    mCustomButtonState = 0;
                 GetNowCustomButton().ChangeButton(mState);
             }
         }
@@ -147,14 +162,14 @@ namespace StateButton
             CustomButtonProperty cbp = Button1;
             switch (State)
             {
-                case 1: cbp = Button1; break;
-                case 2: cbp = Button2; break;
-                case 3: cbp = Button3; break;
-                case 4: cbp = Button4; break;
-                case 5: cbp = Button5; break;
-                case 6: cbp = Button6; break;
-                case 7: cbp = Button7; break;
-                case 8: cbp = Button8; break;
+                case SBtState.Button1: cbp = Button1; break;
+                case SBtState.Button2: cbp = Button2; break;
+                case SBtState.Button3: cbp = Button3; break;
+                case SBtState.Button4: cbp = Button4; break;
+                case SBtState.Button5: cbp = Button5; break;
+                case SBtState.Button6: cbp = Button6; break;
+                case SBtState.Button7: cbp = Button7; break;
+                case SBtState.Button8: cbp = Button8; break;
             }
             return cbp;
         }
