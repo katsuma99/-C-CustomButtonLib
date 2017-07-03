@@ -52,6 +52,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CustomButtonProperty.cs" />
+    <Compile Include="State3Button.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="State3Button.Designer.cs">
+      <DependentUpon>State3Button.cs</DependentUpon>
+    </Compile>
+    <Compile Include="State5Button.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="State5Button.Designer.cs">
+      <DependentUpon>State5Button.cs</DependentUpon>
+    </Compile>
     <Compile Include="TextBaseButton.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -92,11 +104,11 @@
       <DependentUpon>Interface.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StateButton.cs">
+    <Compile Include="State8Button.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="StateButton.Designer.cs">
-      <DependentUpon>StateButton.cs</DependentUpon>
+    <Compile Include="State8Button.Designer.cs">
+      <DependentUpon>State8Button.cs</DependentUpon>
     </Compile>
     <Compile Include="ToggleButton.cs">
       <SubType>UserControl</SubType>
@@ -106,6 +118,12 @@
     </Compile>
     <Compile Include="UISupport\MessageUtils.cs" />
     <Compile Include="UISupport\XmlFileManager.cs" />
+    <EmbeddedResource Include="State3Button.resx">
+      <DependentUpon>State3Button.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="State5Button.resx">
+      <DependentUpon>State5Button.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TextBaseButton.resx">
       <DependentUpon>TextBaseButton.cs</DependentUpon>
     </EmbeddedResource>
@@ -134,8 +152,8 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="StateButton.resx">
-      <DependentUpon>StateButton.cs</DependentUpon>
+    <EmbeddedResource Include="State8Button.resx">
+      <DependentUpon>State8Button.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ToggleButton.resx">
       <DependentUpon>ToggleButton.cs</DependentUpon>

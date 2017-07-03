@@ -29,96 +29,124 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            this.state3Button1 = new State3Button.State3Button();
             this.formSupportUtils1 = new FormSupportLib.FormSupportUtils();
-            this.stateButton1 = new StateButton.StateButton();
-            ((System.ComponentModel.ISupportInitialize)(this.stateButton1)).BeginInit();
+            this.state5Button1 = new State5Button.State5Button();
+            ((System.ComponentModel.ISupportInitialize)(this.state3Button1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.state5Button1)).BeginInit();
             this.SuspendLayout();
+            // 
+            // state3Button1
+            // 
+            this.state3Button1.BackColor = System.Drawing.Color.Transparent;
+            this.state3Button1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("state3Button1.BackgroundImage")));
+            this.state3Button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.state3Button1.Button1.Button = this.state3Button1;
+            this.state3Button1.Button1.MyFont = new System.Drawing.Font("Bauhaus 93", 14F, System.Drawing.FontStyle.Bold);
+            this.state3Button1.Button1.MyForeColor = System.Drawing.Color.Aquamarine;
+            this.state3Button1.Button1.MyText = "State  Button";
+            this.state3Button1.Button1.NormalImage = ((System.Drawing.Image)(resources.GetObject("resource.NormalImage")));
+            this.state3Button1.Button1.PushedImage = ((System.Drawing.Image)(resources.GetObject("resource.PushedImage")));
+            this.state3Button1.Button1.SelectImage = ((System.Drawing.Image)(resources.GetObject("resource.SelectImage")));
+            this.state3Button1.Button2.Button = this.state3Button1;
+            this.state3Button1.Button2.MyFont = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Bold);
+            this.state3Button1.Button2.NormalImage = ((System.Drawing.Image)(resources.GetObject("resource.NormalImage1")));
+            this.state3Button1.Button2.PushedImage = ((System.Drawing.Image)(resources.GetObject("resource.PushedImage1")));
+            this.state3Button1.Button2.SelectImage = ((System.Drawing.Image)(resources.GetObject("resource.SelectImage1")));
+            this.state3Button1.Button3.Button = this.state3Button1;
+            this.state3Button1.Button3.MyFont = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Bold);
+            this.state3Button1.Button3.NormalImage = ((System.Drawing.Image)(resources.GetObject("resource.NormalImage2")));
+            this.state3Button1.Button3.PushedImage = ((System.Drawing.Image)(resources.GetObject("resource.PushedImage2")));
+            this.state3Button1.Button3.SelectImage = ((System.Drawing.Image)(resources.GetObject("resource.SelectImage2")));
+            this.state3Button1.Image = ((System.Drawing.Image)(resources.GetObject("state3Button1.Image")));
+            this.state3Button1.InitState = CustomProperty.BtState.Normal;
+            this.state3Button1.Location = new System.Drawing.Point(45, 36);
+            this.state3Button1.Name = "state3Button1";
+            this.state3Button1.Size = new System.Drawing.Size(91, 65);
+            this.state3Button1.State = State3Button.State3Button.SBtState.Button3;
+            this.state3Button1.StateMax = 3;
+            this.state3Button1.TabIndex = 0;
+            this.state3Button1.TabStop = false;
             // 
             // formSupportUtils1
             // 
             this.formSupportUtils1.BackColor = System.Drawing.Color.Transparent;
             this.formSupportUtils1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("formSupportUtils1.BackgroundImage")));
-            this.formSupportUtils1.Location = new System.Drawing.Point(128, 182);
+            this.formSupportUtils1.Location = new System.Drawing.Point(160, 163);
             this.formSupportUtils1.Name = "formSupportUtils1";
             this.formSupportUtils1.Size = new System.Drawing.Size(32, 32);
             this.formSupportUtils1.TabIndex = 1;
             // 
-            // stateButton1
+            // state5Button1
             // 
-            this.stateButton1.BackColor = System.Drawing.Color.Transparent;
-            this.stateButton1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("stateButton1.BackgroundImage")));
-            this.stateButton1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.stateButton1.Button1.Button = this.stateButton1;
-            this.stateButton1.Button1.MyFont = new System.Drawing.Font("Arial Black", 8F, System.Drawing.FontStyle.Bold);
-            this.stateButton1.Button1.MyForeColor = System.Drawing.Color.Coral;
-            this.stateButton1.Button1.MyText = "State  Button";
-            this.stateButton1.Button1.NormalImage = ((System.Drawing.Image)(resources.GetObject("resource.NormalImage")));
-            this.stateButton1.Button1.PushedImage = ((System.Drawing.Image)(resources.GetObject("resource.PushedImage")));
-            this.stateButton1.Button1.SelectImage = ((System.Drawing.Image)(resources.GetObject("resource.SelectImage")));
-            this.stateButton1.Button2.Button = null;
-            this.stateButton1.Button2.MyFont = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Bold);
-            this.stateButton1.Button2.NormalImage = ((System.Drawing.Image)(resources.GetObject("resource.NormalImage1")));
-            this.stateButton1.Button2.PushedImage = ((System.Drawing.Image)(resources.GetObject("resource.PushedImage1")));
-            this.stateButton1.Button2.SelectImage = ((System.Drawing.Image)(resources.GetObject("resource.SelectImage1")));
-            this.stateButton1.Button3.Button = null;
-            this.stateButton1.Button3.MyFont = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Bold);
-            this.stateButton1.Button3.NormalImage = ((System.Drawing.Image)(resources.GetObject("resource.NormalImage2")));
-            this.stateButton1.Button3.PushedImage = ((System.Drawing.Image)(resources.GetObject("resource.PushedImage2")));
-            this.stateButton1.Button3.SelectImage = ((System.Drawing.Image)(resources.GetObject("resource.SelectImage2")));
-            this.stateButton1.Button4.Button = null;
-            this.stateButton1.Button4.MyFont = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Bold);
-            this.stateButton1.Button4.NormalImage = ((System.Drawing.Image)(resources.GetObject("resource.NormalImage3")));
-            this.stateButton1.Button4.PushedImage = ((System.Drawing.Image)(resources.GetObject("resource.PushedImage3")));
-            this.stateButton1.Button4.SelectImage = ((System.Drawing.Image)(resources.GetObject("resource.SelectImage3")));
-            this.stateButton1.Button5.Button = null;
-            this.stateButton1.Button5.MyFont = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Bold);
-            this.stateButton1.Button5.NormalImage = ((System.Drawing.Image)(resources.GetObject("resource.NormalImage4")));
-            this.stateButton1.Button5.PushedImage = ((System.Drawing.Image)(resources.GetObject("resource.PushedImage4")));
-            this.stateButton1.Button5.SelectImage = ((System.Drawing.Image)(resources.GetObject("resource.SelectImage4")));
-            this.stateButton1.Button6.Button = null;
-            this.stateButton1.Button6.MyFont = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Bold);
-            this.stateButton1.Button6.NormalImage = ((System.Drawing.Image)(resources.GetObject("resource.NormalImage5")));
-            this.stateButton1.Button6.PushedImage = ((System.Drawing.Image)(resources.GetObject("resource.PushedImage5")));
-            this.stateButton1.Button6.SelectImage = ((System.Drawing.Image)(resources.GetObject("resource.SelectImage5")));
-            this.stateButton1.Button7.Button = null;
-            this.stateButton1.Button7.MyFont = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Bold);
-            this.stateButton1.Button7.NormalImage = ((System.Drawing.Image)(resources.GetObject("resource.NormalImage6")));
-            this.stateButton1.Button7.PushedImage = ((System.Drawing.Image)(resources.GetObject("resource.PushedImage6")));
-            this.stateButton1.Button7.SelectImage = ((System.Drawing.Image)(resources.GetObject("resource.SelectImage6")));
-            this.stateButton1.Button8.Button = null;
-            this.stateButton1.Button8.MyFont = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Bold);
-            this.stateButton1.Button8.NormalImage = ((System.Drawing.Image)(resources.GetObject("resource.NormalImage7")));
-            this.stateButton1.Button8.PushedImage = ((System.Drawing.Image)(resources.GetObject("resource.PushedImage7")));
-            this.stateButton1.Button8.SelectImage = ((System.Drawing.Image)(resources.GetObject("resource.SelectImage7")));
-            this.stateButton1.Image = ((System.Drawing.Image)(resources.GetObject("stateButton1.Image")));
-            this.stateButton1.InitState = StateButton.BtState.Normal;
-            this.stateButton1.Location = new System.Drawing.Point(51, 43);
-            this.stateButton1.Name = "stateButton1";
-            this.stateButton1.Size = new System.Drawing.Size(64, 66);
-            this.stateButton1.StateMax = 1;
-            this.stateButton1.TabIndex = 2;
-            this.stateButton1.TabStop = false;
+            this.state5Button1.BackColor = System.Drawing.Color.Transparent;
+            this.state5Button1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("state5Button1.BackgroundImage")));
+            this.state5Button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.state5Button1.Button1.Button = this.state5Button1;
+            this.state5Button1.Button1.MyFont = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Bold);
+            this.state5Button1.Button1.MyForeColor = System.Drawing.Color.Aquamarine;
+            this.state5Button1.Button1.NormalImage = ((System.Drawing.Image)(resources.GetObject("resource.NormalImage3")));
+            this.state5Button1.Button1.PushedImage = ((System.Drawing.Image)(resources.GetObject("resource.PushedImage3")));
+            this.state5Button1.Button1.SelectImage = ((System.Drawing.Image)(resources.GetObject("resource.SelectImage3")));
+            this.state5Button1.Button2.Button = this.state5Button1;
+            this.state5Button1.Button2.MyFont = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Bold);
+            this.state5Button1.Button2.MyForeColor = System.Drawing.Color.Red;
+            this.state5Button1.Button2.NormalImage = ((System.Drawing.Image)(resources.GetObject("resource.NormalImage4")));
+            this.state5Button1.Button2.PushedImage = ((System.Drawing.Image)(resources.GetObject("resource.PushedImage4")));
+            this.state5Button1.Button2.SelectImage = ((System.Drawing.Image)(resources.GetObject("resource.SelectImage4")));
+            this.state5Button1.Button3.Button = this.state5Button1;
+            this.state5Button1.Button3.MyFont = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Bold);
+            this.state5Button1.Button3.MyForeColor = System.Drawing.Color.GreenYellow;
+            this.state5Button1.Button3.NormalImage = ((System.Drawing.Image)(resources.GetObject("resource.NormalImage5")));
+            this.state5Button1.Button3.PushedImage = ((System.Drawing.Image)(resources.GetObject("resource.PushedImage5")));
+            this.state5Button1.Button3.SelectImage = ((System.Drawing.Image)(resources.GetObject("resource.SelectImage5")));
+            this.state5Button1.Button4.Button = this.state5Button1;
+            this.state5Button1.Button4.MyFont = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Bold);
+            this.state5Button1.Button4.MyForeColor = System.Drawing.Color.DodgerBlue;
+            this.state5Button1.Button4.NormalImage = ((System.Drawing.Image)(resources.GetObject("resource.NormalImage6")));
+            this.state5Button1.Button4.PushedImage = ((System.Drawing.Image)(resources.GetObject("resource.PushedImage6")));
+            this.state5Button1.Button4.SelectImage = ((System.Drawing.Image)(resources.GetObject("resource.SelectImage6")));
+            this.state5Button1.Button5.Button = this.state5Button1;
+            this.state5Button1.Button5.MyFont = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Bold);
+            this.state5Button1.Button5.MyForeColor = System.Drawing.Color.DeepPink;
+            this.state5Button1.Button5.NormalImage = ((System.Drawing.Image)(resources.GetObject("resource.NormalImage7")));
+            this.state5Button1.Button5.PushedImage = ((System.Drawing.Image)(resources.GetObject("resource.PushedImage7")));
+            this.state5Button1.Button5.SelectImage = ((System.Drawing.Image)(resources.GetObject("resource.SelectImage7")));
+            this.state5Button1.Image = ((System.Drawing.Image)(resources.GetObject("state5Button1.Image")));
+            this.state5Button1.InitState = CustomProperty.BtState.Normal;
+            this.state5Button1.Location = new System.Drawing.Point(45, 201);
+            this.state5Button1.Name = "state5Button1";
+            this.state5Button1.Size = new System.Drawing.Size(41, 48);
+            this.state5Button1.State = State5Button.State5Button.SBtState.Button5;
+            this.state5Button1.StateMax = 5;
+            this.state5Button1.TabIndex = 2;
+            this.state5Button1.TabStop = false;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 261);
-            this.Controls.Add(this.stateButton1);
+            this.ClientSize = new System.Drawing.Size(300, 300);
+            this.Controls.Add(this.state5Button1);
             this.Controls.Add(this.formSupportUtils1);
+            this.Controls.Add(this.state3Button1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.KeyPreview = true;
             this.MinimumSize = new System.Drawing.Size(300, 300);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.stateButton1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.state3Button1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.state5Button1)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
+
+        private State3Button.State3Button state3Button1;
         private FormSupportLib.FormSupportUtils formSupportUtils1;
-        private StateButton.StateButton stateButton1;
+        private State5Button.State5Button state5Button1;
     }
 }
 

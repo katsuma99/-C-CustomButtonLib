@@ -1,6 +1,6 @@
-﻿namespace StateButton
+﻿namespace State5Button
 {
-    partial class StateButton
+    partial class State5Button
     {
         /// <summary> 
         /// 必要なデザイナー変数です。

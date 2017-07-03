@@ -6,7 +6,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace StateButton
+namespace CustomProperty
 {
     using aRecive = HAPTIVITYLib.Interface.RECEIVE_HAPTIVITY_STATE;
     public enum BtState
