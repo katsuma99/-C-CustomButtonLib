@@ -47,7 +47,7 @@ using System.Windows.Forms;
 using System.IO;
 using System.Diagnostics;
 
-namespace StatusBar
+namespace HAPTIVITYLib
 {
     public partial class Interface : UserControl
     {

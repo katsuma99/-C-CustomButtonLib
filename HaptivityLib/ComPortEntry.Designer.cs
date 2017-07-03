@@ -1,4 +1,4 @@
-﻿namespace StatusBar
+﻿namespace HAPTIVITYLib
 {
     partial class ComPortEntry
     {

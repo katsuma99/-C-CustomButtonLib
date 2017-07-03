@@ -6,7 +6,7 @@ using CustomProperty;
 namespace State3Button
 {
     [DefaultProperty("CustomButton")]
-    public partial class State3Button : PictureBox
+    public partial class State3Button : StateButton
     {
         #region 変数定義
         //設定データを記録するために変数作る（クラスの配列は記録できない？）
@@ -37,26 +37,24 @@ namespace State3Button
             set { mCustomButton3 = value; State = SBtState.Button3; }
         }
 
-        public BtState mState = BtState.Normal;
         [DefaultValue(typeof(BtState), "None")]
         [Category("カスタム：ボタン"), Description("ボタンの初期状態（編集時にも変更すると確認できる）")]
-        public BtState InitState
+        public new BtState InitState
         {
             get { return mState; }
             set { mState = value; GetNowCustomButton().ChangeButton(mState); }
         }
 
-        public enum SBtState
+        public new enum SBtState
         {
             Button1,
             Button2,
             Button3,
         }
 
-        public int mCustomButtonState = 0;
         [Category("カスタム：ステート"), Description("ステートボタンの現在のパターン")]
         [DefaultValue(0)]
-        public SBtState State
+        public new SBtState State
         {
             get
             {
@@ -73,11 +71,10 @@ namespace State3Button
             }
         }
 
-        int mStateMax = 1;
         [Category("カスタム：ステート"), Description("ステートボタンのパターン数(max:3)")]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         [DefaultValue(0)]
-        public int StateMax
+        public new int StateMax
         {
             get { return mStateMax; }
             set
@@ -91,8 +88,17 @@ namespace State3Button
         public State3Button()
         {
             InitializeComponent();
+            InitCustomButton();
             ResizeStatePattern(mStateMax);
             GetNowCustomButton().ChangeButton(mState);
+        }
+
+        //CustomButtonにBtStateを渡すためにStateButtonを渡す
+        void InitCustomButton()
+        {
+            Button1.SetStateButton(this);
+            Button2.SetStateButton(this);
+            Button3.SetStateButton(this);
         }
 
         //ステートボタンの状態パターンを変更する
@@ -117,59 +123,27 @@ namespace State3Button
         }
 
         #region ボタンイベント処理
-        [Category("カスタム：ボタン処理"), Description("ボタンを押下した時に入る処理")]
-        public event EventHandler OnPushButtonEvent = (sender, e) => { };
-
-        [Category("カスタム：ボタン処理"), Description("ボタンをリリースした時に入る処理")]
-        public event EventHandler OnReleaseButtonEvent = (sender, e) => { };
-
-        [Category("カスタム：ボタン処理"), Description("ボタンに侵入した時に入る処理")]
-        public event EventHandler OnEnterButtonEvent = (sender, e) => { };
-
-        [Category("カスタム：ボタン処理"), Description("ボタンから退出した時に入る処理")]
-        public event EventHandler OnLeaveButtonEvent = (sender, e) => { };
-
-
         protected override void OnMouseDown(MouseEventArgs mevent)
         {
-            OnPushButton();
-            base.OnMouseDown(mevent);
-        }
-
-        public void OnPushButton()
-        {
-            mState = BtState.Pushed;
             GetNowCustomButton().OnPushButton();
-            OnPushButtonEvent(this, EventArgs.Empty);
+            base.OnMouseDown(mevent);
         }
 
         protected override void OnMouseUp(MouseEventArgs mevent)
         {
-            OnReleaseButton();
-            base.OnMouseUp(mevent);
-        }
-
-        public void OnReleaseButton()
-        {
-            mState = BtState.Select;
-            if(++mCustomButtonState >= mStateMax) mCustomButtonState = 0;
             GetNowCustomButton().OnReleaseButton();
-            OnReleaseButtonEvent(this, EventArgs.Empty);
+            base.OnMouseUp(mevent);
         }
 
         protected override void OnMouseEnter(EventArgs e)
         {
-            mState = BtState.Select;
             GetNowCustomButton().OnEnterButton();
-            OnEnterButtonEvent(this, EventArgs.Empty);
             base.OnMouseEnter(e);
         }
 
         protected override void OnMouseLeave(EventArgs e)
         {
-            mState = BtState.Normal;
             GetNowCustomButton().OnLeaveButton();
-            OnLeaveButtonEvent(this, EventArgs.Empty);
             base.OnMouseLeave(e);
         }
         #endregion

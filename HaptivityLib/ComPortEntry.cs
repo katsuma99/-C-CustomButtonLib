@@ -8,7 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Management;    //ポート詳細取得用 (プロジェクト/参照の追加 .NETタブ) 
 
-namespace StatusBar
+namespace HAPTIVITYLib
 {
     public partial class ComPortEntry : Form
     {

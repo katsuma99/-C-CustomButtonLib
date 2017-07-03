@@ -13,7 +13,7 @@ using System.IO;            //ファイル出力用
 using System.Management;    //ポート詳細取得用 (プロジェクト/参照の追加 .NETタブ) 
 using System.Timers;        //非同期タイマー
 
-namespace StatusBar
+namespace HAPTIVITYLib
 {
     partial class Interface
     {

@@ -3,15 +3,15 @@ using System.ComponentModel;
 
 namespace SimpleButtonLib
 {
-    using aRecive = StatusBar.Interface.RECEIVE_HAPTIVITY_STATE;
+    using aRecive = HAPTIVITYLib.Interface.RECEIVE_HAPTIVITY_STATE;
 
     public partial class SimpleButton : TextBaseButton
     {
         #region　変数
-        protected StatusBar.Interface mHaptivity = null;
+        protected HAPTIVITYLib.Interface mHaptivity = null;
         [DefaultValue(null)]
         [Category("カスタム：HAPTIVITY"), Description("HAPTIVITYを使うためには、Interfaceをアタッチする")]
-        public StatusBar.Interface Haptivity
+        public HAPTIVITYLib.Interface Haptivity
         {
             get { return mHaptivity; }
             set { mHaptivity = value; }

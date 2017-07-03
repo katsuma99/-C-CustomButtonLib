@@ -26,6 +26,14 @@ namespace WindowsFormsApplication3
             
         }
 
+        private void state3Button1_OnPushButtonEvent(object sender, EventArgs e)
+        {
 
+        }
+
+        private void state3Button1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

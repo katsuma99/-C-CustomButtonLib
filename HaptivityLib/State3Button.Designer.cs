@@ -34,7 +34,7 @@
             // StateButton
             // 
             this.BackColor = System.Drawing.Color.Transparent;
-            this.BackgroundImage = global::StatusBar.Properties.Resources.StateButton;
+            this.BackgroundImage = global::HAPTIVITYLib.Properties.Resources.StateButton;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.SizeChanged += new System.EventHandler(this.StateButton_SizeChanged);
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();

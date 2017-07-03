@@ -62,9 +62,9 @@ namespace SimpleButtonLib
             InitializeComponent();
             mState = BtState.Normal;
 
-            if (mSelectImage == null) SelectImage = global::StatusBar.Properties.Resources.BtSelect;
-            if (mPushedImage == null) PushedImage = global::StatusBar.Properties.Resources.BtPushed;
-            if (mNormalImage == null) NormalImage = global::StatusBar.Properties.Resources.BtNormal;
+            if (mSelectImage == null) SelectImage = global::HAPTIVITYLib.Properties.Resources.BtSelect;
+            if (mPushedImage == null) PushedImage = global::HAPTIVITYLib.Properties.Resources.BtPushed;
+            if (mNormalImage == null) NormalImage = global::HAPTIVITYLib.Properties.Resources.BtNormal;
 
         }
 
@@ -134,7 +134,7 @@ namespace SimpleButtonLib
             base.OnMouseDown(mevent);
         }
 
-        public void OnPushButton()
+        public virtual void OnPushButton()
         {
             OnPushButtonEvent(this, EventArgs.Empty);
         }
@@ -145,7 +145,7 @@ namespace SimpleButtonLib
             base.OnMouseUp(mevent);
         }
 
-        public void OnReleaseButton()
+        public virtual void OnReleaseButton()
         {
             OnReleaseButtonEvent(this, EventArgs.Empty);
         }

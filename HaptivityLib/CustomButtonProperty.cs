@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace CustomProperty
 {
-    using aRecive = StatusBar.Interface.RECEIVE_HAPTIVITY_STATE;
+    using aRecive = HAPTIVITYLib.Interface.RECEIVE_HAPTIVITY_STATE;
     public enum BtState
     {
         Normal,
@@ -16,9 +16,26 @@ namespace CustomProperty
         Pushed
     }
 
+    public abstract class StateButton : PictureBox
+    {
+        public BtState mState = BtState.Normal;
+        public BtState InitState;
+
+        public enum SBtState
+        {
+            Button1,
+        }
+
+        public int mCustomButtonState = 0;
+        public SBtState State;
+        public int mStateMax = 1;
+        public int StateMax;
+
+    }
+
     [DefaultProperty("NormalImage")]
     [TypeConverter(typeof(CustomButtonPropertyConverter))]
-    public class CustomButtonProperty : ICloneable
+    public class CustomButtonProperty
     {
         #region 変数
         PictureBox mButton = null;
@@ -161,10 +178,10 @@ namespace CustomProperty
         #endregion
 
         #region　HAPTIVITY
-        protected StatusBar.Interface mHaptivity = null;
+        protected HAPTIVITYLib.Interface mHaptivity = null;
         [DefaultValue(null)]
         [Description("HAPTIVITYを使うためには、Interfaceをアタッチする")]
-        public StatusBar.Interface Haptivity
+        public HAPTIVITYLib.Interface Haptivity
         {
             get { return mHaptivity; }
             set { mHaptivity = value; }
@@ -197,16 +214,23 @@ namespace CustomProperty
             set { mEnterVibrationTime = value; }
         }
 
-        private System.Windows.Forms.Timer receiveDataTime;
+        private System.Windows.Forms.Timer receiveDataTime = new Timer();
         #endregion
         #endregion
 
-        public CustomButtonProperty(PictureBox pb = null)
+        StateButton mStateButton = null;
+        public event EventHandler OnPushButtonEvent = (sender, e) => { };
+        public event EventHandler OnReleaseButtonEvent = (sender, e) => { };
+        public CustomButtonProperty()
         {
-            Button = pb;
             InitImage();
             InitText();
             InitHaptivity();
+        }
+
+        public void SetStateButton(StateButton stateButton)
+        {
+            mStateButton = stateButton;
         }
 
         void InitImage()
@@ -214,11 +238,11 @@ namespace CustomProperty
             if (mButtonImage != null)
                 return;
             mButtonImage = new List<Image>();
-            mButtonImage.Add(global::StatusBar.Properties.Resources.BtNormal);
+            mButtonImage.Add(global::HAPTIVITYLib.Properties.Resources.BtNormal);
             mOriNormalImage = (Image)mButtonImage[0].Clone();
-            mButtonImage.Add(global::StatusBar.Properties.Resources.BtSelect);
+            mButtonImage.Add(global::HAPTIVITYLib.Properties.Resources.BtSelect);
             mOriSelectlImage = (Image)mButtonImage[1].Clone();
-            mButtonImage.Add(global::StatusBar.Properties.Resources.BtPushed);
+            mButtonImage.Add(global::HAPTIVITYLib.Properties.Resources.BtPushed);
             mOriPushedImage = (Image)mButtonImage[2].Clone();
             ChangeButton(BtState.Normal);
         }
@@ -292,33 +316,32 @@ namespace CustomProperty
             }
         }
 
-        public object Clone()
-        {
-            CustomButtonProperty work = new CustomButtonProperty(Button);
-            work = (CustomButtonProperty)this.MemberwiseClone();
-            work.NormalImage = (Image)this.NormalImage.Clone();
-            work.SelectImage = (Image)this.SelectImage.Clone();
-            work.PushedImage = (Image)this.PushedImage.Clone();
-            return work;
-        }
-
         #region イベント処理
         #region ボタンイベント処理
         public void OnPushButton()
         {
-            if (Button == null) return;
+            if (Button == null || mStateButton == null) return;
+
+            mStateButton.mState = BtState.Pushed;
             Button.Image = PushedImage;
+            OnPushButtonEvent(this, EventArgs.Empty);
         }
 
         public void OnReleaseButton()
         {
-            if (Button == null) return;
+            if (Button == null || mStateButton == null) return;
+
+            mStateButton.mState = BtState.Select;
+            if(++mStateButton.mCustomButtonState >= mStateButton.mStateMax) mStateButton.mCustomButtonState = 0;
             Button.Image = SelectImage;
+            OnReleaseButtonEvent(this, EventArgs.Empty);
         }
 
         public void OnEnterButton()
         {
-            if (Button == null) return;
+            if (Button == null || mStateButton == null) return;
+
+            mStateButton.mState = BtState.Select;
             Button.Image = SelectImage;
             if (mHaptivity != null)
             {
@@ -329,7 +352,9 @@ namespace CustomProperty
 
         public void OnLeaveButton()
         {
-            if (Button == null) return;
+            if (Button == null || mStateButton == null) return;
+
+            mStateButton.mState = BtState.Normal;
             Button.Image = NormalImage;
             if (mHaptivity != null)
             {

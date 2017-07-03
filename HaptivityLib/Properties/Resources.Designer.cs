@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace StatusBar.Properties {
+namespace HAPTIVITYLib.Properties {
     using System;
     
     
