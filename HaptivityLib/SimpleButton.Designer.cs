@@ -41,7 +41,7 @@
             // ImageButton
             // 
             this.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.Image = global::HAPTIVITYLib.Properties.Resources.BtNormal;
+            this.Image = global::StatusBar.Properties.Resources.BtNormal;
             this.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);

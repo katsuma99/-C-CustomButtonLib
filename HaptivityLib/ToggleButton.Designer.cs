@@ -37,13 +37,13 @@
             // mOffSimpleButton
             // 
             this.mOffSimpleButton.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.mOffSimpleButton.Image = global::HAPTIVITYLib.Properties.Resources.BtNormal;
+            this.mOffSimpleButton.Image = global::StatusBar.Properties.Resources.BtNormal;
             this.mOffSimpleButton.Location = new System.Drawing.Point(0, 0);
             this.mOffSimpleButton.MyFont = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Bold);
             this.mOffSimpleButton.Name = "mOffSimpleButton";
-            this.mOffSimpleButton.NormalImage = global::HAPTIVITYLib.Properties.Resources.BtNormal;
-            this.mOffSimpleButton.PushedImage = global::HAPTIVITYLib.Properties.Resources.BtPushed;
-            this.mOffSimpleButton.SelectImage = global::HAPTIVITYLib.Properties.Resources.BtSelect;
+            this.mOffSimpleButton.NormalImage = global::StatusBar.Properties.Resources.BtNormal;
+            this.mOffSimpleButton.PushedImage = global::StatusBar.Properties.Resources.BtPushed;
+            this.mOffSimpleButton.SelectImage = global::StatusBar.Properties.Resources.BtSelect;
             this.mOffSimpleButton.Size = new System.Drawing.Size(100, 50);
             this.mOffSimpleButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.mOffSimpleButton.State = SimpleButtonLib.BaseButton.BtState.Normal;
@@ -56,13 +56,13 @@
             // 
             this.mOnSimpleButton.BackColor = System.Drawing.SystemColors.ControlDark;
             this.mOnSimpleButton.ForeColor = System.Drawing.Color.Aquamarine;
-            this.mOnSimpleButton.Image = global::HAPTIVITYLib.Properties.Resources.BtNormalOn;
+            this.mOnSimpleButton.Image = global::StatusBar.Properties.Resources.BtNormalOn;
             this.mOnSimpleButton.Location = new System.Drawing.Point(0, 0);
             this.mOnSimpleButton.MyFont = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Bold);
             this.mOnSimpleButton.Name = "mOnSimpleButton";
-            this.mOnSimpleButton.NormalImage = global::HAPTIVITYLib.Properties.Resources.BtNormalOn;
-            this.mOnSimpleButton.PushedImage = global::HAPTIVITYLib.Properties.Resources.BtPushedOn;
-            this.mOnSimpleButton.SelectImage = global::HAPTIVITYLib.Properties.Resources.BtSelectOn;
+            this.mOnSimpleButton.NormalImage = global::StatusBar.Properties.Resources.BtNormalOn;
+            this.mOnSimpleButton.PushedImage = global::StatusBar.Properties.Resources.BtPushedOn;
+            this.mOnSimpleButton.SelectImage = global::StatusBar.Properties.Resources.BtSelectOn;
             this.mOnSimpleButton.Size = new System.Drawing.Size(100, 50);
             this.mOnSimpleButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.mOnSimpleButton.State = SimpleButtonLib.BaseButton.BtState.Normal;
@@ -74,7 +74,7 @@
             // ToggleButton
             // 
             this.BackColor = System.Drawing.Color.Transparent;
-            this.BackgroundImage = global::HAPTIVITYLib.Properties.Resources.ToggleButton;
+            this.BackgroundImage = global::StatusBar.Properties.Resources.ToggleButton;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.Controls.Add(this.mOffSimpleButton);
             this.Controls.Add(this.mOnSimpleButton);

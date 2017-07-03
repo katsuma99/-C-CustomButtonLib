@@ -64,6 +64,12 @@
     <Compile Include="State5Button.Designer.cs">
       <DependentUpon>State5Button.cs</DependentUpon>
     </Compile>
+    <Compile Include="StatusBar.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="StatusBar.Designer.cs">
+      <DependentUpon>StatusBar.cs</DependentUpon>
+    </Compile>
     <Compile Include="TextBaseButton.cs">
       <SubType>Component</SubType>
     </Compile>

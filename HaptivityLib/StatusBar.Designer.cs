@@ -1,6 +1,6 @@
-﻿namespace SimpleButtonLib
+﻿namespace StatusBar
 {
-    partial class TextBaseButton
+    partial class StatusBar
     {
         /// <summary> 
         /// 必要なデザイナー変数です。
@@ -10,7 +10,7 @@
         /// <summary> 
         /// 使用中のリソースをすべてクリーンアップします。
         /// </summary>
-        /// <param name="disposing">マネージ リソースが破棄される場合 true、破棄されない場合は false です。</param>
+        /// <param name="disposing">マネージ リソースを破棄する場合は true を指定し、その他の場合は false を指定します。</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -28,17 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
-            this.SuspendLayout();
-            // 
-            // ImageButton
-            // 
-            this.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.Image = global::StatusBar.Properties.Resources.BtNormal;
-            this.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
-            this.ResumeLayout(false);
-
         }
 
         #endregion

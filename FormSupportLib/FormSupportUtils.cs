@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 using System.ComponentModel;
-using HAPTIVITYLib;
+using StatusBar;
 using System.Runtime.InteropServices;//ちらつき防止
 
 namespace FormSupportLib

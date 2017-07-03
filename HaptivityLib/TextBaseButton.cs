@@ -63,6 +63,34 @@ namespace SimpleButtonLib
                 Invalidate();
             }
         }
+
+        public enum Alignment
+        {
+            UpLeft,
+            Up,
+            UpRight,
+            Left,
+            Center,
+            Right,
+            DownLeft,
+            Down,
+            DownRight,
+        }
+        protected Alignment mStringAlignment = Alignment.Center;
+        [Category("カスタム：ボタンテキスト"), Description("ボタンに表示させる文字の場所")]
+        [Bindable(true), Browsable(true), EditorBrowsable(EditorBrowsableState.Always)]
+        public Alignment StringAlignment
+        {
+            get
+            {
+                return mStringAlignment;
+            }
+            set
+            {
+                mStringAlignment = value;
+                Invalidate();
+            }
+        }
         #endregion
 
         public TextBaseButton()
@@ -78,8 +106,8 @@ namespace SimpleButtonLib
             using (Brush brush = new SolidBrush(mForeColor))
             {
                 StringFormat strFormat = new StringFormat();
-                strFormat.Alignment = StringAlignment.Center;
-                strFormat.LineAlignment = StringAlignment.Center;
+                strFormat.Alignment = (StringAlignment)((int)mStringAlignment % 3);
+                strFormat.LineAlignment = (StringAlignment)((int)mStringAlignment / 3);
                 pe.Graphics.DrawString(mText, mFont, brush, new RectangleF(new Point(0, 0), this.Size), strFormat);
             }
         }

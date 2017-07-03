@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace CustomProperty
 {
-    using aRecive = HAPTIVITYLib.Interface.RECEIVE_HAPTIVITY_STATE;
+    using aRecive = StatusBar.Interface.RECEIVE_HAPTIVITY_STATE;
     public enum BtState
     {
         Normal,
@@ -129,13 +129,42 @@ namespace CustomProperty
                 mButton.Invalidate();
             }
         }
+
+        public enum Alignment
+        {
+            UpLeft,
+            Up,
+            UpRight,
+            Left,
+            Center,
+            Right,
+            DownLeft,
+            Down,
+            DownRight,
+        }
+        protected Alignment mStringAlignment = Alignment.Center;
+        [Category("カスタム：ボタンテキスト"), Description("ボタンに表示させる文字の場所")]
+        [Bindable(true), Browsable(true), EditorBrowsable(EditorBrowsableState.Always)]
+        public Alignment MyStringAlignment
+        {
+            get
+            {
+                return mStringAlignment;
+            }
+            set
+            {
+                mStringAlignment = value;
+                if (mButton == null) return;
+                mButton.Invalidate();
+            }
+        }
         #endregion
 
         #region　HAPTIVITY
-        protected HAPTIVITYLib.Interface mHaptivity = null;
+        protected StatusBar.Interface mHaptivity = null;
         [DefaultValue(null)]
         [Description("HAPTIVITYを使うためには、Interfaceをアタッチする")]
-        public HAPTIVITYLib.Interface Haptivity
+        public StatusBar.Interface Haptivity
         {
             get { return mHaptivity; }
             set { mHaptivity = value; }
@@ -185,11 +214,11 @@ namespace CustomProperty
             if (mButtonImage != null)
                 return;
             mButtonImage = new List<Image>();
-            mButtonImage.Add(global::HAPTIVITYLib.Properties.Resources.BtNormal);
+            mButtonImage.Add(global::StatusBar.Properties.Resources.BtNormal);
             mOriNormalImage = (Image)mButtonImage[0].Clone();
-            mButtonImage.Add(global::HAPTIVITYLib.Properties.Resources.BtSelect);
+            mButtonImage.Add(global::StatusBar.Properties.Resources.BtSelect);
             mOriSelectlImage = (Image)mButtonImage[1].Clone();
-            mButtonImage.Add(global::HAPTIVITYLib.Properties.Resources.BtPushed);
+            mButtonImage.Add(global::StatusBar.Properties.Resources.BtPushed);
             mOriPushedImage = (Image)mButtonImage[2].Clone();
             ChangeButton(BtState.Normal);
         }
@@ -329,8 +358,8 @@ namespace CustomProperty
             using (Brush brush = new SolidBrush(mForeColor))
             {
                 StringFormat strFormat = new StringFormat();
-                strFormat.Alignment = StringAlignment.Center;
-                strFormat.LineAlignment = StringAlignment.Center;
+                strFormat.Alignment = (StringAlignment)((int)mStringAlignment % 3);
+                strFormat.LineAlignment = (StringAlignment)((int)mStringAlignment / 3);
                 pe.Graphics.DrawString(mText, mFont, brush, new RectangleF(new Point(0, 0), mButton.Size), strFormat);
             }
         }

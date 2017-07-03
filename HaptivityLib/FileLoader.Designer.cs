@@ -1,4 +1,4 @@
-﻿namespace HAPTIVITYLib
+﻿namespace StatusBar
 {
     partial class FileLoader
     {

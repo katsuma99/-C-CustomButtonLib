@@ -1,4 +1,4 @@
-﻿namespace HAPTIVITYLib
+﻿namespace StatusBar
 {
     partial class Interface
     {
@@ -64,7 +64,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Transparent;
-            this.BackgroundImage = global::HAPTIVITYLib.Properties.Resources.HAPTIVITY;
+            this.BackgroundImage = global::StatusBar.Properties.Resources.HAPTIVITY;
             this.Enabled = false;
             this.Name = "Interface";
             this.Size = new System.Drawing.Size(32, 32);

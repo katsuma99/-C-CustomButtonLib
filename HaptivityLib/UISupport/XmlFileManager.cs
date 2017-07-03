@@ -7,7 +7,7 @@ using System.Xml.Serialization;
 using System.IO;
 using System.Windows.Forms;
 
-namespace HAPTIVITYLib
+namespace StatusBar
 {
     class XmlFileManager
     {

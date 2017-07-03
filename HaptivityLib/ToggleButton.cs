@@ -95,7 +95,7 @@ namespace ToggleButton
 
         [Category("カスタム：OnボタンHAPTIVITY"), Description("ON時のHAPTIVITYを使うためには、Interfaceをアタッチする")]
         [DefaultValue(null)]
-        public HAPTIVITYLib.Interface OnHaptivity
+        public StatusBar.Interface OnHaptivity
         {
             get { return mOnSimpleButton.Haptivity; }
             set { mOnSimpleButton.Haptivity = value; }
@@ -193,7 +193,7 @@ namespace ToggleButton
 
         [Category("カスタム：OffボタンHAPTIVITY"), Description("OFF時のHAPTIVITYを使うためには、Interfaceをアタッチする")]
         [DefaultValue(null)]
-        public HAPTIVITYLib.Interface OffHaptivity
+        public StatusBar.Interface OffHaptivity
         {
             get { return mOffSimpleButton.Haptivity; }
             set { mOffSimpleButton.Haptivity = value; }
