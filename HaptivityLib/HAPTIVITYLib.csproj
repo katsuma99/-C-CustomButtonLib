@@ -130,6 +130,9 @@
     <EmbeddedResource Include="State5Button.resx">
       <DependentUpon>State5Button.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="StatusBar.resx">
+      <DependentUpon>StatusBar.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TextBaseButton.resx">
       <DependentUpon>TextBaseButton.cs</DependentUpon>
     </EmbeddedResource>

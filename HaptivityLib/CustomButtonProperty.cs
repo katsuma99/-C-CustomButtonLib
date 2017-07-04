@@ -6,7 +6,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace CustomProperty
+namespace StateButtonLib
 {
     using aRecive = HAPTIVITYLib.Interface.RECEIVE_HAPTIVITY_STATE;
     public enum BtState
@@ -19,18 +19,74 @@ namespace CustomProperty
     [DefaultEvent("OnReleaseButtonEvent")]
     public abstract class StateButton : PictureBox
     {
+        #region 変数
         public BtState mState = BtState.Normal;
-        public BtState InitState;
+        [DefaultValue(typeof(BtState), "None")]
+        [Category("カスタム：ボタン"), Description("ボタンの初期状態（編集時にも変更すると確認できる）")]
+        public BtState InitState
+        {
+            get { return mState; }
+            set { mState = value; GetNowCustomButton().ChangeButton(mState); }
+        }
 
         public enum SBtState
         {
             Button1,
+            Button2,
+            Button3,
+            Button4,
+            Button5,
+            Button6,
+            Button7,
+            Button8,
+            ButtonHightDummy,//ループするため、maxの1つ上にトリガー
+            ButtonLowDummy,//ループするため、minの1つ下にトリガー
         }
 
+        protected SBtState mMaxSBtState;
         public int mCustomButtonState = 0;
-        public SBtState State;
+        [Category("カスタム：ステート"), Description("ステートボタンの現在のパターン")]
+        [DefaultValue(0)]
+        public SBtState State
+        {
+            get
+            {
+                return (SBtState)mCustomButtonState;
+            }
+            set
+            {
+                mCustomButtonState = (int)value;
+                if (mCustomButtonState == (int)SBtState.ButtonLowDummy)
+                    mCustomButtonState = mStateMax - 1;
+                else if (mCustomButtonState >= mStateMax)
+                    mCustomButtonState = 0;
+
+                GetNowCustomButton().ChangeButton(mState);
+            }
+        }
+
         public int mStateMax = 1;
-        public int StateMax;
+        [Category("カスタム：ステート"), Description("ステートボタンのパターン数(max:3)")]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+        [DefaultValue(0)]
+        public int StateMax
+        {
+            get { return mStateMax; }
+            set
+            {
+                mStateMax = Math.Min((int)mMaxSBtState+1, value); ResizeStatePattern(mStateMax);
+            }
+        }
+        #endregion
+
+        #region　関数
+        //CustomButtonにBtStateを渡すためにStateButtonを渡す
+        protected abstract void InitCustomButton();
+        //ステートボタンの状態パターンを変更する
+        protected abstract void ResizeStatePattern(int stateMax);
+        //現在のカスタムボタンを取得（ステートボタンはカスタムボタンの集まり）
+        public abstract StateButtonProperty GetNowCustomButton(int nextNum = 0);
+        #endregion
 
         #region イベント
         [Category("カスタム：ボタン処理"), Description("ボタンを押下した時に入る処理")]
@@ -46,12 +102,43 @@ namespace CustomProperty
         public void OnReleaseButton() { OnReleaseButtonEvent(this, EventArgs.Empty); }
         public void OnEnterButton() { OnEnterButtonEvent(this, EventArgs.Empty); }
         public void OnLeaveButton() { OnLeaveButtonEvent(this, EventArgs.Empty); }
+
+        #region ボタンイベント処理
+        protected override void OnMouseDown(MouseEventArgs mevent)
+        {
+            GetNowCustomButton().OnPushButton();
+            base.OnMouseDown(mevent);
+        }
+
+        protected override void OnMouseUp(MouseEventArgs mevent)
+        {
+            GetNowCustomButton().OnReleaseButton();
+            base.OnMouseUp(mevent);
+        }
+
+        protected override void OnMouseEnter(EventArgs e)
+        {
+            GetNowCustomButton().OnEnterButton();
+            base.OnMouseEnter(e);
+        }
+
+        protected override void OnMouseLeave(EventArgs e)
+        {
+            GetNowCustomButton().OnLeaveButton();
+            base.OnMouseLeave(e);
+        }
+        #endregion
+        protected override void OnPaint(PaintEventArgs pe)
+        {
+            base.OnPaint(pe);
+            GetNowCustomButton().OnPaint(pe);
+        }
         #endregion
     }
 
     [DefaultProperty("NormalImage")]
     [TypeConverter(typeof(CustomButtonPropertyConverter))]
-    public class CustomButtonProperty
+    public class StateButtonProperty
     {
         #region 変数
         PictureBox mButton = null;
@@ -235,7 +322,7 @@ namespace CustomProperty
         #endregion
 
         StateButton mStateButton = null;
-        public CustomButtonProperty()
+        public StateButtonProperty()
         {
             InitImage();
             InitText();
@@ -276,7 +363,7 @@ namespace CustomProperty
             this.receiveDataTime.Tick += new System.EventHandler(this.receiveDataTime_Tick);
         }
 
-        ~CustomButtonProperty()
+        ~StateButtonProperty()
         {
             SelectImage?.Dispose();
             NormalImage?.Dispose();
@@ -431,7 +518,7 @@ namespace CustomProperty
         public override object ConvertTo(ITypeDescriptorContext context, System.Globalization.CultureInfo culture, object value, Type destinationType)
         {
 
-            CustomButtonProperty baseButtonProp = value as CustomButtonProperty;
+            StateButtonProperty baseButtonProp = value as StateButtonProperty;
             if (baseButtonProp == null || destinationType != typeof(string))
                 return base.ConvertTo(context, culture, value, destinationType);
 

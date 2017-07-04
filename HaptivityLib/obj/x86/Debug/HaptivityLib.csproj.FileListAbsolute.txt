@@ -117,6 +117,7 @@ C:\Users\katsumaPC\Desktop\SourceTree\NET Framework\CustomButtonLib\HaptivityLib
 C:\Users\katsumaPC\Desktop\SourceTree\NET Framework\CustomButtonLib\HaptivityLib\obj\x86\Debug\HAPTIVITYLib.ComPortEntry.resources
 C:\Users\katsumaPC\Desktop\SourceTree\NET Framework\CustomButtonLib\HaptivityLib\obj\x86\Debug\HAPTIVITYLib.FileLoader.resources
 C:\Users\katsumaPC\Desktop\SourceTree\NET Framework\CustomButtonLib\HaptivityLib\obj\x86\Debug\HAPTIVITYLib.Interface.resources
-C:\Users\katsumaPC\Desktop\SourceTree\NET Framework\CustomButtonLib\HaptivityLib\obj\x86\Debug\StateButton.State3Button.resources
-C:\Users\katsumaPC\Desktop\SourceTree\NET Framework\CustomButtonLib\HaptivityLib\obj\x86\Debug\StateButton.State5Button.resources
-C:\Users\katsumaPC\Desktop\SourceTree\NET Framework\CustomButtonLib\HaptivityLib\obj\x86\Debug\StateButton.State8Button.resources
+C:\Users\katsumaPC\Desktop\SourceTree\NET Framework\CustomButtonLib\HaptivityLib\obj\x86\Debug\StatusBar.StatusBar.resources
+C:\Users\katsumaPC\Desktop\SourceTree\NET Framework\CustomButtonLib\HaptivityLib\obj\x86\Debug\StateButtonLib.State3Button.resources
+C:\Users\katsumaPC\Desktop\SourceTree\NET Framework\CustomButtonLib\HaptivityLib\obj\x86\Debug\StateButtonLib.State5Button.resources
+C:\Users\katsumaPC\Desktop\SourceTree\NET Framework\CustomButtonLib\HaptivityLib\obj\x86\Debug\StateButtonLib.State8Button.resources
