@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.state3Button1 = new State3Button.State3Button();
+            this.state3Button1 = new StateButton.State3Button();
             this.statusBar1 = new StatusBar.StatusBar();
             ((System.ComponentModel.ISupportInitialize)(this.state3Button1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.statusBar1)).BeginInit();
@@ -48,7 +48,7 @@
             this.state3Button1.Button1.SelectImage = ((System.Drawing.Image)(resources.GetObject("resource.SelectImage")));
             this.state3Button1.Button2.Button = this.state3Button1;
             this.state3Button1.Button2.MyFont = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Bold);
-            this.state3Button1.Button2.MyForeColor = System.Drawing.Color.Yellow;
+            this.state3Button1.Button2.MyForeColor = System.Drawing.Color.MediumVioletRed;
             this.state3Button1.Button2.MyStringAlignment = CustomProperty.CustomButtonProperty.Alignment.Center;
             this.state3Button1.Button2.NormalImage = ((System.Drawing.Image)(resources.GetObject("resource.NormalImage1")));
             this.state3Button1.Button2.PushedImage = ((System.Drawing.Image)(resources.GetObject("resource.PushedImage1")));
@@ -62,12 +62,13 @@
             this.state3Button1.Button3.SelectImage = ((System.Drawing.Image)(resources.GetObject("resource.SelectImage2")));
             this.state3Button1.Image = ((System.Drawing.Image)(resources.GetObject("state3Button1.Image")));
             this.state3Button1.InitState = CustomProperty.BtState.Normal;
-            this.state3Button1.Location = new System.Drawing.Point(29, 12);
+            this.state3Button1.Location = new System.Drawing.Point(121, 50);
             this.state3Button1.Name = "state3Button1";
             this.state3Button1.Size = new System.Drawing.Size(120, 48);
             this.state3Button1.StateMax = 3;
             this.state3Button1.TabIndex = 1;
             this.state3Button1.TabStop = false;
+            this.state3Button1.OnReleaseButtonEvent += new System.EventHandler(this.state3Button1_OnReleaseButtonEvent);
             this.state3Button1.Click += new System.EventHandler(this.state3Button1_Click);
             // 
             // statusBar1
@@ -113,7 +114,7 @@
         #endregion
 
         private StatusBar.StatusBar statusBar1;
-        private State3Button.State3Button state3Button1;
+        private StateButton.State3Button state3Button1;
     }
 }
 

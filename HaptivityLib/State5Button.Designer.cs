@@ -1,4 +1,4 @@
-﻿namespace State5Button
+﻿namespace StateButton
 {
     partial class State5Button
     {

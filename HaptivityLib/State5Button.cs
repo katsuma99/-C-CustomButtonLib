@@ -3,10 +3,10 @@ using System.ComponentModel;
 using System.Windows.Forms;
 using CustomProperty;
 
-namespace State5Button
+namespace StateButton
 {
     [DefaultProperty("CustomButton")]
-    public partial class State5Button : StateButton
+    public partial class State5Button : CustomProperty.StateButton
     {
         #region 変数定義
         //設定データを記録するために変数作る（クラスの配列は記録できない？）
