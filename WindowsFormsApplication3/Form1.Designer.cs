@@ -29,13 +29,39 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            this.statusBar1 = new StatusBar.StatusBar();
             this.state8Button1 = new StateButtonLib.State8Button();
             this.state3Button1 = new StateButtonLib.State3Button();
-            this.statusBar1 = new StatusBar.StatusBar();
+            this.formSupportUtils1 = new FormSupportLib.FormSupportUtils();
+            ((System.ComponentModel.ISupportInitialize)(this.statusBar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.state8Button1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.state3Button1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.statusBar1)).BeginInit();
             this.SuspendLayout();
+            // 
+            // statusBar1
+            // 
+            this.statusBar1.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.statusBar1.BarMaxRatio = 100;
+            this.statusBar1.BarMinRatio = 0;
+            this.statusBar1.BarNowValueRatio = 0;
+            this.statusBar1.DivisionNum = 10;
+            this.statusBar1.Image = ((System.Drawing.Image)(resources.GetObject("statusBar1.Image")));
+            this.statusBar1.Location = new System.Drawing.Point(82, 192);
+            this.statusBar1.MyFont = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Bold);
+            this.statusBar1.Name = "statusBar1";
+            this.statusBar1.NormalImage = ((System.Drawing.Image)(resources.GetObject("statusBar1.NormalImage")));
+            this.statusBar1.PushedImage = ((System.Drawing.Image)(resources.GetObject("statusBar1.PushedImage")));
+            this.statusBar1.SelectImage = ((System.Drawing.Image)(resources.GetObject("statusBar1.SelectImage")));
+            this.statusBar1.Size = new System.Drawing.Size(120, 48);
+            this.statusBar1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.statusBar1.State = SimpleButtonLib.BaseButton.BtState.Normal;
+            this.statusBar1.StringAlignment = SimpleButtonLib.TextBaseButton.Alignment.Center;
+            this.statusBar1.TabIndex = 3;
+            this.statusBar1.TabStop = false;
+            this.statusBar1.Text = "0.0";
+            this.statusBar1.TextBaseNum = 0;
+            this.statusBar1.TextStepNum = 1;
+            this.statusBar1.UnitText = "";
             // 
             // state8Button1
             // 
@@ -136,53 +162,42 @@
             this.state3Button1.OnReleaseButtonEvent += new System.EventHandler(this.state3Button1_OnReleaseButtonEvent);
             this.state3Button1.Click += new System.EventHandler(this.state3Button1_Click);
             // 
-            // statusBar1
+            // formSupportUtils1
             // 
-            this.statusBar1.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.statusBar1.Image = ((System.Drawing.Image)(resources.GetObject("statusBar1.Image")));
-            this.statusBar1.Location = new System.Drawing.Point(60, 146);
-            this.statusBar1.MaxSizeRatio = 100F;
-            this.statusBar1.MinSizeRatio = 0F;
-            this.statusBar1.MyFont = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Bold);
-            this.statusBar1.Name = "statusBar1";
-            this.statusBar1.NormalImage = ((System.Drawing.Image)(resources.GetObject("statusBar1.NormalImage")));
-            this.statusBar1.PushedImage = ((System.Drawing.Image)(resources.GetObject("statusBar1.PushedImage")));
-            this.statusBar1.SelectImage = ((System.Drawing.Image)(resources.GetObject("statusBar1.SelectImage")));
-            this.statusBar1.Size = new System.Drawing.Size(181, 75);
-            this.statusBar1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.statusBar1.State = SimpleButtonLib.BaseButton.BtState.Normal;
-            this.statusBar1.StringAlignment = SimpleButtonLib.TextBaseButton.Alignment.UpLeft;
-            this.statusBar1.TabIndex = 0;
-            this.statusBar1.TabStop = false;
-            this.statusBar1.Text = "statusBar1 ";
-            this.statusBar1.ValueRatio = 70F;
+            this.formSupportUtils1.BackColor = System.Drawing.Color.Transparent;
+            this.formSupportUtils1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("formSupportUtils1.BackgroundImage")));
+            this.formSupportUtils1.Location = new System.Drawing.Point(195, 133);
+            this.formSupportUtils1.Name = "formSupportUtils1";
+            this.formSupportUtils1.Size = new System.Drawing.Size(32, 32);
+            this.formSupportUtils1.TabIndex = 4;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(300, 300);
+            this.Controls.Add(this.formSupportUtils1);
+            this.Controls.Add(this.statusBar1);
             this.Controls.Add(this.state8Button1);
             this.Controls.Add(this.state3Button1);
-            this.Controls.Add(this.statusBar1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.KeyPreview = true;
             this.MinimumSize = new System.Drawing.Size(300, 300);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.statusBar1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.state8Button1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.state3Button1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.statusBar1)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private StatusBar.StatusBar statusBar1;
         private StateButtonLib.State3Button state3Button1;
         private StateButtonLib.State8Button state8Button1;
+        private StatusBar.StatusBar statusBar1;
+        private FormSupportLib.FormSupportUtils formSupportUtils1;
     }
 }
 

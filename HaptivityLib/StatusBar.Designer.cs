@@ -28,6 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // StatusBar
+            // 
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.StatusBar_MouseMove);
+            ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
+            this.ResumeLayout(false);
+
         }
 
         #endregion
