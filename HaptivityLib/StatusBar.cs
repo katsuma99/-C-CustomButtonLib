@@ -79,7 +79,7 @@ namespace StatusBar
         }
 
         protected int mTextBaseNum = 0;
-        [Category("カスタム：バー"), Description("表示するテキスト：基底の数字")]
+        [Category("カスタム：ボタンテキスト"), Description("表示するテキスト：基底の数字")]
         [Bindable(true), Browsable(true), EditorBrowsable(EditorBrowsableState.Always)]
         public int TextBaseNum
         {
@@ -95,7 +95,7 @@ namespace StatusBar
         }
 
         protected int mTextStepNum = 1;
-        [Category("カスタム：バー"), Description("表示するテキスト：1メモリの上昇する値")]
+        [Category("カスタム：ボタンテキスト"), Description("表示するテキスト：1メモリの上昇する値")]
         [Bindable(true), Browsable(true), EditorBrowsable(EditorBrowsableState.Always)]
         public int TextStepNum
         {
@@ -111,7 +111,7 @@ namespace StatusBar
         }
 
         protected string mUnitText = "";
-        [Category("カスタム：バー"), Description("表示するテキスト：単位")]
+        [Category("カスタム：ボタンテキスト"), Description("表示するテキスト：単位")]
         [Bindable(true), Browsable(true), EditorBrowsable(EditorBrowsableState.Always)]
         public string UnitText
         {
@@ -122,6 +122,86 @@ namespace StatusBar
             set
             {
                 mUnitText = value;
+                Invalidate();
+            }
+        }
+
+        [Category("カスタム：ボタンテキスト"), Description("ボタンに表示させる文字")]
+        [Bindable(true), Browsable(false), EditorBrowsable(EditorBrowsableState.Always)]
+        //[通知？、プロパティウィンドウに表示、インテリセンスに表示(ソースを書くところで、[.]と入力したあとに出てくるメソッド一覧)]
+        public override string Text
+        {
+            get
+            {
+                return mText;
+            }
+            set
+            {
+                mText = value;
+                Invalidate();
+            }
+        }
+
+        protected bool mIsAdjustMode = true;
+        [Category("カスタム：バー"), Description("バーを画像に合わせる際のモード")]
+        [Bindable(true), Browsable(true), EditorBrowsable(EditorBrowsableState.Always)]
+        public bool IsAdjustMode
+        {
+            get
+            {
+                return mIsAdjustMode;
+            }
+            set
+            {
+                mIsAdjustMode = value;
+                Invalidate();
+            }
+        }
+
+        protected bool mIsDirect = true;
+        [Category("カスタム：バー"), Description("カーソルの位置がバーの値になるモード")]
+        [Bindable(true), Browsable(true), EditorBrowsable(EditorBrowsableState.Always)]
+        public bool IsDirect
+        {
+            get
+            {
+                return mIsDirect;
+            }
+            set
+            {
+                mIsDirect = value;
+                Invalidate();
+            }
+        }
+
+        protected Color mBackColor = Color.Black;
+        [Category("カスタム：バー"), Description("カーソルの位置がバーの値になるモード")]
+        [Bindable(true), Browsable(true), EditorBrowsable(EditorBrowsableState.Always)]
+        public override Color BackColor
+        {
+            get
+            {
+                return mBackColor;
+            }
+            set
+            {
+                mBackColor = value;
+                Invalidate();
+            }
+        }
+
+        protected Color mFrontColor = Color.White;
+        [Category("カスタム：バー"), Description("カーソルの位置がバーの値になるモード")]
+        [Bindable(true), Browsable(true), EditorBrowsable(EditorBrowsableState.Always)]
+        public Color FrontColor
+        {
+            get
+            {
+                return mFrontColor;
+            }
+            set
+            {
+                mFrontColor = value;
                 Invalidate();
             }
         }
@@ -154,7 +234,6 @@ namespace StatusBar
         }
 
         int vibCount = 0;
-        bool isDirect = true;
         float mPreValue = 0;
         Point mPrePos = new Point();
         protected void AdjustBar()
@@ -167,7 +246,7 @@ namespace StatusBar
 
             //X座標で一定範囲以上動いたか
             int moveValue = pos.X - mPrePos.X;
-            if(isDirect)moveValue = pos.X;
+            if(mIsDirect)moveValue = pos.X;
             mPrePos = pos;
             //if (F1Udp.mUdp.CheckTouchLeave(mPrePos.X))
             //{
@@ -178,7 +257,7 @@ namespace StatusBar
             float addValue = moveValue / GetOneWidth();
             float nowValue = GetNowValueLength() / GetOneWidth();
             nowValue += addValue;
-            if (isDirect) nowValue = addValue;
+            if (mIsDirect) nowValue = addValue;
 
             //バー値変化したら振動する
             if ((int)nowValue != (int)mPreValue)
@@ -300,9 +379,19 @@ namespace StatusBar
         //描画処理を上書き
         protected override void OnPaint(PaintEventArgs e)
         {
-            using (Brush backBrush = new SolidBrush(this.BackColor))
-            using (Brush foreBrush = new SolidBrush(this.ForeColor))
+            Color backColor = this.BackColor;
+            Color frontColor = this.FrontColor;
+            if (mIsAdjustMode)
             {
+                base.OnPaint(e);
+                backColor = Color.FromArgb(120, backColor);
+                frontColor = Color.FromArgb(120, frontColor);
+            }
+
+            using (Brush backBrush = new SolidBrush(backColor))
+            using (Brush foreBrush = new SolidBrush(frontColor))
+            {
+                
                 //背景を描画する
                 e.Graphics.FillRectangle(backBrush, this.ClientRectangle);
 
@@ -311,15 +400,18 @@ namespace StatusBar
                 //バーを描画する
                 e.Graphics.FillRectangle(foreBrush, chunksRect);
 
-                chunksRect = new Rectangle(GetBarStartPosition(), Height/2, (int)Math.Ceiling(GetNowValueLength()), this.ClientSize.Height/2);
+                //Debug--------------------------------------------------------------//
+                chunksRect = new Rectangle(GetBarStartPosition(), Height/3, (int)Math.Ceiling(GetNowValueLength()), this.ClientSize.Height/3);
                 //バーを描画する
-                e.Graphics.FillRectangle(foreBrush, chunksRect);
+                e.Graphics.FillRectangle(new SolidBrush(Color.White), chunksRect);
+                //-------------------------------------------------------------------//
             }
 
             float value = (int)RatioToValue(mValueRatio) * mTextStepNum + mTextBaseNum;
             mText = value.ToString("F1") + mUnitText;
 
-            //base.OnPaint(e);//画像テキストを上書き
+            if (!mIsAdjustMode)
+                base.OnPaint(e);//画像テキストを上書き
 
         }
     }

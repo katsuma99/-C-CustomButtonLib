@@ -40,28 +40,31 @@
             // 
             // statusBar1
             // 
-            this.statusBar1.BackColor = System.Drawing.SystemColors.ControlDark;
             this.statusBar1.BarMaxRatio = 100;
             this.statusBar1.BarMinRatio = 0;
-            this.statusBar1.BarNowValueRatio = 0;
+            this.statusBar1.BarNowValueRatio = 50;
             this.statusBar1.DivisionNum = 10;
-            this.statusBar1.Image = ((System.Drawing.Image)(resources.GetObject("statusBar1.Image")));
-            this.statusBar1.Location = new System.Drawing.Point(82, 192);
+            this.statusBar1.ForeColor = System.Drawing.Color.Yellow;
+            this.statusBar1.FrontColor = System.Drawing.Color.Maroon;
+            this.statusBar1.Image = global::WindowsFormsApplication3.Properties.Resources.cover3;
+            this.statusBar1.IsAdjustMode = true;
+            this.statusBar1.IsDirect = false;
+            this.statusBar1.Location = new System.Drawing.Point(77, 192);
             this.statusBar1.MyFont = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Bold);
             this.statusBar1.Name = "statusBar1";
-            this.statusBar1.NormalImage = ((System.Drawing.Image)(resources.GetObject("statusBar1.NormalImage")));
+            this.statusBar1.NormalImage = global::WindowsFormsApplication3.Properties.Resources.cover3;
             this.statusBar1.PushedImage = ((System.Drawing.Image)(resources.GetObject("statusBar1.PushedImage")));
             this.statusBar1.SelectImage = ((System.Drawing.Image)(resources.GetObject("statusBar1.SelectImage")));
-            this.statusBar1.Size = new System.Drawing.Size(120, 48);
+            this.statusBar1.Size = new System.Drawing.Size(151, 65);
             this.statusBar1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.statusBar1.State = SimpleButtonLib.BaseButton.BtState.Normal;
-            this.statusBar1.StringAlignment = SimpleButtonLib.TextBaseButton.Alignment.Center;
+            this.statusBar1.StringAlignment = SimpleButtonLib.TextBaseButton.Alignment.UpLeft;
             this.statusBar1.TabIndex = 3;
             this.statusBar1.TabStop = false;
-            this.statusBar1.Text = "0.0";
+            this.statusBar1.Text = "5.0℃";
             this.statusBar1.TextBaseNum = 0;
             this.statusBar1.TextStepNum = 1;
-            this.statusBar1.UnitText = "";
+            this.statusBar1.UnitText = "℃";
             // 
             // state8Button1
             // 
