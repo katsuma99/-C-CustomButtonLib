@@ -28,11 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StatusBar));
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
             // 
             // StatusBar
             // 
+            this.Image = ((System.Drawing.Image)(resources.GetObject("$this.Image")));
+            this.NormalImage = ((System.Drawing.Image)(resources.GetObject("$this.NormalImage")));
+            this.PushedImage = global::HAPTIVITYLib.Properties.Resources.AIRDIR_Frame;
+            this.SelectImage = global::HAPTIVITYLib.Properties.Resources.AIRDIR_Frame_2;
+            this.Size = new System.Drawing.Size(128, 64);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.StatusBar_MouseMove);
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);

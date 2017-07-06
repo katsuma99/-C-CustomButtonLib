@@ -191,6 +191,33 @@
   <ItemGroup>
     <None Include="Resources\StateButton.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AIRDIR_Frame.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AIRDIR_Frame_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AIRDIR_Frame_2B.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BtNormal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BtNormalOn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BtPushed.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BtPushedOn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BtSelect.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BtSelectOn.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

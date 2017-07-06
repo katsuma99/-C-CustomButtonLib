@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using SimpleButtonLib;
+using System.Drawing.Drawing2D;
 
 namespace StatusBar
 {
@@ -14,18 +15,32 @@ namespace StatusBar
     public partial class StatusBar : SimpleButton
     {
         #region 変数
+        public enum Number0To100
+        {
+            _0, _1, _2, _3, _4, _5, _6, _7, _8, _9,
+            _10, _11, _12, _13, _14, _15, _16, _17, _18, _19,
+            _20, _21, _22, _23, _24, _25, _26, _27, _28, _29,
+            _30, _31, _32, _33, _34, _35, _36, _37, _38, _39,
+            _40, _41, _42, _43, _44, _45, _46, _47, _48, _49,
+            _50, _51, _52, _53, _54, _55, _56, _57, _58, _59,
+            _60, _61, _62, _63, _64, _65, _66, _67, _68, _69,
+            _70, _71, _72, _73, _74, _75, _76, _77, _78, _79,
+            _80, _81, _82, _83, _84, _85, _86, _87, _88, _89,
+            _90, _91, _92, _93, _94, _95, _96, _97, _98, _99, _100,
+        }
+
         protected float mValueRatio = 0;
         [Category("カスタム：バー"), Description("現在のバーの値(%)")]
         [Bindable(true), Browsable(true), EditorBrowsable(EditorBrowsableState.Always)]
-        public int BarNowValueRatio
+        public Number0To100 BarNowValueRatio
         {
             get
             {
-                return (int)(mValueRatio * 100);
+                return (Number0To100)(int)(mValueRatio * 100);
             }
             set
             {
-                mValueRatio = Math.Max(0, Math.Min(100, value)) / 100f;
+                mValueRatio = Math.Max(0, Math.Min(100, (int)value)) / 100f + 0.00001f;
                 Invalidate();
             }
         }
@@ -33,15 +48,15 @@ namespace StatusBar
         protected float mValueMax = 1f;
         [Category("カスタム：バー"), Description("バーのMax値(%)")]
         [Bindable(true), Browsable(true), EditorBrowsable(EditorBrowsableState.Always)]
-        public int BarMaxRatio
+        public Number0To100 BarMaxRatio
         {
             get
             {
-                return (int)(mValueMax * 100);
+                return (Number0To100)(int)(mValueMax * 100);
             }
             set
             {
-                mValueMax = Math.Min(100, Math.Max(mValueMin*100, value)) / 100f;
+                mValueMax = Math.Min(100, Math.Max(mValueMin*100, (int)value)) / 100f + 0.00001f;
                 Invalidate();
             }
         }
@@ -49,15 +64,15 @@ namespace StatusBar
         protected float mValueMin = 0;
         [Category("カスタム：バー"), Description("バーのMin値(%)")]
         [Bindable(true), Browsable(true), EditorBrowsable(EditorBrowsableState.Always)]
-        public int BarMinRatio
+        public Number0To100 BarMinRatio
         {
             get
             {
-                return (int)(mValueMin * 100);
+                return (Number0To100)(int)(mValueMin * 100);
             }
             set
             {
-                mValueMin = Math.Max(0, Math.Min(mValueMax*100, value)) / 100f;
+                mValueMin = Math.Max(0, Math.Min(mValueMax*100, (int)value)) / 100f + 0.00001f;
                 Invalidate();
             }
         }
@@ -65,15 +80,15 @@ namespace StatusBar
         protected int mDivisionNum = 10;
         [Category("カスタム：バー"), Description("バーの分割数")]
         [Bindable(true), Browsable(true), EditorBrowsable(EditorBrowsableState.Always)]
-        public int DivisionNum
+        public Number0To100 DivisionNum
         {
             get
             {
-                return mDivisionNum;
+                return (Number0To100)mDivisionNum;
             }
             set
             {
-                mDivisionNum = Math.Max(1, Math.Min(50, value));
+                mDivisionNum = Math.Max(1, Math.Min(50, (int)value));
                 Invalidate();
             }
         }
@@ -106,38 +121,6 @@ namespace StatusBar
             set
             {
                 mTextStepNum = value;
-                Invalidate();
-            }
-        }
-
-        protected string mUnitText = "";
-        [Category("カスタム：ボタンテキスト"), Description("表示するテキスト：単位")]
-        [Bindable(true), Browsable(true), EditorBrowsable(EditorBrowsableState.Always)]
-        public string UnitText
-        {
-            get
-            {
-                return mUnitText;
-            }
-            set
-            {
-                mUnitText = value;
-                Invalidate();
-            }
-        }
-
-        [Category("カスタム：ボタンテキスト"), Description("ボタンに表示させる文字")]
-        [Bindable(true), Browsable(false), EditorBrowsable(EditorBrowsableState.Always)]
-        //[通知？、プロパティウィンドウに表示、インテリセンスに表示(ソースを書くところで、[.]と入力したあとに出てくるメソッド一覧)]
-        public override string Text
-        {
-            get
-            {
-                return mText;
-            }
-            set
-            {
-                mText = value;
                 Invalidate();
             }
         }
@@ -175,7 +158,7 @@ namespace StatusBar
         }
 
         protected Color mBackColor = Color.Black;
-        [Category("カスタム：バー"), Description("カーソルの位置がバーの値になるモード")]
+        [Category("カスタム：バー"), Description("バーの背景色")]
         [Bindable(true), Browsable(true), EditorBrowsable(EditorBrowsableState.Always)]
         public override Color BackColor
         {
@@ -191,7 +174,7 @@ namespace StatusBar
         }
 
         protected Color mFrontColor = Color.White;
-        [Category("カスタム：バー"), Description("カーソルの位置がバーの値になるモード")]
+        [Category("カスタム：バー"), Description("バーの描画色")]
         [Bindable(true), Browsable(true), EditorBrowsable(EditorBrowsableState.Always)]
         public Color FrontColor
         {
@@ -202,6 +185,23 @@ namespace StatusBar
             set
             {
                 mFrontColor = value;
+                Invalidate();
+            }
+        }
+
+        protected Color? mFrontGradationColor = null;
+        [DefaultValue(null)]
+        [Category("カスタム：バー"), Description("バーのグラデーション時の色")]
+        [Bindable(true), Browsable(true), EditorBrowsable(EditorBrowsableState.Always)]
+        public Color? FrontGradationColor
+        {
+            get
+            {
+                return mFrontGradationColor;
+            }
+            set
+            {
+                mFrontGradationColor = value;
                 Invalidate();
             }
         }
@@ -266,7 +266,7 @@ namespace StatusBar
             }
             mPreValue = nowValue;
             //Value->Ratioに変換
-            BarNowValueRatio = (int)(ValueToRatio(nowValue) * 100); //min,maxを補正
+            BarNowValueRatio = (Number0To100)(int)(ValueToRatio(nowValue) * 100); //min,maxを補正
 
             // 再描画
             Invalidate();
@@ -381,6 +381,8 @@ namespace StatusBar
         {
             Color backColor = this.BackColor;
             Color frontColor = this.FrontColor;
+            Color frontGradationColor = mFrontGradationColor.HasValue ? mFrontGradationColor.Value : frontColor;
+
             if (mIsAdjustMode)
             {
                 base.OnPaint(e);
@@ -389,9 +391,13 @@ namespace StatusBar
             }
 
             using (Brush backBrush = new SolidBrush(backColor))
-            using (Brush foreBrush = new SolidBrush(frontColor))
+            using (LinearGradientBrush foreBrush = new LinearGradientBrush(
+                    e.Graphics.VisibleClipBounds,
+                    frontColor,
+                    frontGradationColor,
+                    LinearGradientMode.Horizontal))
             {
-                
+
                 //背景を描画する
                 e.Graphics.FillRectangle(backBrush, this.ClientRectangle);
 
@@ -400,15 +406,24 @@ namespace StatusBar
                 //バーを描画する
                 e.Graphics.FillRectangle(foreBrush, chunksRect);
 
-                //Debug--------------------------------------------------------------//
-                chunksRect = new Rectangle(GetBarStartPosition(), Height/3, (int)Math.Ceiling(GetNowValueLength()), this.ClientSize.Height/3);
-                //バーを描画する
-                e.Graphics.FillRectangle(new SolidBrush(Color.White), chunksRect);
-                //-------------------------------------------------------------------//
+                if (mIsAdjustMode)
+                {
+                    //Debug--------------------------------------------------------------//
+                    //グリッド
+                    Rectangle oneRect =new Rectangle(GetBarStartPosition(), 0, (int)Math.Ceiling(GetOneWidth()), this.ClientSize.Height); ; 
+                    for (int rectNo = 0; rectNo < (int)this.DivisionNum; rectNo++)
+                    {
+                        e.Graphics.DrawRectangle(new Pen(Color.Red), oneRect);
+                        oneRect.X += (int)Math.Ceiling(GetOneWidth());
+                    }
+                    //フレキシブルバー
+                    chunksRect = new Rectangle(GetBarStartPosition(), 0, (int)Math.Ceiling(GetNowValueLength()), 4);
+                    e.Graphics.FillRectangle(new SolidBrush(Color.Red), chunksRect);
+                    //-------------------------------------------------------------------//
+                }
             }
 
             float value = (int)RatioToValue(mValueRatio) * mTextStepNum + mTextBaseNum;
-            mText = value.ToString("F1") + mUnitText;
 
             if (!mIsAdjustMode)
                 base.OnPaint(e);//画像テキストを上書き

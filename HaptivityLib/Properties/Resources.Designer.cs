@@ -63,6 +63,36 @@ namespace HAPTIVITYLib.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
+        internal static System.Drawing.Bitmap AIRDIR_Frame {
+            get {
+                object obj = ResourceManager.GetObject("AIRDIR_Frame", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap AIRDIR_Frame_2 {
+            get {
+                object obj = ResourceManager.GetObject("AIRDIR_Frame_2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap AIRDIR_Frame_2B {
+            get {
+                object obj = ResourceManager.GetObject("AIRDIR_Frame_2B", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
         internal static System.Drawing.Bitmap BtNormal {
             get {
                 object obj = ResourceManager.GetObject("BtNormal", resourceCulture);
