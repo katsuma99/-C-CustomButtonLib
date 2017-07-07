@@ -29,7 +29,7 @@ namespace StatusBar
             _90, _91, _92, _93, _94, _95, _96, _97, _98, _99, _100,
         }
 
-        protected float mValueRatio = 0;
+        protected float mValueRatio = 0.6f;
         [Category("カスタム：バー"), Description("現在のバーの値(%)")]
         [Bindable(true), Browsable(true), EditorBrowsable(EditorBrowsableState.Always)]
         public Number0To100 BarNowValueRatio
@@ -89,6 +89,22 @@ namespace StatusBar
             set
             {
                 mDivisionNum = Math.Max(1, Math.Min(50, (int)value));
+                Invalidate();
+            }
+        }
+
+        protected int mTweak = 0;
+        [Category("カスタム：バー"), Description("バーの位置を微調整")]
+        [Bindable(true), Browsable(true), EditorBrowsable(EditorBrowsableState.Always)]
+        public Number0To100 BarTweak
+        {
+            get
+            {
+                return (Number0To100)(Math.Min(50,Math.Max(-50,mTweak)) + 50);
+            }
+            set
+            {
+                mTweak = (int)value - 50;
                 Invalidate();
             }
         }
@@ -160,7 +176,7 @@ namespace StatusBar
         protected Color mBackColor = Color.Black;
         [Category("カスタム：バー"), Description("バーの背景色")]
         [Bindable(true), Browsable(true), EditorBrowsable(EditorBrowsableState.Always)]
-        public override Color BackColor
+        public Color BarBackColor
         {
             get
             {
@@ -176,7 +192,7 @@ namespace StatusBar
         protected Color mFrontColor = Color.White;
         [Category("カスタム：バー"), Description("バーの描画色")]
         [Bindable(true), Browsable(true), EditorBrowsable(EditorBrowsableState.Always)]
-        public Color FrontColor
+        public Color BarFrontColor
         {
             get
             {
@@ -193,7 +209,7 @@ namespace StatusBar
         [DefaultValue(null)]
         [Category("カスタム：バー"), Description("バーのグラデーション時の色")]
         [Bindable(true), Browsable(true), EditorBrowsable(EditorBrowsableState.Always)]
-        public Color? FrontGradationColor
+        public Color? BarFrontGradationColor
         {
             get
             {
@@ -246,7 +262,7 @@ namespace StatusBar
 
             //X座標で一定範囲以上動いたか
             int moveValue = pos.X - mPrePos.X;
-            if(mIsDirect)moveValue = pos.X;
+            if(mIsDirect)moveValue = pos.X - GetBarStartPosition();
             mPrePos = pos;
             //if (F1Udp.mUdp.CheckTouchLeave(mPrePos.X))
             //{
@@ -349,9 +365,15 @@ namespace StatusBar
             return GetBarLength() * mValueRatio;     //値のサイズ
         }
 
+        string GetNowValueText()
+        {
+            int value = RatioToValue(mValueRatio) * mTextStepNum + mTextBaseNum;
+            return value.ToString();
+        }
+
         float GetNowStepValueLength()
         {
-            float value = (int)RatioToValue(mValueRatio);
+            float value = RatioToValue(mValueRatio);
             return value * GetOneWidth();     //値のサイズ
         }
 
@@ -362,9 +384,9 @@ namespace StatusBar
         }
 
         //Barの割合（％）->値（メモリ）へ変換
-        float RatioToValue(float ratio)
+        int RatioToValue(float ratio)
         {
-           return ratio * GetBarLength() / GetOneWidth();
+           return (int)Math.Round(ratio * GetBarLength() / GetOneWidth());
         }
 
         //Barの値（メモリ）->割合（％）へ変換
@@ -379,15 +401,15 @@ namespace StatusBar
         //描画処理を上書き
         protected override void OnPaint(PaintEventArgs e)
         {
-            Color backColor = this.BackColor;
-            Color frontColor = this.FrontColor;
+            Color backColor = this.BarBackColor;
+            Color frontColor = this.BarFrontColor;
             Color frontGradationColor = mFrontGradationColor.HasValue ? mFrontGradationColor.Value : frontColor;
 
             if (mIsAdjustMode)
             {
                 base.OnPaint(e);
-                backColor = Color.FromArgb(120, backColor);
-                frontColor = Color.FromArgb(120, frontColor);
+                backColor = Color.FromArgb(50, backColor);
+                frontColor = Color.FromArgb(50, frontColor);
             }
 
             using (Brush backBrush = new SolidBrush(backColor))
@@ -402,28 +424,37 @@ namespace StatusBar
                 e.Graphics.FillRectangle(backBrush, this.ClientRectangle);
 
                 //バーの幅を計算する
-                Rectangle chunksRect = new Rectangle(GetBarStartPosition(), 0, (int)Math.Ceiling(GetNowStepValueLength()), this.ClientSize.Height);
+                const int margin = 10;
+                int beginMargin = RatioToValue(mValueRatio) == 0 ? 0 : margin;
+                int lastMargin = RatioToValue(mValueRatio) == mDivisionNum ? margin : 0;
+
+                int drawStart = GetBarStartPosition() + mTweak - beginMargin;
+                int drawLength = (int)Math.Ceiling(GetNowStepValueLength()) + beginMargin + lastMargin;
+                Rectangle chunksRect = new Rectangle(drawStart, 0, drawLength, this.ClientSize.Height);
                 //バーを描画する
                 e.Graphics.FillRectangle(foreBrush, chunksRect);
+                ////バー以外も透明で描画（バックカラーを）
+                //chunksRect = new Rectangle(GetBarStartPosition()+ (int)Math.Ceiling(GetNowStepValueLength()), 0, this.Width, this.ClientSize.Height);
+                //e.Graphics.FillRectangle(backBrush, chunksRect);
 
                 if (mIsAdjustMode)
                 {
                     //Debug--------------------------------------------------------------//
                     //グリッド
-                    Rectangle oneRect =new Rectangle(GetBarStartPosition(), 0, (int)Math.Ceiling(GetOneWidth()), this.ClientSize.Height); ; 
+                    Rectangle oneRect =new Rectangle(GetBarStartPosition() + mTweak, 0, (int)Math.Ceiling(GetOneWidth()), this.ClientSize.Height);
                     for (int rectNo = 0; rectNo < (int)this.DivisionNum; rectNo++)
                     {
+                        oneRect.X = (int)Math.Ceiling(GetOneWidth() * rectNo + GetBarStartPosition() + mTweak);
                         e.Graphics.DrawRectangle(new Pen(Color.Red), oneRect);
-                        oneRect.X += (int)Math.Ceiling(GetOneWidth());
                     }
                     //フレキシブルバー
-                    chunksRect = new Rectangle(GetBarStartPosition(), 0, (int)Math.Ceiling(GetNowValueLength()), 4);
+                    const int cFlexibleBarWidth = 4;
+                    chunksRect = new Rectangle(GetBarStartPosition() + mTweak, 0, (int)Math.Ceiling(GetNowValueLength()), cFlexibleBarWidth);
                     e.Graphics.FillRectangle(new SolidBrush(Color.Red), chunksRect);
                     //-------------------------------------------------------------------//
                 }
             }
 
-            float value = (int)RatioToValue(mValueRatio) * mTextStepNum + mTextBaseNum;
 
             if (!mIsAdjustMode)
                 base.OnPaint(e);//画像テキストを上書き

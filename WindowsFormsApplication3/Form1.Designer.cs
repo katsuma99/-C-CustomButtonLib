@@ -35,26 +35,28 @@
             // 
             // statusBar1
             // 
-            this.statusBar1.BarMaxRatio = StatusBar.StatusBar.Number0To100._77;
-            this.statusBar1.BarMinRatio = StatusBar.StatusBar.Number0To100._11;
-            this.statusBar1.BarNowValueRatio = StatusBar.StatusBar.Number0To100._100;
+            this.statusBar1.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.statusBar1.BarBackColor = System.Drawing.Color.Maroon;
+            this.statusBar1.BarFrontColor = System.Drawing.Color.Aquamarine;
+            this.statusBar1.BarFrontGradationColor = System.Drawing.Color.Aqua;
+            this.statusBar1.BarMaxRatio = StatusBar.StatusBar.Number0To100._82;
+            this.statusBar1.BarMinRatio = StatusBar.StatusBar.Number0To100._10;
+            this.statusBar1.BarNowValueRatio = StatusBar.StatusBar.Number0To100._83;
+            this.statusBar1.BarTweak = StatusBar.StatusBar.Number0To100._55;
             this.statusBar1.DivisionNum = StatusBar.StatusBar.Number0To100._7;
-            this.statusBar1.ForeColor = System.Drawing.Color.Black;
-            this.statusBar1.FrontColor = System.Drawing.Color.DarkRed;
-            this.statusBar1.FrontGradationColor = System.Drawing.Color.Aqua;
             this.statusBar1.Image = ((System.Drawing.Image)(resources.GetObject("statusBar1.Image")));
-            this.statusBar1.IsAdjustMode = true;
+            this.statusBar1.IsAdjustMode = false;
             this.statusBar1.IsDirect = true;
-            this.statusBar1.Location = new System.Drawing.Point(76, 179);
+            this.statusBar1.Location = new System.Drawing.Point(27, 145);
             this.statusBar1.MyFont = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Bold);
             this.statusBar1.Name = "statusBar1";
             this.statusBar1.NormalImage = ((System.Drawing.Image)(resources.GetObject("statusBar1.NormalImage")));
             this.statusBar1.PushedImage = ((System.Drawing.Image)(resources.GetObject("statusBar1.PushedImage")));
             this.statusBar1.SelectImage = ((System.Drawing.Image)(resources.GetObject("statusBar1.SelectImage")));
-            this.statusBar1.Size = new System.Drawing.Size(128, 64);
+            this.statusBar1.Size = new System.Drawing.Size(489, 180);
             this.statusBar1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.statusBar1.State = SimpleButtonLib.BaseButton.BtState.Normal;
-            this.statusBar1.StringAlignment = SimpleButtonLib.TextBaseButton.Alignment.UpLeft;
+            this.statusBar1.StringAlignment = SimpleButtonLib.TextBaseButton.Alignment.Center;
             this.statusBar1.TabIndex = 0;
             this.statusBar1.TabStop = false;
             this.statusBar1.Text = "statusBar1";
@@ -65,7 +67,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(300, 300);
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.ClientSize = new System.Drawing.Size(551, 399);
             this.Controls.Add(this.statusBar1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.KeyPreview = true;
