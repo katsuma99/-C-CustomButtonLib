@@ -3,12 +3,10 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 using System.ComponentModel;
-using HAPTIVITYLib;
 using System.Runtime.InteropServices;//ちらつき防止
 
 namespace FormSupportLib
 {
-    using uTextBaseButton = SimpleButtonLib.TextBaseButton;
     public partial class FormSupportUtils : UserControl
     {
         Rectangle preWindow = new Rectangle(0, 0, 0, 0);    //最大化前のwindowプロパティ
@@ -133,13 +131,6 @@ namespace FormSupportLib
                 try
                 {
                     ctl.Font = new Font(ctl.Font.Name, ctl.Font.Size * resize_perX);
-                }
-                catch (Exception) { }
-
-                try
-                {
-                    Font myFont = (ctl as uTextBaseButton).MyFont;
-                    (ctl as uTextBaseButton).MyFont = new Font(myFont.Name, myFont.Size * resize_perX);
                 }
                 catch (Exception) { }
 

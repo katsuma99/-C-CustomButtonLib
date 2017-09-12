@@ -11,3 +11,5 @@ C:\Users\katsumaPC\Desktop\SourceTree\NET Framework\CustomButtonLib\WindowsForms
 C:\Users\katsumaPC\Desktop\SourceTree\NET Framework\CustomButtonLib\WindowsFormsApplication3\obj\Debug\WindowsFormsApplication3.pdb
 C:\Users\katsumaPC\Desktop\SourceTree\NET Framework\CustomButtonLib\WindowsFormsApplication3\bin\Debug\FormSupportLib.dll
 C:\Users\katsumaPC\Desktop\SourceTree\NET Framework\CustomButtonLib\WindowsFormsApplication3\bin\Debug\FormSupportLib.pdb
+C:\Users\katsumaPC\Desktop\SourceTree\NET Framework\CustomButtonLib\WindowsFormsApplication3\bin\Debug\TouchGestureLib.dll
+C:\Users\katsumaPC\Desktop\SourceTree\NET Framework\CustomButtonLib\WindowsFormsApplication3\bin\Debug\TouchGestureLib.pdb

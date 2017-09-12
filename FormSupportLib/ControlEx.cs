@@ -15,16 +15,22 @@ namespace FormSupportLib
         {
             int posX = ch.Location.X;
             int posY = ch.Location.Y;
-            if (ch.Parent != null)
+            Control parent = ch.Parent;
+            while (parent != null)
             {
-                posX += ch.Parent.Location.X;
-                posY += ch.Parent.Location.Y;
+                posX += parent.Location.X;
+                posY += parent.Location.Y;
+                parent = parent.Parent;
             }
+
             ch.Parent = newPar;
-            if (newPar != null)
+
+            parent = ch.Parent;
+            while (parent != null)
             {
-                posX -= newPar.Location.X;
-                posY -= newPar.Location.Y;
+                posX -= parent.Location.X;
+                posY -= parent.Location.Y;
+                parent = parent.Parent;
             }
             ch.Location = new Point(posX, posY);
         }
